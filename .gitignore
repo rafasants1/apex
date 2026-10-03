@@ -1,0 +1,26 @@
+# Compilados e binários locais
+*.exe
+*.o
+*.obj
+*.out
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.venv/
+.venv/
+env/
+
+# Sistema Operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs e arquivos de diagnóstico
+*.log
+temp_*
+scratch_*
+
+# Metadados de agentes
+.agents/

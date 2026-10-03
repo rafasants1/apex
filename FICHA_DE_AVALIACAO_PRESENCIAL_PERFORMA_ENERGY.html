@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha de Avaliação da Comunidade Atendida — APEX V | Performa Energy</title>
+    <style>
+        :root {
+            --primary: #D97706;
+            --primary-light: #F59E0B;
+            --secondary: #10B981;
+            --dark: #0F172A;
+            --slate: #334155;
+            --gray-border: #CBD5E1;
+            --gray-bg: #F8FAFC;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #E2E8F0;
+            color: var(--dark);
+            line-height: 1.35;
+            font-size: 11.5px;
+        }
+
+        .page-container {
+            max-width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            background: #FFFFFF;
+            padding: 14mm 16mm;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            position: relative;
+        }
+
+        /* Banner de Instrução em Tela (não impresso) */
+        .toolbar-no-print {
+            max-width: 210mm;
+            margin: 0 auto 15px auto;
+            background: #FFFFFF;
+            padding: 12px 20px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-left: 5px solid var(--primary-light);
+        }
+
+        .toolbar-info {
+            font-size: 13px;
+            color: var(--slate);
+        }
+
+        .toolbar-info strong {
+            color: var(--dark);
+        }
+
+        .btn-print {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            color: #FFFFFF;
+            border: none;
+            padding: 9px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(217, 119, 6, 0.3);
+        }
+
+        .btn-print:hover {
+            opacity: 0.92;
+            transform: translateY(-1px);
+        }
+
+        /* Cabeçalho Institucional */
+        .header-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 8px;
+        }
+
+        .header-logo-col {
+            width: 75px;
+            vertical-align: middle;
+        }
+
+        .logo-box {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #0F172A, #1E293B);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #F59E0B;
+            border: 1px solid #D97706;
+        }
+
+        .logo-icon {
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        .logo-text {
+            font-size: 8px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #FFFFFF;
+            margin-top: 2px;
+        }
+
+        .header-text-col {
+            vertical-align: middle;
+            padding-left: 12px;
+        }
+
+        .header-title-main {
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: var(--dark);
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .header-subtitle {
+            font-size: 11px;
+            color: var(--slate);
+            margin: 2px 0 0 0;
+            font-weight: 600;
+        }
+
+        .header-project {
+            font-size: 10.5px;
+            color: var(--primary);
+            font-weight: 700;
+            margin: 2px 0 0 0;
+        }
+
+        .header-badge-col {
+            width: 130px;
+            text-align: right;
+            vertical-align: middle;
+        }
+
+        .badge-apex {
+            display: inline-block;
+            background: #FEF3C7;
+            border: 1px solid #F59E0B;
+            color: #92400E;
+            font-size: 9.5px;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 4px;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        /* Seções e Boxes */
+        .section-box {
+            border: 1px solid var(--gray-border);
+            border-radius: 5px;
+            padding: 7px 10px;
+            margin-bottom: 8px;
+            background: #FAFAFA;
+        }
+
+        .grid-2col {
+            display: flex;
+            gap: 12px;
+        }
+
+        .grid-col {
+            flex: 1;
+        }
+
+        .field-row {
+            margin-bottom: 4px;
+            display: flex;
+            align-items: baseline;
+        }
+
+        .field-label {
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 10.5px;
+            white-space: nowrap;
+            margin-right: 4px;
+        }
+
+        .field-value {
+            border-bottom: 1px dotted #94A3B8;
+            flex-grow: 1;
+            padding-bottom: 1px;
+            font-size: 11px;
+            color: #1E293B;
+            min-height: 14px;
+        }
+
+        .field-static {
+            font-size: 11px;
+            color: #1E293B;
+        }
+
+        /* Tabela de Escala Likert */
+        .instructions-bar {
+            background: #F1F5F9;
+            border-left: 3px solid var(--secondary);
+            padding: 5px 8px;
+            margin-bottom: 8px;
+            font-size: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .scale-legend {
+            display: flex;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 9.5px;
+        }
+
+        .scale-item {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .scale-num {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            background: var(--dark);
+            color: #FFF;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 14px;
+            font-size: 8.5px;
+            font-weight: 700;
+        }
+
+        .eval-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 8px;
+        }
+
+        .eval-table th {
+            background: #0F172A;
+            color: #FFFFFF;
+            padding: 6px 6px;
+            font-size: 9.5px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            border: 1px solid #0F172A;
+            text-align: center;
+        }
+
+        .eval-table th.col-desc {
+            text-align: left;
+            width: 75%;
+            padding-left: 8px;
+        }
+
+        .eval-table th.col-score {
+            width: 5%;
+        }
+
+        .eval-table td {
+            border: 1px solid #CBD5E1;
+            padding: 6px 6px;
+            font-size: 10.5px;
+            vertical-align: middle;
+        }
+
+        .eval-table tr:nth-child(even) {
+            background-color: #F8FAFC;
+        }
+
+        .criterion-title {
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1px;
+            display: block;
+        }
+
+        .criterion-desc {
+            font-size: 9.8px;
+            color: var(--slate);
+            line-height: 1.25;
+        }
+
+        .score-cell {
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .score-circle {
+            width: 18px;
+            height: 18px;
+            border: 1.5px solid #94A3B8;
+            border-radius: 50%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            font-weight: 700;
+            color: #64748B;
+            transition: all 0.15s ease;
+        }
+
+        /* Interatividade no Navegador */
+        .score-cell input[type="radio"] {
+            display: none;
+        }
+
+        .score-cell input[type="radio"]:checked + .score-circle {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #FFFFFF;
+            box-shadow: 0 0 4px rgba(217, 119, 6, 0.4);
+        }
+
+        /* Caixa de Comentário Qualitativo */
+        .feedback-box {
+            border: 1px solid var(--gray-border);
+            border-radius: 5px;
+            padding: 7px 10px;
+            margin-bottom: 10px;
+            background: #FFFFFF;
+        }
+
+        .feedback-title {
+            font-size: 10.5px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 4px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .lines-area {
+            width: 100%;
+            height: 52px;
+            background-image: repeating-linear-gradient(transparent, transparent 16px, #CBD5E1 17px);
+            line-height: 17px;
+            font-size: 10.5px;
+            color: #1E293B;
+            border: none;
+            resize: none;
+            outline: none;
+            overflow: hidden;
+        }
+
+        /* Bloco de Assinaturas */
+        .signature-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 14px;
+        }
+
+        .signature-td {
+            width: 47%;
+            text-align: center;
+            vertical-align: top;
+            padding: 0 8px;
+        }
+
+        .signature-line {
+            border-top: 1px solid #334155;
+            margin-top: 25px;
+            padding-top: 3px;
+        }
+
+        .signature-name {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .signature-role {
+            font-size: 9px;
+            color: var(--slate);
+        }
+
+        /* Rodapé de Conformidade */
+        .footer-compliance {
+            margin-top: 10px;
+            padding-top: 6px;
+            border-top: 1px solid #E2E8F0;
+            display: flex;
+            justify-content: space-between;
+            font-size: 8px;
+            color: #64748B;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+
+        /* Regras Estritas de Impressão A4 (1 página exata) */
+        @page {
+            size: A4 portrait;
+            margin: 8mm 10mm;
+        }
+
+        @media print {
+            body {
+                background: #FFFFFF;
+                padding: 0;
+                font-size: 11px;
+            }
+
+            .page-container {
+                box-shadow: none;
+                padding: 0;
+                max-width: 100%;
+                min-height: auto;
+            }
+
+            .toolbar-no-print {
+                display: none !important;
+            }
+
+            .lines-area {
+                background-image: repeating-linear-gradient(transparent, transparent 16px, #94A3B8 17px) !important;
+            }
+
+            .score-circle {
+                border-color: #475569 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA DE FERRAMENTAS VISÍVEL APENAS NA TELA (NÃO IMPRIME) -->
+    <div class="toolbar-no-print">
+        <div class="toolbar-info">
+            <strong>📋 Ficha Oficial de Avaliação da Comunidade (APEX V)</strong><br>
+            Preencha na tela antes de imprimir ou imprima em branco para preenchimento manual à caneta.
+        </div>
+        <button class="btn-print" onclick="window.print()">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+                <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z"/>
+            </svg>
+            Imprimir Ficha (1 Página A4)
+        </button>
+    </div>
+
+    <!-- PÁGINA A4 OFICIAL DE AVALIAÇÃO -->
+    <div class="page-container">
+
+        <!-- CABEÇALHO INSTITUCIONAL -->
+        <table class="header-table">
+            <tr>
+                <td class="header-logo-col">
+                    <div class="logo-box">
+                        <span class="logo-icon">⚡</span>
+                        <span class="logo-text">PERFORMA</span>
+                    </div>
+                </td>
+                <td class="header-text-col">
+                    <h1 class="header-title-main">Faculdade Unyleya — Extensão Curricular</h1>
+                    <div class="header-subtitle">Ambiente Profissional e de Extensão — APEX V | Projeto Educando para a Cidadania</div>
+                    <div class="header-project">PRODUTO DIGITAL: PERFORMA SOLAR IA — ÉTICA, LGPD E ENERGIA LIMPA</div>
+                </td>
+                <td class="header-badge-col">
+                    <div class="badge-apex">
+                        MÓDULO 4<br>
+                        <strong>AVALIAÇÃO PRESENCIAL</strong><br>
+                        50 PONTOS
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <!-- BOX 1: DADOS DO LOCAL E EXTENSIONISTA -->
+        <div class="section-box">
+            <div class="grid-2col">
+                <div class="grid-col">
+                    <div class="field-row">
+                        <span class="field-label">Empresa Concedente:</span>
+                        <span class="field-static"><strong>PERFORMA ENERGY</strong> (Gestão de Créditos de Energia Solar)</span>
+                    </div>
+                    <div class="field-row">
+                        <span class="field-label">Estudante Extensionista:</span>
+                        <span class="field-value"></span>
+                    </div>
+                </div>
+                <div class="grid-col">
+                    <div class="field-row">
+                        <span class="field-label">Data:</span>
+                        <span class="field-static">____ / ____ / 2026 &nbsp;|&nbsp; <strong>Carga Horária:</strong> 1h30min (90 min)</span>
+                    </div>
+                    <div class="field-row">
+                        <span class="field-label">Curso / Matrícula:</span>
+                        <span class="field-static">Análise e Desenv. de Sistemas &nbsp;|&nbsp; Matrícula: ____________</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BOX 2: DADOS DO COLABORADOR AVALIADOR -->
+        <div class="section-box">
+            <div class="grid-2col">
+                <div class="grid-col">
+                    <div class="field-row">
+                        <span class="field-label">Colaborador(a) Avaliador(a):</span>
+                        <span class="field-value"></span>
+                    </div>
+                </div>
+                <div class="grid-col">
+                    <div class="field-row">
+                        <span class="field-label">Cargo / Setor:</span>
+                        <span class="field-value"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BARRA DE INSTRUÇÕES E LEGENDA LIKERT -->
+        <div class="instructions-bar">
+            <span><strong>Instruções:</strong> Assinale com um (X) na coluna correspondente ao seu grau de concordância:</span>
+            <div class="scale-legend">
+                <span class="scale-item"><span class="scale-num">1</span> Discordo Total</span>
+                <span class="scale-item"><span class="scale-num">2</span> Discordo Parc</span>
+                <span class="scale-item"><span class="scale-num">3</span> Neutro</span>
+                <span class="scale-item"><span class="scale-num">4</span> Concordo Parc</span>
+                <span class="scale-item"><span class="scale-num">5</span> Concordo Total</span>
+            </div>
+        </div>
+
+        <!-- TABELA DE AVALIAÇÃO EM ESCALA LIKERT -->
+        <table class="eval-table">
+            <thead>
+                <tr>
+                    <th class="col-desc">Dimensões e Critérios de Avaliação de Impacto</th>
+                    <th class="col-score">1</th>
+                    <th class="col-score">2</th>
+                    <th class="col-score">3</th>
+                    <th class="col-score">4</th>
+                    <th class="col-score">5</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- CRITÉRIO 1 -->
+                <tr>
+                    <td>
+                        <span class="criterion-title">1. Relevância Temática e Alinhamento à Performa Energy</span>
+                        <span class="criterion-desc">O projeto abordou desafios reais do setor de energia solar (leitura de faturas, GD e letramento em IA) aplicáveis à rotina e aos clientes da nossa empresa.</span>
+                    </td>
+                    <td class="score-cell"><label><input type="radio" name="q1" value="1"><div class="score-circle">1</div></label></td>
+                    <td class="score-cell"><label><input type="radio" name="q1" value="2"><div class="score-circle">2</div></label></td>
+                    <td class="score-cell"><label><input type="radio" name="q1" value="3"><div class="score-circle">3</div></label></td>
+                    <td class="score-cell"><label><input type="radio" name="q1" value="4"><div class="score-circle">4</div></label></td>
+                    <td class="score-cell"><label><input type="radio" name="q1" value="5"><div class="score-circle">5</div></label></td>
+                </tr>
+
+                <!-- CRITÉRIO 2 -->
+                <tr>
+                    <td>
+                        <span class="criterion-title">2. Qualidade, Usabilidade e Design do Protótipo (Figma)</span>
+                        <span class="criterion-desc">A interface "Performa Solar IA" é intuitiva, esteticamente profissional (WCAG AAA) e facilita a simulação de economia e a compreensão das contas de energia.</span>
+                    </td>
+                    <td class="score-cell"><label><input type="radio" name="q2" value="1"><div class="score-circle">1</div></label></td>
+                    <td class="score-cell"><label><input type="radio" name="q2" value="2"><div class="score-circle">2</div></label></td>
+                    <td class="score-cell"><label><input type="radio" name="q2" value="3"><div class="score-circle">3</div></label></td>
+                    <td class="score-cell"><label><input type="radio" name="q2" value="4"><div class="score-circle">4</div></label></td>
+                    <td class="score-cell"><label><input type="radio" name="q2" value="5"><div class="score-circle">5</div></label></td>
+                </tr>
+
+                <!-- CRITÉRIO 3 -->
+                <tr>
+                    <td>
+                        <span class="criterion-title">3. Governança Ética, Transparência Algorítmica e LGPD</span>
+                        <span class="criterion-desc">As orientações para higienização de contas, explicabilidade (XAI) e combate à "Shadow AI" transmitem segurança técnica e jurídica no manuseio de dados de clientes.</span>
+                    </td>
+                    <td class="score-cell"><label><input type="radio" name="q3" value="1"><div class="score-circle">1</div></label></td>
+                    <td class="score-cell"><label><input type="radio" name="q3" value="2"><div class="score-circle">2</div></label></td>
+                    <td class="score-cell"><label><input type="radio" name="q3" value="3"><div class="score-circle">3</div></label></td>
+                    <td class="score-cell"><label><input type="radio" name="q3" value="4"><div class="score-circle">4</div></label></td>
+                    <td class="score-cell"><label><input type="radio" name="q3" value="5"><div class="score-circle">5</div></label></td>
+                </tr>
+
+                <!-- CRITÉRIO 4 -->
+                <tr>
+                    <td>
+                        <span class="criterion-title">4. Postura Pedagógica, Clareza e Mediação do Estudante</span>
+                        <span class="criterion-desc">O apresentador conduziu o workshop com clareza, oratória acessível, domínio dos conceitos e estimulou a participação ativa da equipe de forma dialógica.</span>
+                    </td>
+                    <td class="score-cell"><label><input type="radio" name="q4" value="1"><div class="score-circle">1</div></label></td>
+                    <td class="score-cell"><label><input type="radio" name="q4" value="2"><div class="score-circle">2</div></label></td>
+                    <td class="score-cell"><label><input type="radio" name="q4" value="3"><div class="score-circle">3</div></label></td>
+                    <td class="score-cell"><label><input type="radio" name="q4" value="4"><div class="score-circle">4</div></label></td>
+                    <td class="score-cell"><label><input type="radio" name="q4" value="5"><div class="score-circle">5</div></label></td>
+                </tr>
+
+                <!-- CRITÉRIO 5 -->
+                <tr>
+                    <td>
+                        <span class="criterion-title">5. Aplicabilidade Prática e Impacto Socioambiental (ODS 7, 9 e 13)</span>
+                        <span class="criterion-desc">A ação agrega valor concreto às rotinas da Performa Energy e fortalece nosso compromisso com a transição para energia limpa e consumo consciente.</span>
+                    </td>
+                    <td class="score-cell"><label><input type="radio" name="q5" value="1"><div class="score-circle">1</div></label></td>
+                    <td class="score-cell"><label><input type="radio" name="q5" value="2"><div class="score-circle">2</div></label></td>
+                    <td class="score-cell"><label><input type="radio" name="q5" value="3"><div class="score-circle">3</div></label></td>
+                    <td class="score-cell"><label><input type="radio" name="q5" value="4"><div class="score-circle">4</div></label></td>
+                    <td class="score-cell"><label><input type="radio" name="q5" value="5"><div class="score-circle">5</div></label></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- AVALIAÇÃO QUALITATIVA (DEPOIMENTO) -->
+        <div class="feedback-box">
+            <div class="feedback-title">
+                <span>Comentário Qualitativo / Depoimento sobre a Ação Extensionista e o Protótipo:</span>
+                <span style="font-weight: normal; font-size: 9px; color: #64748B;">(Registro manuscrito ou digitado)</span>
+            </div>
+            <textarea class="lines-area" placeholder="Descreva brevemente como a apresentação e o protótipo Performa Solar IA contribuíram para suas atividades profissionais..."></textarea>
+        </div>
+
+        <!-- ASSINATURAS FORMAIS -->
+        <table class="signature-table">
+            <tr>
+                <td class="signature-td">
+                    <div class="signature-line">
+                        <div class="signature-name">Assinatura do Colaborador Avaliador</div>
+                        <div class="signature-role">Performa Energy — Comunidade Atendida</div>
+                    </div>
+                </td>
+                <td class="signature-td">
+                    <div class="signature-line">
+                        <div class="signature-name">Assinatura do Estudante Extensionista</div>
+                        <div class="signature-role">Faculdade Unyleya — Matrícula Regular</div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <!-- RODAPÉ INSTITUCIONAL DE CONFORMIDADE -->
+        <div class="footer-compliance">
+            <span>Conformidade com Resolução CNE/CES MEC nº 7/2018 (Curricularização da Extensão)</span>
+            <span>Lei Geral de Proteção de Dados (Lei 13.709/18) | Marco Legal da GD (Lei 14.300/22)</span>
+            <span>Documentação comprobatória para o Módulo 4 (50 Pontos)</span>
+        </div>
+
+    </div>
+
+</body>
+</html>

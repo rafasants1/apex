@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performa Solar IA — Protótipo Interativo Figma</title>
+    <style>
+        :root {
+            --solar-gold: #F59E0B;
+            --solar-dark: #D97706;
+            --clean-green: #10B981;
+            --slate-900: #0F172A;
+            --slate-800: #1E293B;
+            --slate-700: #334155;
+            --slate-100: #F1F5F9;
+            --slate-50: #F8FAFC;
+            --text-main: #0F172A;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #1e1e1e;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Figma Simulation Topbar */
+        .figma-topbar {
+            width: 100%;
+            background-color: #2c2c2c;
+            border-bottom: 1px solid #3c3c3c;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+        }
+
+        .figma-badge {
+            background: #0d99ff;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+
+        .screen-tabs {
+            display: flex;
+            gap: 8px;
+        }
+
+        .screen-tab {
+            background: #383838;
+            color: #bbb;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .screen-tab.active, .screen-tab:hover {
+            background: var(--solar-gold);
+            color: #000;
+            font-weight: 600;
+        }
+
+        /* Frame Canvas Area */
+        .canvas-container {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100%;
+            overflow-y: auto;
+        }
+
+        .figma-frame {
+            width: 100%;
+            max-width: 1080px;
+            background: #ffffff;
+            color: var(--text-main);
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            display: none;
+        }
+
+        .figma-frame.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Header do Protótipo */
+        .proto-header {
+            background: var(--slate-900);
+            color: white;
+            padding: 18px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-logo {
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, var(--solar-gold), #ea580c);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+            color: white;
+        }
+
+        .brand-text h1 {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-text span {
+            font-size: 11px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .proto-nav {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .tag-ods {
+            font-size: 11px;
+            background: #0284c7;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .tag-ods.green { background: #16a34a; }
+
+        /* Container de Conteúdo */
+        .proto-content {
+            padding: 40px;
+        }
+
+        /* Hero / Onboarding */
+        .hero-banner {
+            background: linear-gradient(135deg, #fffbeb, #fef3c7);
+            border: 1px solid #fde68a;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: #78350f;
+            margin-bottom: 8px;
+        }
+
+        .hero-desc {
+            font-size: 14px;
+            color: #92400e;
+            max-width: 600px;
+            line-height: 1.5;
+        }
+
+        .btn-primary {
+            background: var(--solar-gold);
+            color: #000;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            background: var(--solar-dark);
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        /* OCR Dropzone */
+        .dropzone-box {
+            border: 2px dashed #cbd5e1;
+            background: var(--slate-50);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.2s;
+            margin-bottom: 25px;
+        }
+
+        .dropzone-box:hover {
+            border-color: var(--solar-gold);
+            background: #fffdf5;
+        }
+
+        .dropzone-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        /* Fatura OCR Analysis View */
+        .ocr-view {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .bill-preview {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 20px;
+            position: relative;
+            font-size: 11px;
+            color: #64748b;
+            font-family: monospace;
+        }
+
+        .bill-box-highlight {
+            position: absolute;
+            border: 2px solid var(--clean-green);
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 4px;
+            padding: 2px 4px;
+            font-weight: bold;
+            color: #065f46;
+        }
+
+        .extracted-fields {
+            background: var(--slate-50);
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: #475569;
+            margin-bottom: 4px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 14px;
+            background: white;
+            color: #0f172a;
+            font-weight: 600;
+        }
+
+        .confidence-tag {
+            font-size: 11px;
+            color: var(--clean-green);
+            font-weight: 600;
+            float: right;
+        }
+
+        /* Simulator Dashboard */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .metric-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: #64748b;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .metric-val {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--slate-900);
+            margin: 6px 0;
+        }
+
+        .metric-val.green { color: var(--clean-green); }
+
+        .metric-sub {
+            font-size: 12px;
+            color: #10b981;
+            font-weight: 600;
+        }
+
+        .slider-container {
+            background: var(--slate-50);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 25px;
+        }
+
+        .slider-range {
+            width: 100%;
+            margin: 15px 0;
+            accent-color: var(--solar-gold);
+        }
+
+        /* XAI Modal / Drawer */
+        .xai-box {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 15px;
+            font-size: 13px;
+            color: #166534;
+        }
+
+        /* Chat Lia */
+        .chat-container {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            height: 380px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chat-history {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .chat-msg {
+            max-width: 75%;
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        .chat-msg.bot {
+            background: var(--slate-100);
+            color: #0f172a;
+            align-self: flex-start;
+        }
+
+        .chat-msg.user {
+            background: var(--slate-900);
+            color: white;
+            align-self: flex-end;
+        }
+
+        .chat-citation {
+            margin-top: 6px;
+            font-size: 11px;
+            background: #e2e8f0;
+            padding: 2px 6px;
+            border-radius: 4px;
+            display: inline-block;
+            color: #334155;
+            font-weight: 600;
+        }
+
+        .chat-input-bar {
+            border-top: 1px solid #e2e8f0;
+            padding: 12px;
+            display: flex;
+            gap: 10px;
+            background: var(--slate-50);
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra de Controle estilo Figma -->
+    <div class="figma-topbar">
+        <div>
+            <span class="figma-badge">FIGMA PROTOTYPE</span>
+            <strong>Performa Solar IA</strong> — Visualizador de Telas Interativas
+        </div>
+        <div class="screen-tabs">
+            <button class="screen-tab active" onclick="switchScreen('screen1')">1. Onboarding & LGPD</button>
+            <button class="screen-tab" onclick="switchScreen('screen2')">2. OCR de Fatura</button>
+            <button class="screen-tab" onclick="switchScreen('screen3')">3. Simulador de Economia</button>
+            <button class="screen-tab" onclick="switchScreen('screen4')">4. Assistente Virtual Lia</button>
+        </div>
+        <div style="font-size: 11px; color: #888;">
+            Ambiente de Extensão — APEX V (Unyleya)
+        </div>
+    </div>
+
+    <!-- Área de Visualização do Frame do Protótipo -->
+    <div class="canvas-container">
+
+        <!-- TELA 1: ONBOARDING & LGPD -->
+        <div id="screen1" class="figma-frame active">
+            <div class="proto-header">
+                <div class="brand">
+                    <div class="brand-logo">⚡</div>
+                    <div class="brand-text">
+                        <h1>PERFORMA ENERGY</h1>
+                        <span>Performa Solar IA &bull; Gestão de Energia Limpa</span>
+                    </div>
+                </div>
+                <div class="proto-nav">
+                    <span class="tag-ods">ODS 7: Energia Limpa</span>
+                    <span class="tag-ods green">ODS 9: Inovação</span>
+                    <span class="tag-ods">ODS 13: Clima</span>
+                </div>
+            </div>
+
+            <div class="proto-content">
+                <div class="hero-banner">
+                    <div>
+                        <h2 class="hero-title">Inteligência Artificial para Créditos de Energia Solar</h2>
+                        <p class="hero-desc">
+                            Descubra em segundos quanto você pode economizar na sua conta de luz através de energia solar compartilhada, sem obras, sem placas no telhado e com total proteção aos seus dados pessoais.
+                        </p>
+                    </div>
+                    <button class="btn-primary" onclick="switchScreen('screen2')">
+                        Fazer Simulação com IA &rarr;
+                    </button>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                    <div class="metric-card">
+                        <div class="metric-label">1. Leitura Inteligente (OCR)</div>
+                        <p style="font-size: 13px; color: #64748b; margin-top: 8px;">
+                            Nossa visão computacional extrai apenas os dados essenciais da fatura (consumo kWh e tarifa), descartando dados sensíveis.
+                        </p>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">2. Economia Garantida</div>
+                        <p style="font-size: 13px; color: #64748b; margin-top: 8px;">
+                            Cálculo preditivo de créditos solares com 15% de desconto líquido real na fatura da sua distribuidora.
+                        </p>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">3. Ética & Transparência</div>
+                        <p style="font-size: 13px; color: #64748b; margin-top: 8px;">
+                            Conformidade integral com a LGPD (Lei 13.709/18) e explicações matemáticas claras de cada cobrança (XAI).
+                        </p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 25px; padding: 14px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 12px; color: #64748b;">
+                    🔒 <strong>Termo de Privacidade e Governança Ética:</strong> Os dados da sua fatura são processados exclusivamente para o cálculo estimativo de créditos de compensação energética sob supervisão humana (Art. 20 da LGPD).
+                </div>
+            </div>
+        </div>
+
+        <!-- TELA 2: OCR DE FATURA COM VALIDAÇÃO HUMAN-IN-THE-LOOP -->
+        <div id="screen2" class="figma-frame">
+            <div class="proto-header">
+                <div class="brand">
+                    <div class="brand-logo">⚡</div>
+                    <div class="brand-text">
+                        <h1>PERFORMA ENERGY</h1>
+                        <span>Diagnóstico Inteligente de Fatura (OCR)</span>
+                    </div>
+                </div>
+                <div class="proto-nav">
+                    <button class="screen-tab" style="color: #fff;" onclick="switchScreen('screen1')">&larr; Voltar</button>
+                    <span class="tag-ods green">Validação Human-in-the-Loop</span>
+                </div>
+            </div>
+
+            <div class="proto-content">
+                <h2 style="font-size: 18px; margin-bottom: 6px;">Leitura e Extração Segura da Conta de Energia</h2>
+                <p style="font-size: 13px; color: #64748b; margin-bottom: 20px;">
+                    A IA generativa realizou a leitura dos campos tarifários. Revise os dados abaixo antes de calcular os créditos.
+                </p>
+
+                <div class="ocr-view">
+                    <!-- Simulação da Imagem da Conta com Bounding Boxes -->
+                    <div class="bill-preview">
+                        <div style="font-weight: bold; border-bottom: 1px solid #ddd; padding-bottom: 6px; margin-bottom: 10px;">
+                            FATURA DE ENERGIA ELÉTRICA — CONCESSIONÁRIA
+                        </div>
+                        <p>UNIDADE CONSUMIDORA: <strong>[DADO ANONIMIZADO PELA IA]</strong></p>
+                        <p>TITULAR: <strong>[PROTEGIDO PELA LGPD]</strong></p>
+                        <br>
+                        <p>HISTÓRICO DE CONSUMO ATIVO:</p>
+                        <p>MÊS ATUAL: <span class="bill-box-highlight" style="position: static;">750 kWh</span> (Detectado)</p>
+                        <p>TARIFA TUSD/TE: <span class="bill-box-highlight" style="position: static;">R$ 0,92 / kWh</span></p>
+                        <p>VALOR TOTAL FATURADO: <span class="bill-box-highlight" style="position: static;">R$ 690,00</span></p>
+                        <br>
+                        <div style="background: #e2e8f0; padding: 6px; border-radius: 4px; font-size: 10px;">
+                            ✓ Higienização Algorítmica Concluída: CPF, endereço e número da instalação foram removidos antes do processamento.
+                        </div>
+                    </div>
+
+                    <!-- Campos Formulário para Conferência Humana -->
+                    <div class="extracted-fields">
+                        <div class="form-group">
+                            <label>Distribuidora de Energia <span class="confidence-tag">99.8% Confiança</span></label>
+                            <input type="text" class="form-input" value="CEMIG / ENEL / CPFL">
+                        </div>
+                        <div class="form-group">
+                            <label>Consumo Mensal Médio (kWh) <span class="confidence-tag">98.5% Confiança</span></label>
+                            <input type="number" id="inputKwh" class="form-input" value="750">
+                        </div>
+                        <div class="form-group">
+                            <label>Valor Total Atual da Fatura (R$) <span class="confidence-tag">99.1% Confiança</span></label>
+                            <input type="text" id="inputReais" class="form-input" value="R$ 690,00">
+                        </div>
+                        <button class="btn-primary" style="width: 100%; justify-content: center; margin-top: 10px;" onclick="calculateAndGo()">
+                            Confirmar Dados e Simular Créditos Solares &rarr;
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TELA 3: SIMULADOR DE ECONOMIA E XAI -->
+        <div id="screen3" class="figma-frame">
+            <div class="proto-header">
+                <div class="brand">
+                    <div class="brand-logo">⚡</div>
+                    <div class="brand-text">
+                        <h1>PERFORMA ENERGY</h1>
+                        <span>Dashboard de Créditos & Economia Sustentável</span>
+                    </div>
+                </div>
+                <div class="proto-nav">
+                    <button class="screen-tab" style="color: #fff;" onclick="switchScreen('screen2')">&larr; Voltar</button>
+                    <span class="tag-ods green">Simulação Preditiva</span>
+                </div>
+            </div>
+
+            <div class="proto-content">
+                <div class="slider-container">
+                    <label style="font-size: 13px; font-weight: 700; color: var(--slate-900);">
+                        Ajuste o Consumo Mensal Médio: <span id="sliderLabel" style="color: var(--solar-gold); font-size: 16px;">750 kWh</span>
+                    </label>
+                    <input type="range" min="200" max="3000" step="50" value="750" class="slider-range" id="consumptionSlider" oninput="updateSimulation(this.value)">
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Economia Mensal Estimada</div>
+                        <div class="metric-val green" id="valMensal">R$ 103,50</div>
+                        <div class="metric-sub">15% de desconto líquido garantido</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Economia Acumulada Anual</div>
+                        <div class="metric-val" id="valAnual">R$ 1.242,00</div>
+                        <div class="metric-sub">Economia sem nenhum investimento</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Redução de CO₂ (ODS 13)</div>
+                        <div class="metric-val" id="valCo2" style="color: #0284c7;">1,8 Ton</div>
+                        <div class="metric-sub">Equivalente a 12 árvores plantadas/ano</div>
+                    </div>
+                </div>
+
+                <!-- Gaveta de Explicabilidade (XAI) -->
+                <div class="xai-box">
+                    <strong>🔍 Transparência Algorítmica (Explainable AI): Como a IA chegou a este valor?</strong>
+                    <p style="margin-top: 6px; font-size: 12px; line-height: 1.5;">
+                        Fórmula Auditável: <code>Créditos Solares = (Consumo Compensável × Tarifa TE) × 15% Desconto</code>.<br>
+                        O cálculo respeita o Custo de Disponibilidade (taxa mínima) e a taxa de iluminação pública da sua cidade conforme a Resolução Normativa ANEEL nº 1.000/2021 e a Lei 14.300/2022. Não há pegadinhas nem cobrança oculta.
+                    </p>
+                </div>
+
+                <div style="display: flex; gap: 12px; margin-top: 25px;">
+                    <button class="btn-primary" onclick="switchScreen('screen4')">
+                        Falar com a Assistente Virtual Lia &rarr;
+                    </button>
+                    <button class="btn-primary" style="background: var(--slate-900); color: white;" onclick="alert('Relatório de Economia gerado em PDF com sucesso!')">
+                        📄 Baixar Relatório Auditado
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- TELA 4: ASSISTENTE VIRTUAL LIA COM CITAÇÃO LEGAL -->
+        <div id="screen4" class="figma-frame">
+            <div class="proto-header">
+                <div class="brand">
+                    <div class="brand-logo">⚡</div>
+                    <div class="brand-text">
+                        <h1>PERFORMA ENERGY</h1>
+                        <span>Lia &bull; Assistente Virtual Ética de Energia Solar</span>
+                    </div>
+                </div>
+                <div class="proto-nav">
+                    <button class="screen-tab" style="color: #fff;" onclick="switchScreen('screen3')">&larr; Voltar</button>
+                    <span class="tag-ods green">IA Regulada (Sem Alucinações)</span>
+                </div>
+            </div>
+
+            <div class="proto-content">
+                <h2 style="font-size: 18px; margin-bottom: 6px;">Atendimento Inteligente & Letramento Regulatório</h2>
+                <p style="font-size: 13px; color: #64748b; margin-bottom: 20px;">
+                    Tire dúvidas sobre seu desconto, faturas e o funcionamento da compensação solar na Performa Energy.
+                </p>
+
+                <div class="chat-container">
+                    <div class="chat-history" id="chatBox">
+                        <div class="chat-msg bot">
+                            Olá! Sou a <strong>Lia</strong>, assistente virtual da Performa Energy. Fui programada com base no marco legal da energia solar no Brasil para tirar suas dúvidas com total transparência. Como posso te ajudar hoje?
+                        </div>
+                        <div class="chat-msg user">
+                            Preciso fazer alguma obra ou instalar painéis solares no meu telhado?
+                        </div>
+                        <div class="chat-msg bot">
+                            <strong>Não!</strong> Você não precisa fazer nenhuma obra, reforma ou comprar equipamentos. A energia é gerada nas usinas solares da Performa Energy e injetada na rede da sua distribuidora local. Os créditos são compensados diretamente na sua fatura.
+                            <br>
+                            <span class="chat-citation">Fonte: Marco Legal da Micro e Minigeração Distribuída (Lei nº 14.300/2022)</span>
+                        </div>
+                        <div class="chat-msg user">
+                            E se chover ou estiver nublado, eu fico sem energia?
+                        </div>
+                        <div class="chat-msg bot">
+                            <strong>De forma alguma!</strong> O fornecimento de energia continua sendo garantido pela rede da sua distribuidora com 100% de estabilidade. Você apenas paga menos pela energia consumida.
+                            <br>
+                            <span class="chat-citation">Fonte: Resolução Normativa ANEEL nº 1.000/2021</span>
+                        </div>
+                    </div>
+
+                    <div class="chat-input-bar">
+                        <input type="text" id="userInput" class="chat-input" placeholder="Digite sua pergunta aqui (ex: como cancelar, taxas mínimas...)" onkeypress="handleChat(event)">
+                        <button class="btn-primary" style="padding: 8px 16px;" onclick="sendMsg()">Enviar</button>
+                    </div>
+                </div>
+
+                <div style="margin-top: 15px; font-size: 11px; color: #64748b; text-align: center;">
+                    🤖 <em>Salvaguarda Ética: A assistente Lia utiliza modelos auditados e cita normas oficiais para evitar alucinações de dados. Caso deseje atendimento humano, você pode ser transferido a qualquer momento.</em>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function switchScreen(screenId) {
+            document.querySelectorAll('.figma-frame').forEach(f => f.classList.remove('active'));
+            document.querySelectorAll('.screen-tab').forEach(t => t.classList.remove('active'));
+
+            const target = document.getElementById(screenId);
+            if (target) target.classList.add('active');
+
+            const btnIndex = screenId.replace('screen', '');
+            const tabs = document.querySelectorAll('.screen-tab');
+            if (tabs[btnIndex - 1]) tabs[btnIndex - 1].classList.add('active');
+        }
+
+        function calculateAndGo() {
+            const kwh = document.getElementById('inputKwh').value || 750;
+            updateSimulation(kwh);
+            document.getElementById('consumptionSlider').value = kwh;
+            switchScreen('screen3');
+        }
+
+        function updateSimulation(val) {
+            document.getElementById('sliderLabel').innerText = val + ' kWh';
+            const kwh = parseFloat(val);
+            const tarifa = 0.92;
+            const faturaAtual = kwh * tarifa;
+            const economiaMensal = faturaAtual * 0.15;
+            const economiaAnual = economiaMensal * 12;
+            const co2 = (kwh * 12 * 0.0002).toFixed(1);
+
+            document.getElementById('valMensal').innerText = 'R$ ' + economiaMensal.toFixed(2).replace('.', ',');
+            document.getElementById('valAnual').innerText = 'R$ ' + economiaAnual.toFixed(2).replace('.', ',');
+            document.getElementById('valCo2').innerText = co2.replace('.', ',') + ' Ton';
+        }
+
+        function handleChat(e) {
+            if (e.key === 'Enter') sendMsg();
+        }
+
+        function sendMsg() {
+            const input = document.getElementById('userInput');
+            const txt = input.value.trim();
+            if (!txt) return;
+
+            const box = document.getElementById('chatBox');
+            
+            // Add user msg
+            const uDiv = document.createElement('div');
+            uDiv.className = 'chat-msg user';
+            uDiv.innerText = txt;
+            box.appendChild(uDiv);
+            input.value = '';
+
+            // Bot response
+            setTimeout(() => {
+                const bDiv = document.createElement('div');
+                bDiv.className = 'chat-msg bot';
+                bDiv.innerHTML = 'Recebi sua pergunta sobre "<strong>' + txt + '</strong>". Todos os créditos de energia solar da Performa Energy seguem estritamente as regras de compensação homologadas pela ANEEL e a Lei 14.300/2022, garantindo segurança jurídica e economia sem fidelidade forçada.<br><span class="chat-citation">Fonte: Regulação ANEEL & Conformidade Performa Energy</span>';
+                box.appendChild(bDiv);
+                box.scrollTop = box.scrollHeight;
+            }, 600);
+
+            box.scrollTop = box.scrollHeight;
+        }
+    </script>
+</body>
+</html>
