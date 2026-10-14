@@ -24,3 +24,22 @@ scratch_*
 
 # Metadados de agentes
 .agents/
+.gemini/
+
+# Scripts de inspeção do portal (contêm credenciais/sessão)
+login_and_inspect_*.py
+portal_inspector.py
+inspect_*.py
+dump_*.py
+get_all_modules_and_dates.py
+parse_html.py
+generate_updated_markdown.py
+update_markdown_final.py
+
+# Dumps e capturas do portal do aluno / LMS
+*.txt
+*.png
+!assets/*.png
+modulo_519924_etapa1.html
+screenshot_portal.png
+extracted_image*

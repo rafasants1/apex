@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cobrança inteligente · Contexto</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<div class="wrap">
+ <nav class="top"><a href="index.html">Início</a><a href="operacao.html">Operação</a><a href="automacao.html">Automação</a><a href="disparos.html">Disparos</a><a href="cobranca.html" aria-current="page">Cobrança</a><a href="agente-cobranca.html">Agente de cobrança</a><a href="gestao.html">Gestão</a><a href="configuracao.html">Configuração</a><a href="api-meta.html">API da Meta</a><a href="telas.html">Telas e fluxos</a></nav>
+ <header>
+  <span class="eyebrow">Área 4 · fase 1 · prioridade 3</span>
+  <h1>Cobrança inteligente</h1>
+  <p>Envios automáticos de cobrança e aviso pelo WhatsApp a partir dos títulos importados. Na Maxbot o menu tem Cobrança, Importação e Configuração (V4), e a integração Digital GRID está cadastrada como "Cobrança". A negociação e o atendimento das respostas ficam com o <a href="agente-cobranca.html">agente de cobrança</a>.</p>
+ </header>
+
+ <section>
+  <h2>Como é na Maxbot hoje</h2>
+  <ul class="plain">
+   <li>Até <b>5 envios de cobrança</b>, cada um com dia escolhido numa lista fixa: no dia, 1, 2, 3, 5, 7 ou 10 dias antes do vencimento, e um template.</li>
+   <li>Até <b>10 envios de aviso</b> depois do vencimento, numa lista fixa: 1, 2, 3, 4, 5, 10, 15, 20, 30, 45, 60, 75 ou 90 dias, cada um com um template.</li>
+   <li>Envio por evento: <b>pagamento efetuado</b> (status PAGO com data e valor), <b>cobrança cancelada</b> (status CANCELADO com data) e <b>nota fiscal</b> (link do PDF e/ou XML).</li>
+   <li>Envio fixo de segunda a sexta, das 9h às 16h.</li>
+   <li>Escolha do canal e do número (ex.: WhatsApp Oficial · Comercial).</li>
+   <li>API de integração das cobranças (listar, inserir, atualizar, excluir) e webhook de retorno do status das mensagens.</li>
+   <li>Templates da conta: 1_DIA_ANTES, 5_DIAS_APOS, 1_DIA_ANTES_VENCIMENTO, DIA_DO_VENCIMENTO, 5_DIAS_ANTES, 2_DIAS_DEPOIS, 10_DIAS_DEPOIS, 15_DIAS_APOS.</li>
+  </ul>
+ </section>
+
+ <section>
+  <h2>Funcionalidades</h2>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Funcionalidade</th><th>Detalhe</th><th>Origem</th><th>Situação</th></tr></thead><tbody>
+   <tr><td class="id">CB-01</td><td><b>Dias livres antes e depois do vencimento</b></td><td>Qualquer número de dias (sem lista fixa) e quantidade de envios sem o limite de 5 + 10.</td><td><i class="o o-perf">PERFORMA</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">CB-02</td><td><b>Régua padrão do agente</b></td><td>D1 aviso de atraso + 2ª via · D5 contato amigável · D10 aviso de pendência · D20 verificar a dívida na política e propor · D25 aviso de possível negativação · D30+ fluxo de negativação.</td><td><i class="o o-doc">DOC</i></td><td><i class="s s-def">DEFINIDO</i> · envios antes do vencimento Q-CB1</td></tr>
+   <tr><td class="id">CB-03</td><td><b>Template por envio</b></td><td>Cada etapa escolhe um template aprovado.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">CB-04</td><td><b>Ação por etapa</b></td><td>Além de template: avaliar a política e enviar proposta (D20), iniciar negativação (D30), transferir para pessoa.</td><td><i class="o o-doc">DOC</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">CB-05</td><td><b>WhatsApp e e-mail</b></td><td>Os alertas vão pelos dois canais.</td><td><i class="o o-doc">DOC</i></td><td><i class="s s-def">DEFINIDO</i> · provedor de e-mail Q-CF4</td></tr>
+   <tr><td class="id">CB-06</td><td><b>Janela de envio configurável</b></td><td>Envio no horário do atendimento humano: segunda a sexta, das 08:00 às 18:00.</td><td><i class="o o-perf">PERFORMA</i><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> Q-CB2</td></tr>
+   <tr><td class="id">CB-07</td><td><b>Data em dia bloqueado</b></td><td>Data em fim de semana ou feriado: adiar para o próximo dia útil.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> Q-CB3</td></tr>
+   <tr><td class="id">CB-08</td><td><b>Envio por evento</b></td><td>Pagamento efetuado, cobrança cancelada e nota fiscal emitida, com as mesmas condições da Maxbot.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">CB-09</td><td><b>Parar quando pagar</b></td><td>Pagamento confirmado encerra os envios daquele título.</td><td><i class="o o-site">SITE</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">CB-10</td><td><b>Suspender durante promessa ou contestação</b></td><td>Enquanto houver promessa de pagamento vigente ou contestação aberta, a régua não cobra aquele título.</td><td><i class="o o-doc">DOC</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">CB-11</td><td><b>Limite de cobranças por semana</b></td><td>No protótipo: no máximo 3 por título em 7 dias.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-perg">PERGUNTA</i> Q-CB4</td></tr>
+   <tr><td class="id">CB-12</td><td><b>Importação de títulos</b></td><td>Arquivo CSV em UTF-8, separado por vírgula. A tela não mostra as colunas esperadas. Também dá para cadastrar pela API (listar, inserir, atualizar, excluir) ou manualmente.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i> · Q-CB5</td></tr>
+   <tr><td class="id">CB-13</td><td><b>Lista de cobranças</b></td><td>Colunas: cobrança, cliente, envio. Filtros: período com foco no vencimento ou na data de cada envio, situação do envio (programado, sucesso, falha), pagamento (pendente, pago, cancelado), fatura, WhatsApp, celular, e-mail e origem (manual, API, importação). Cadastro: pessoa, nome, CPF/CNPJ, WhatsApp, celular, e-mail, até 3 códigos de cliente, fatura, vencimento, valor, link do PDF, código de barras, PDF e XML da nota fiscal, pagamento (data, valor) e cancelamento (data, motivo). <b>Reenvio individual</b> de cada etapa (1ª a 5ª cobrança, 1º a 10º aviso, pagamento, cancelado, nota fiscal).</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">CB-14</td><td><b>Integração Digital GRID</b></td><td>Cadastrada na Maxbot como integração de cobrança. O documento diz que acordos hoje são feitos numa planilha Excel enviada à Digital Grid.</td><td><i class="o o-max">MAXBOT</i><i class="o o-doc">DOC</i></td><td><i class="s s-perg">PERGUNTA</i> Q-CB6</td></tr>
+   <tr><td class="id">CB-15</td><td><b>Gateway de pagamento</b></td><td>Pix, boleto, código de barras, link de cartão e aviso de pagamento por webhook.</td><td><i class="o o-doc">DOC</i></td><td><i class="s s-perg">PERGUNTA</i> Q-CB7</td></tr>
+   <tr><td class="id">CB-16</td><td><b>Webhook de saída</b></td><td>Informar a outro sistema o status de cada mensagem enviada, como a Maxbot faz.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-perg">PERGUNTA</i> Q-CB8</td></tr>
+   <tr><td class="id">CB-17</td><td><b>Templates de cobrança na categoria Utilidade</b></td><td>Utilidade é mais barata que marketing e sai grátis dentro da janela de 24 h. Texto com oferta pode ser reclassificado para marketing pela Meta.</td><td><i class="o o-meta">META</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">CB-18</td><td><b>Ordem da fila de cobrança</b></td><td>Dias de atraso combinados com valor: mais atrasado e maior valor primeiro.</td><td>—</td><td><i class="s s-def">DEFINIDO</i> Q-CB9</td></tr>
+  </tbody></table></div>
+ </section>
+
+ <section>
+  <h2>Encontrado no banco</h2>
+  <div class="db">
+   <h3>Faturas vêm da Digital Grid</h3>
+   <p>O CRM cadastra clientes e instalações na Digital Grid (log <code>digital_grid_log_integration</code>: ~2.400 criações e ~200 atualizações, com cerca de 270 falhas) e recebe as faturas em <code>client_integration_bill</code>: valor, vencimento, situação, link da fatura, saldo de créditos, energia injetada e competência. Ligação com a venda em <code>form_sales_bill</code>.</p>
+   <div class="tbl"><table><thead><tr><th>Situação na Digital Grid</th><th class="r">Faturas</th><th>Valor médio</th></tr></thead><tbody>
+    <tr><td>Pago</td><td>18.361</td><td>R$ 502</td></tr><tr><td>Negativado</td><td>2.530</td><td>R$ 496</td></tr><tr><td>Arquivado</td><td>1.366</td><td>R$ 317</td></tr><tr><td>Aguardando</td><td>1.152</td><td>R$ 575</td></tr><tr><td>Vencido</td><td>1.091</td><td>R$ 390</td></tr><tr><td>Parcelado</td><td>155</td><td>R$ 1.122</td></tr><tr><td>Aberto</td><td>28</td><td>—</td></tr><tr><td>Aprovação</td><td>1</td><td>—</td></tr>
+   </tbody></table></div>
+   <p class="note">Parâmetros da Digital Grid no CRM: <code>DG_ENVIA_FATURA_WHATSAPP = 1</code> (a fatura já é enviada pelo WhatsApp), <code>DG_AGRUPAR_VALORES_FATURA = 0</code>, <code>DG_DESCONTO_FIO_B = 0</code>, <code>DG_DESCONTO_PIS_COFINS = 0</code>. Vencidas hoje por atraso: 280 até 15 dias, 221 de 16 a 30, 202 de 31 a 60, 388 acima de 60. Negativadas: quase todas acima de 60 dias.</p>
+  </div>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Funcionalidade</th><th>Detalhe</th><th>Origem</th><th>Situação</th></tr></thead><tbody>
+   <tr><td class="id">CB-30</td><td><b>Sincronizar faturas da Digital Grid</b></td><td>Usar a situação da Digital Grid como fonte (Pago encerra a régua; Parcelado e Negativado mudam a tratativa).</td><td><i class="o o-db">BANCO</i></td><td><i class="s s-def">DEFINIDO</i> · API Q-CB10</td></tr>
+   <tr><td class="id">CB-31</td><td><b>Não duplicar o envio da fatura</b></td><td>A Digital Grid já envia a fatura pelo WhatsApp (<code>DG_ENVIA_FATURA_WHATSAPP = 1</code>). A régua nova precisa conviver com isso.</td><td><i class="o o-db">BANCO</i></td><td><i class="s s-perg">PERGUNTA</i> Q-CB11</td></tr>
+   <tr><td class="id">CB-32</td><td><b>Link da fatura</b></td><td>96% das faturas têm <code>invoice_link</code>: dá para enviar o PDF na 2ª via.</td><td><i class="o o-db">BANCO</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+  </tbody></table></div>
+ </section>
+
+ <section>
+  <h2>API da Digital Grid</h2>
+  <div class="db">
+   <p>Consultada só para leitura em 07/10/2026 em <code>https://gestao.dg.energy/api/v1/</code>, com o token do <code>.env</code> (autenticação <code>Authorization: Token …</code>, paginação de 20 itens com <code>?page=</code>). Só estrutura e totais foram registrados aqui.</p>
+   <div class="tbl"><table><thead><tr><th>Recurso</th><th class="r">Registros</th><th>O que traz</th><th>Filtros testados</th></tr></thead><tbody>
+    <tr><td><code>bills</code></td><td class="r">24.586</td><td>Fatura completa: situação do pagamento, forma (Boleto, PIX), data e valor pago, vencimento e vencimento fixo, linha digitável, Pix copia e cola, nosso número, valor, valor sem desconto, economia, desconto do agente, kWh compensado e com desconto, injetado, consumo, saldo de créditos, créditos de outra geradora, bandeiras tarifárias, tributos, data de assinatura, tempo de fidelidade, envio por e-mail e por WhatsApp</td><td><code>payment_status</code>, <code>due_date__gte</code>, <code>installation</code></td></tr>
+    <tr><td><code>installations</code></td><td class="r">2.888</td><td>UC: titular, distribuidora, descontos (geral e por bandeira), kWh contratado, data de assinatura, data e motivo de cancelamento, situação no rateio (Incluído, Cancelado, Inadimplente), dia de vencimento, WhatsApp e e-mail habilitados, taxas</td><td>—</td></tr>
+    <tr><td><code>entities</code></td><td class="r">2.479</td><td>Cliente: nome, tipo e número do documento, e-mails, telefones, representante</td><td><code>document</code></td></tr>
+    <tr><td><code>financial-credits</code></td><td class="r">113</td><td>Lançamentos de crédito e débito na UC (valor, saldo, anotação, situação: ativo, aplicado, cancelado)</td><td>—</td></tr>
+    <tr><td><code>estimated-quota</code></td><td class="r">31.551</td><td>Cota de rateio por UC e mês (percentual, cobertura, comparação com a distribuidora)</td><td>—</td></tr>
+    <tr><td><code>monthly-generation</code></td><td class="r">83</td><td>Geração mensal por usina (gerado, estimado, leitura, vencimento, taxas)</td><td>—</td></tr>
+    <tr><td><code>generators</code></td><td class="r">20</td><td>Usinas</td><td>—</td></tr>
+    <tr><td><code>agents</code></td><td class="r">4</td><td>Agentes (todos "Performa Energy"), com modelo de fatura e de e-mail</td><td>—</td></tr>
+    <tr><td><code>generation-data</code></td><td class="r">—</td><td>Exige parâmetros não documentados</td><td>—</td></tr>
+   </tbody></table></div>
+   <p class="note">Situação das faturas na API (mesmos rótulos do banco): Pago, Aguardando, Vencido (1.019), Negativado (2.527), Parcelado (164), Arquivado, Aberto. Numa amostra de 126 faturas: linha digitável em 87%, Pix em 41%, enviadas por e-mail 88% e por WhatsApp 38%; tempo de fidelidade vazio em todas.</p>
+   <p class="note"><b>Não existe recurso de acordo ou parcelamento</b> na lista publicada: a situação "Parcelado" aparece nas faturas, mas não há endpoint para criar um parcelamento. Também não há campo de data de negativação nem de bureau. Métodos de escrita não foram testados.</p>
+  </div>
+ </section>
+
+  <section>
+  <h2>Visto na Maxbot e ainda não listado</h2>
+  <p class="note">Telas da Maxbot (interface V4) lidas em 07/10/2026, só a estrutura: campos, opções e botões. "Confirmar" significa que o recurso existe na Maxbot e falta a Performa dizer se o novo sistema precisa dele.</p>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Funcionalidade</th><th>Detalhe</th><th>Origem</th><th>Situação</th></tr></thead><tbody>
+   <tr><td class="id">CB-40</td><td><b>Opções fixas de dias na Maxbot</b></td><td>Antes do vencimento: no dia, 1, 2, 3, 5, 7 ou 10 dias. Depois: 1, 2, 3, 4, 5, 10, 15, 20, 30, 45, 60, 75 dias e outros. O CB-01 já pede dias livres; registrado para comparação.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">CB-41</td><td><b>Fuso horário da régua</b></td><td>A configuração da cobrança tem fuso horário próprio.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">CB-42</td><td><b>Até 3 códigos de cliente</b></td><td>Cada cobrança aceita até três códigos do cliente, úteis para guardar CPF/CNPJ, UC e o ID da Digital Grid.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+  </tbody></table></div>
+ </section>
+
+ <section>
+  <h2>Presente no protótipo e ainda não listado</h2>
+  <p class="note">Auditoria de 08/10/2026: tudo que o protótipo já mostra e não estava registrado aqui. São escolhas do protótipo, não decisões da Performa: ficam como CONFIRMAR até alguém responder.</p>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Funcionalidade</th><th>Detalhe</th><th>Origem</th><th>Situação</th></tr></thead><tbody>
+   <tr><td class="id">CB-19</td><td><b>Faixas de atraso</b></td><td>A vencer, Vence hoje, 1–15, 16–30 e 30+ dias; situações Em negociação e Conferindo pagamento.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">CB-20</td><td><b>Título sem opt-in</b></td><td>A régua pula o contato e a fila mostra "sem opt-in" (cobrança manual).</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">CB-21</td><td><b>Ações manuais no título</b></td><td>"Negociar" (marca em negociação e pausa a régua), "Cancelar" a cobrança e "Emitir NF" (envia o link da NF, CB-08).</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">CB-22</td><td><b>Quando a régua roda</b></td><td>A cada hora dentro da janela de envio, mais o botão "Executar régua de hoje".</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">CB-23</td><td><b>Validações da etapa</b></td><td>Dias inteiros de 0 a 365, sem dois envios no mesmo dia, modelo aprovado; botão Remover etapa.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> 08/10/2026</td></tr>
+   <tr><td class="id">CB-24</td><td><b>Confirmação de pagamento</b></td><td>Sai como texto livre se a janela de 24 h estiver aberta; senão, como modelo de Utilidade.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">CB-25</td><td><b>Feriados</b></td><td>Caixa "Não enviar em feriados nacionais". Falta saber se entram feriados estaduais e municipais.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">CB-26</td><td><b>Botão "Já paguei"</b></td><td>Opção "Pausar a régua quando o cliente tocar em Já paguei"; depois do comprovante o título vai para Conferindo pagamento.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">CB-27</td><td><b>Indicadores na tela de cobrança</b></td><td>Em aberto, Vencido, Recuperado e Custo da régua.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">CB-28</td><td><b>Janela e simulação</b></td><td>Aviso "janela aberta agora / próxima abertura"; "Simular calendário" com uma fatura da fila, mostrando data teórica e data real.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> 08/10/2026</td></tr>
+   <tr><td class="id">CB-29</td><td><b>Endpoints da cobrança</b></td><td>/api/v1/cobrancas, /webhooks/pagamentos e PUT /api/v1/cobrancas/regua para publicar. Importação por CSV com as colunas título, CPF/CNPJ, UC, valor e vencimento (sugestão do protótipo).</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+  </tbody></table></div>
+  <h3>Onde o protótipo está diferente do contexto</h3>
+  <p class="note">As outras diferenças foram corrigidas em 08/10/2026. Estas dependem de resposta da Performa ou ficaram fora do escopo; até lá vale o contexto.</p>
+  <div class="tbl"><table><thead><tr><th>Item</th><th>O que o contexto diz</th><th>O que o protótipo faz hoje</th></tr></thead><tbody>
+   <tr><td>CB-15 · Q-CB7</td><td>A Digital Grid emite Pix e boleto; não se sabe se manda webhook.</td><td>Gateway separado ("Simulado") chamando /webhooks/pagamentos.</td></tr>
+</tbody></table></div>
+ </section>
+
+ <section>
+  <h2>Perguntas para a Performa</h2>
+  <div class="qs">
+   <div class="q"><b>Q-CB1</b>O documento só lista envios depois do vencimento (D1 a D30). Vocês querem manter lembretes antes do vencimento, como os templates 5_DIAS_ANTES e 1_DIA_ANTES da Maxbot? Com quais dias?</div>
+   <div class="q r"><b>Q-CB2 · RESPONDIDA</b>Qual a janela de envio desejada: manter segunda a sexta das 9h às 16h ou outro horário? Envia aos sábados?<div class="ans"><strong>Respondida pela Performa em 08/10/2026</strong>No horário do atendimento humano. Sem sábado. Horário corrigido no mesmo dia para segunda a sexta, das 08:00 às 18:00.</div></div>
+   <div class="q r"><b>Q-CB3 · RESPONDIDA</b>Se a data do envio cair em fim de semana ou feriado: adiar, antecipar ou não enviar?<div class="ans"><strong>Respondida pela Performa em 08/10/2026</strong>Adiar para o próximo dia útil.</div></div>
+   <div class="q"><b>Q-CB4</b>Existe um máximo de cobranças por cliente por semana?</div>
+   <div class="q p"><b>Q-CB5 · PARCIAL</b>De onde vêm os títulos (ERP, Digital Grid, IVI Energia, planilha) e com que frequência são atualizados?<div class="ans"><strong>Resposta parcial pelo banco · ainda falta</strong>Os títulos vêm da <b>Digital Grid</b> para o CRM (<code>client_integration_bill</code>). O <code>.env</code> indica uma sincronização a cada 3 horas (<code>SYNC_INTERVALO_H = 3</code>). Falta: confirmar se é a única fonte e se a IVI Energia emite faturas por outro caminho.</div></div>
+   <div class="q p"><b>Q-CB6 · PARCIAL</b>O que a integração Digital GRID faz hoje na Maxbot? Ela gera os boletos? Existe API da Digital Grid para substituir a planilha?<div class="ans"><strong>Resposta parcial · ainda falta</strong>Pela API: o CRM cadastra clientes e UCs; a Digital Grid gera as faturas com linha digitável e Pix, controla a situação (inclusive Parcelado e Negativado) e envia por e-mail e WhatsApp. <b>A lista publicada não tem recurso para criar acordo ou parcelamento.</b> Falta: confirmar com a Digital Grid se existe endpoint não listado para gerar boletos de acordo, ou se continua pela planilha.</div></div>
+   <div class="q p"><b>Q-CB7 · PARCIAL</b>Qual gateway emite Pix e boleto hoje e se ele avisa o pagamento automaticamente.<div class="ans"><strong>Resposta parcial · ainda falta</strong>A própria Digital Grid emite o boleto (linha digitável, nosso número) e o Pix copia e cola; as formas de pagamento vistas são Boleto e PIX, com data e valor pago registrados na fatura. Falta: saber se a Digital Grid avisa o pagamento por webhook ou se é preciso consultar a API periodicamente, e se há link de cartão.</div></div>
+   <div class="q"><b>Q-CB8</b>Algum sistema de vocês precisa receber o status das mensagens de cobrança (webhook de saída)?</div>
+   <div class="q r"><b>Q-CB9 · RESPONDIDA</b>Como ordenar a fila de cobrança para a equipe: por dias de atraso, valor, risco ou outro critério?<div class="ans"><strong>Respondida pela Performa em 08/10/2026</strong>Combinação de dias de atraso e valor: mais atrasado e maior valor primeiro.</div></div>
+   <div class="q r"><b>Q-CB10 · RESPONDIDA</b>Qual é o endereço base da API da Digital Grid (ou a documentação)? O token está no <code>.env</code>, mas o endereço não.<div class="ans"><strong>Respondida pela API da Digital Grid e pelo banco</strong>Endereço <code>https://gestao.dg.energy/api/v1/</code> (confirmado por vocês). Recursos e campos no quadro "API da Digital Grid" acima.</div></div>
+   <div class="q p"><b>Q-CB11 · PARCIAL</b>A Digital Grid já manda a fatura pelo WhatsApp. A régua nova substitui esse envio, complementa (só depois do vencimento) ou ele será desligado?<div class="ans"><strong>Resposta parcial · ainda falta</strong>Na API cada fatura informa <code>sent_by_email</code> e <code>sent_by_whatsapp</code>: na amostra, 88% foram por e-mail e 38% por WhatsApp. Falta: a decisão de vocês sobre substituir ou complementar esse envio.</div></div>
+  </div>
+ </section>
+ <footer>Atualizado em 07/10/2026 · fontes listadas no <a href="index.html">início</a>.</footer>
+</div>
+</body>
+</html>

@@ -1,53 +1,47 @@
-# Performa Solar IA — Projeto de Extensão Universitária APEX V
+# Performalog Atendimento & Agente de Cobrança — APEX V (Performa Energy)
 
-Repositório oficial com toda a documentação, artefatos acadêmicos, protótipos digitais e instrumentos de avaliação presencial desenvolvidos para a disciplina curricular **AMBIENTE PROFISSIONAL E DE EXTENSÃO — APEX V (Cursos de T.I.)** da **Faculdade Unyleya**, em parceria com a **Performa Energy**.
+Repositório oficial dos materiais do projeto de extensão universitária da disciplina **Ambiente Profissional e de Extensão em Banco de Dados V** (Curso Superior de Tecnologia em Banco de Dados — Faculdade Unyleya).
 
 ---
 
 ## 📌 Visão Geral do Projeto
 
-* **Tema Central**: *Inteligência Artificial, Ética e Governança de Dados na Gestão de Energia Solar: Letramento Digital e Proteção de Dados na Performa Energy*
-* **Empresa / Comunidade Atendida**: Performa Energy (Gestão e compensação de créditos de energia solar distribuída)
-* **Alinhamento com os ODS da ONU**:
-  * **ODS 7**: Energia Limpa e Acessível
-  * **ODS 9**: Indústria, Inovação e Infraestrutura
-  * **ODS 13**: Ação contra a Mudança Global do Clima
-* **Carga Horária de Extensão**: 100 horas curriculares (Resolução CNE/CES MEC nº 7/2018)
-* **Orientação Docente**: Profa. Dra. Carla Corrêa Tavares dos Reis
+* **Título Oficial**: *Performalog Atendimento: Agente Inteligente de Cobrança e Arquitetura de Banco de Dados para Gestão de Energia Solar na Performa Energy*
+* **Instituição de Ensino**: Faculdade Unyleya (MEC Portaria nº 1.263/2012)
+* **Curso**: Tecnologia em Banco de Dados (100 Horas de Extensão)
+* **Disciplina**: AMBIENTE PROFISSIONAL E DE EXTENSÃO EM BANCO DE DADOS V
+* **Empresa Parceira**: **Performa Energy** (Gestão de Créditos de Energia Solar por Assinatura / Geração Distribuída — Lei nº 14.300/2022)
+* **Alinhamento com os Objetivos de Desenvolvimento Sustentável (Agenda 2030)**:
+  * **ODS 7 — Energia Limpa e Acessível (Metas 7.2 e 7.b)**: Fomento à geração solar distribuída e clareza no rateio de créditos em kWh.
+  * **ODS 9 — Indústria, Inovação e Infraestrutura (Metas 9.4 e 9.5)**: Modernização da infraestrutura de mensageria com WhatsApp Cloud API oficial da Meta e banco relacional.
+  * **ODS 12 — Consumo e Produção Responsáveis (Meta 12.8)**: Transparência em cobranças e sustentabilidade da cadeia fotovoltaica.
 
 ---
 
-## 📂 Mapa de Documentação e Entregáveis
+## 📂 Mapa de Entregas e Arquivos Principais
 
-| Módulo AVA | Entregável Acadêmico | Pontos | Arquivo Principal |
-| :---: | :--- | :---: | :--- |
-| **Módulo 1** | 1ª Etapa dos Slides (Identificação, ODS e Empresa) | **10 pts** | [`TEMPLATE_PREENCHIDO_APEX_V_PERFORMA_ENERGY.pptx`](./TEMPLATE_PREENCHIDO_APEX_V_PERFORMA_ENERGY.pptx) (Slides 2 a 6) |
-| **Módulo 2** | 2ª Etapa dos Slides (Participantes, Desafio, LGPD e ADMs) | **10 pts** | [`TEMPLATE_PREENCHIDO_APEX_V_PERFORMA_ENERGY.pptx`](./TEMPLATE_PREENCHIDO_APEX_V_PERFORMA_ENERGY.pptx) (Slides 8 a 10) |
-| **Módulo 3** | 3ª Etapa dos Slides (Plano de Ação, Autoavaliação e ABNT) | **10 pts** | [`TEMPLATE_PREENCHIDO_APEX_V_PERFORMA_ENERGY.pptx`](./TEMPLATE_PREENCHIDO_APEX_V_PERFORMA_ENERGY.pptx) (Slides 12 a 19) |
-| **Módulo 4 (Envio 1)** | Produto Digital (Link Figma + Certificado iTalents) | **20 pts** | [`ESPECIFICACAO_PRODUTO_FIGMA_PERFORMA_SOLAR_IA.md`](./ESPECIFICACAO_PRODUTO_FIGMA_PERFORMA_SOLAR_IA.md) |
-| **Módulo 4 (Envio 2)** | Apresentação Presencial (Evidência com as 3 Fotos) | **50 pts** | [`GUIA_APRESENTACAO_PRESENCIAL_E_FOTOS_PERFORMA_ENERGY.md`](./GUIA_APRESENTACAO_PRESENCIAL_E_FOTOS_PERFORMA_ENERGY.md) |
+| Arquivo | Descrição | Finalidade no AVA |
+|---|---|---|
+| [`TEMPLATE_PREENCHIDO_APEX_V_PERFORMA_ENERGY.pptx`](./TEMPLATE_PREENCHIDO_APEX_V_PERFORMA_ENERGY.pptx) | Arquivo oficial com os 20 slides preenchidos e estilizados | Envio nos Módulos 1, 2 e 3 |
+| [`APEX_V_Modulo_1_Etapa_1_Slides_1_a_6.pptx`](./APEX_V_Modulo_1_Etapa_1_Slides_1_a_6.pptx) | Slides 1 a 6 dedicados para a 1ª Etapa (Módulo 1) | Submissão no Módulo 1 (AVA) |
+| [`APEX_V_Modulo_2_Etapa_2_Slides_1_a_10.pptx`](./APEX_V_Modulo_2_Etapa_2_Slides_1_a_10.pptx) | Slides 1 a 10 dedicados para a 2ª Etapa (Módulo 2) | Submissão no Módulo 2 (AVA) |
+| [`DOCUMENTO_ENTREGA_SLIDES_APEX_V_PERFORMA_ENERGY.md`](./DOCUMENTO_ENTREGA_SLIDES_APEX_V_PERFORMA_ENERGY.md) | Transcrição textual integral lâmina por lâmina | Roteiro de apoio e consulta |
+| [`ESPECIFICACAO_FIGMA_APEX_V_REVISTA.md`](./ESPECIFICACAO_FIGMA_APEX_V_REVISTA.md) | Especificação das 37 telas, design system e fluxos no Figma | Guia para o Módulo 4 (Envio 1) |
+| [`GUIA_APRESENTACAO_APEX_V_REVISTO.md`](./GUIA_APRESENTACAO_APEX_V_REVISTO.md) | Roteiro de 90 min e protocolo das 3 fotos obrigatórias | Guia para o Módulo 4 (Envio 2) |
+| [`FICHA_DE_AVALIACAO_PRESENCIAL_PERFORMA_ENERGY.html`](./FICHA_DE_AVALIACAO_PRESENCIAL_PERFORMA_ENERGY.html) | Formulário interativo e imprimível em 1 página A4 (escala Likert) | Aplicação pós-oficina na empresa |
+| [`performalog_atendimento/`](./performalog_atendimento/) | Protótipo interativo completo e especificações detalhadas | Demonstração técnica e de negócio |
 
 ---
 
-## 📄 Detalhamento dos Arquivos
+## 🚀 Como Executar e Gerar os Entregáveis
 
-1. **[`DOCUMENTO_ENTREGA_SLIDES_APEX_V_PERFORMA_ENERGY.md`](./DOCUMENTO_ENTREGA_SLIDES_APEX_V_PERFORMA_ENERGY.md)**  
-   Transcrição integral e auditada de todas as 20 lâminas do PowerPoint institucional, formatada para conferência rápida e submissão acadêmica.
-
-2. **[`ESPECIFICACAO_PRODUTO_FIGMA_PERFORMA_SOLAR_IA.md`](./ESPECIFICACAO_PRODUTO_FIGMA_PERFORMA_SOLAR_IA.md)**  
-   Arquitetura de informação completa, design system, tokens WCAG AAA e fluxos de navegação das 4 telas do protótipo no Figma (*Solar AI Ethics & Hub Performa*).
-
-3. **[`PROTOTIPO_INTERATIVO_PERFORMA_SOLAR_IA.html`](./PROTOTIPO_INTERATIVO_PERFORMA_SOLAR_IA.html)**  
-   Versão web interativa executável do protótipo digital em HTML5/CSS/JavaScript puro, pronta para simulação de OCR de fatura, cálculo transparente de créditos e assistente virtual Lia.
-
-4. **[`GUIA_APRESENTACAO_PRESENCIAL_E_FOTOS_PERFORMA_ENERGY.md`](./GUIA_APRESENTACAO_PRESENCIAL_E_FOTOS_PERFORMA_ENERGY.md)**  
-   Roteiro de 90 minutos para o workshop corporativo presencial na Performa Energy, com o protocolo visual rigoroso das 3 fotos obrigatórias exigidas na avaliação de 50 pontos.
-
-5. **[`FICHA_DE_AVALIACAO_PRESENCIAL_PERFORMA_ENERGY.html`](./FICHA_DE_AVALIACAO_PRESENCIAL_PERFORMA_ENERGY.html)**  
-   Formulário de avaliação presencial de impacto formatado para impressão (A4) com escala Likert de 5 pontos e declaração institucional da empresa com assinatura do gestor.
-
-6. **[`GUIA_DEFINITIVO_ENTREGAS_APEX_V.md`](./GUIA_DEFINITIVO_ENTREGAS_APEX_V.md)**  
-   Resumo executivo de pontuações, orientações slide a slide e checklist de validação.
-
-7. **[`PROJECT.md`](./PROJECT.md)**  
-   Inventário de funcionalidades, marcos de desenvolvimento e critérios de integridade acadêmica.
+- Para regenerar a apresentação em PowerPoint e os pacotes modulares (M1 e M2):
+  ```bash
+  python build_updated_apex_v.py
+  ```
+- Para exportar todos os PPTX em PDF limpos e sem marca d'água:
+  ```bash
+  python convert_all_pptx_to_pdf.py
+  ```
+- Para visualizar e imprimir a ficha de avaliação presencial:
+  Abra o arquivo `FICHA_DE_AVALIACAO_PRESENCIAL_PERFORMA_ENERGY.html` em qualquer navegador web e clique no botão **Imprimir Ficha**.

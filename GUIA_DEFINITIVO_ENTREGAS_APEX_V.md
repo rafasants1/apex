@@ -1,4 +1,6 @@
-# Guia Definitivo de Entregas — APEX V (TI / Unyleya)
+# Guia de conferência das entregas — APEX V (Banco de Dados / Unyleya)
+> **Referência de apoio, não documento oficial.** Pesos, sequência e prazos devem ser confirmados no AVA; o status de cada atividade é o que aparece no portal.
+> **Não copie os textos-modelo antigos deste arquivo para a submissão sem revisão.** Use o PowerPoint revisado e `REVISAO_ADEQUACAO_APEX_V.md`; há exemplos históricos que não são fatos do projeto.
 ## Projeto de Extensão: *Performa Solar IA — Inteligência Artificial Ética na Gestão de Energia Limpa*
 
 > **Empresa / Local de Aplicação**: Performa Energy (Gestão de Créditos de Energia Solar)  
@@ -13,19 +15,19 @@
 ```mermaid
 pie title Distribuição dos 100 Pontos da Disciplina
     "Módulo 1 (Slides 2-6)" : 10
-    "Módulo 2 (Slides 8-10)" : 10
-    "Módulo 3 (Slides 12-19)" : 10
+    "Módulo 2 (até Desafio/Questão-Problema)" : 10
+    "Módulo 3 (Template completo + certificado iTalents)" : 10
     "Módulo 4 (Link Figma + Certificado)" : 20
     "Módulo 4 (Apresentação Presencial - 3 Fotos)" : 50
 ```
 
-| Módulo | Entregável Exigido | Pontuação | O que você anexa no portal |
+| Módulo | Entregável (conferir atividade aberta) | Pontuação do roteiro consultado | Observação |
 |:---|:---|:---:|:---|
-| **Módulo 1** | 1ª Etapa dos Slides | **10 pts** | Arquivo PowerPoint preenchido do **Slide 2 ao 6**. |
-| **Módulo 2** | 2ª Etapa dos Slides | **10 pts** | Arquivo PowerPoint preenchido do **Slide 8 ao 10**. |
-| **Módulo 3** | 3ª Etapa dos Slides | **10 pts** | Arquivo PowerPoint completo preenchido do **Slide 12 ao 19**. |
-| **Módulo 4 (Envio 1)** | Produto Digital + Certificado | **20 pts** | Link público do protótipo no **Figma** + PDF do Certificado do Curso de Figma da **iTalents**. |
-| **Módulo 4 (Envio 2)** | Apresentação à Comunidade | **50 pts** | Relatório ou arquivo contendo no mínimo **3 fotos presenciais** suas na Performa Energy com a equipe. |
+| **Módulo 1** | 1ª etapa dos slides | 10 pts | A tentativa aparecia ausente no portal consultado. |
+| **Módulo 2** | 2ª etapa parcial, até o slide “Desafio/Questão-Problema Identificada” | 10 pts | Conferir enunciado ao liberar; não assumir conteúdo além do roteiro. |
+| **Módulo 3** | 3ª etapa: envio do template completo + certificação do curso Figma | 10 pts | Conferir anexos/formato solicitado na sala. |
+| **Módulo 4 (Envio 1)** | Produto Figma + certificado, conforme enunciado | 20 pts | Criar arquivo/link real e certificado verdadeiro, se solicitado. |
+| **Módulo 4 (Envio 2)** | Apresentação presencial e evidências | 50 pts | Confirmar formato/rubrica no AVA; fotos apenas após atividade real e autorizada. |
 
 ---
 
@@ -35,11 +37,11 @@ pie title Distribuição dos 100 Pontos da Disciplina
 ### ETAPA 1 (Módulo 1 — Slides 2 a 6)
 
 #### Slide 2: Identificação do Curso e Título
-* **Curso Superior**: Tecnologia em Análise e Desenvolvimento de Sistemas (ou seu curso específico de TI)
+* **Curso Superior**: Tecnologia em Banco de Dados (conforme portal do aluno)
 * **Título do Trabalho**: *Inteligência Artificial, Ética e Governança de Dados na Gestão de Energia Solar: Letramento Digital e Proteção de Dados na Performa Energy*
 
 #### Slide 3: Apresentação
-* **Discente**: [Seu Nome Completo]
+* **Discente**: Rafael Silva
 * **Matrícula**: [Seu Número de Matrícula]
 * **Orientadora**: Profa. Dra. Carla Corrêa Tavares dos Reis
 
@@ -56,13 +58,13 @@ pie title Distribuição dos 100 Pontos da Disciplina
 #### Slide 6: Local de Implementação
 * **Nome do Local**: **Performa Energy**
 * **Apresentação**: Empresa de tecnologia e soluções sustentáveis especializada em gestão e compensação de créditos de energia solar compartilhada, facilitando a redução de custos de energia para residências e empresas sem necessidade de instalação de painéis fotovoltaicos no local.
-* **Endereço**: Sede corporativa da Performa Energy.
+* **Local**: Performa Energy; confirmar endereço, espaço e autorização antes da atividade.
 * **Público Atendido**: Colaboradores das áreas operacionais, análise de faturas, consultoria comercial e atendimento ao cliente, além de consumidores finais atendidos pela empresa.
 * *(Dica: Insira uma foto da fachada, recepção ou do escritório da Performa Energy neste slide).*
 
 ---
 
-### ETAPA 2 (Módulo 2 — Slides 8 a 10)
+### ETAPA 2 (Módulo 2 — até o slide “Desafio/Questão-Problema Identificada”)
 
 #### Slide 8: Participantes da Comunidade
 *(Atenção: Conforme instrução expressa da professora, não coloque nomes pessoais de indivíduos, apenas setores e funções).*
@@ -74,9 +76,9 @@ pie title Distribuição dos 100 Pontos da Disciplina
 
 #### Slide 9: Desafio / Questão Problema Identificada
 * **Texto Sugerido**:
-> No dia a dia da gestão de créditos solares na Performa Energy, a equipe analisa faturas de energia de diversas concessionárias do país. A leitura e extração manual desses dados é lenta e sujeita a falhas. Por outro lado, a utilização não padronizada de ferramentas públicas de Inteligência Artificial generativa (*Shadow AI*) traz dois riscos severos:
-> 1. **Violação da LGPD (Lei 13.709/2018)**: Faturas de energia contêm dados pessoais protegidos (Nome, CPF, endereço completo, código da instalação e perfil de consumo).
-> 2. **Alucinações Algorítmicas**: Modelos de IA não calibrados erram a leitura de tabelas tarifárias complexas (TUSD, TE, bandeiras tarifárias), gerando cálculos incorretos de economia.
+> **Problema a investigar com a comunidade:** em atividades de gestão de créditos de energia solar, faturas e dados pessoais exigem cuidado. A oficina pode discutir riscos gerais de compartilhamento de documentos com IA e possíveis erros de leitura, sem afirmar que essas práticas ou falhas ocorreram na Performa Energy antes de confirmação.
+> 1. **Privacidade**: faturas podem conter dados pessoais; usar exemplos fictícios ou anonimizados e avaliar ferramentas antes de compartilhar dados.
+> 2. **Confiabilidade**: sistemas de IA/OCR podem interpretar valores incorretamente; qualquer resultado deve ser conferido em fonte confiável.
 > 
 > **Proposta de Solução**: Criar um material educativo e protótipo digital (*Performa Solar IA*) que demonstre o uso ético da IA, ensinando a equipe a realizar a higienização prévia de dados pessoais, utilizar prompts auditados e validar cálculos com supervisão humana (*Human-in-the-Loop*).
 
@@ -84,14 +86,14 @@ pie title Distribuição dos 100 Pontos da Disciplina
 * **Texto Sugerido**:
 > Conforme teorizado por Cathy O'Neil em *Armas de Destruição Matemática (ADMs)*, modelos algorítmicos opacos e sem transparência tendem a criar ciclos viciosos de discriminação e exclusão social. No setor de crédito e energia, a adoção acrítica de modelos preditivos "caixa-preta" para seleção de clientes pode excluir consumidores de certas regiões com base em variáveis enviesadas.
 > 
-> Portanto, a inteligência artificial aplicada à energia limpa deve ser pautada na **Explicabilidade (XAI - Explainable AI)** e no Artigo 20 da LGPD (direito à revisão humana das decisões automatizadas), garantindo que a tecnologia sirva à democratização do acesso à energia limpa de forma justa e transparente.
+> Portanto, a inteligência artificial aplicada à energia deve considerar transparência, avaliação de riscos e supervisão adequada. O art. 20 da LGPD trata da revisão de decisões tomadas unicamente com base em tratamento automatizado que afetem interesses do titular; não se deve generalizar esse dispositivo para toda saída de IA.
 
 ---
 
-### ETAPA 3 (Módulo 3 — Slides 12 a 19)
+### ETAPA 3 (Módulo 3 — envio do template completo; verificar conteúdo específico no AVA)
 
 #### Slides 12 e 13: Planejamento Pedagógico e Ações
-* **Mídia Digital Escolhida**: Protótipo de Web App Interativo desenvolvido na ferramenta FIGMA (*Performa Solar IA*).
+* **Mídia Digital a desenvolver**: material educativo/protótipo conceitual a construir no Figma. O HTML local existente e esta especificação não comprovam a entrega de um arquivo Figma.
 * **Conteúdos Abordados**:
   1. O que é IA Generativa e limitações práticas (prevenção a alucinações de dados).
   2. Boas práticas de LGPD na manipulação de faturas e documentos de clientes.
@@ -105,7 +107,7 @@ pie title Distribuição dos 100 Pontos da Disciplina
   - *Etapa 4*: Dinâmica prática de teste de usabilidade e preenchimento dos formulários de avaliação de impacto.
 
 #### Slides 14 e 15: Material Educativo Digital (Telas do Figma)
-* **Link para Acesso ao Protótipo**: *(Aqui você insere o link compartilhável gerado no seu Figma)*.
+* **Link para acesso**: inserir somente após criar o arquivo no Figma e testar a permissão pública.
 * **Descrição do Material**:
   - *Tela 1 - Onboarding*: Apresentação do propósito sustentável e consentimento LGPD em linguagem simples.
   - *Tela 2 - Diagnóstico com OCR*: Área de upload da conta de luz com caixas delimitadoras coloridas mostrando a extração dos valores e campos para conferência humana.
@@ -126,13 +128,8 @@ pie title Distribuição dos 100 Pontos da Disciplina
 > Pude articular disciplinas fundamentais do curso — como Engenharia de Software, Segurança da Informação, Modelagem de Sistemas e Design de Interfaces (UI/UX) — com a prática de mercado e a responsabilidade socioambiental expressa nos ODS 7, 9 e 13. O desenvolvimento da atividade aprimorou competências socioemocionais (*soft skills*), como liderança, didática, comunicação assertiva e capacidade de traduzir conceitos complexos de IA em soluções práticas para os colaboradores. Constatou-se que a extensão universitária transforma o estudante em um agente proativo de inovação ética.
 
 #### Slide 18: Avaliação da Comunidade Atendida
-* **Métricas Apuradas (Escala Likert de 1 a 5)**:
-  - Relevância do tema para o dia a dia na Performa Energy: **4.9 / 5.0**
-  - Clareza e usabilidade da interface no Figma: **4.8 / 5.0**
-  - Compreensão sobre riscos da LGPD e uso seguro de IA: **4.9 / 5.0**
-  - Domínio e didática do estudante na apresentação presencial: **5.0 / 5.0**
-* **Depoimento de Colaborador (Exemplo para transcrever)**:
-> *"A oficina trouxe uma visão muito clara sobre como podemos usar inteligência artificial para agilizar a leitura das faturas sem correr riscos de violar a LGPD. O protótipo no Figma é intuitivo e mostra exatamente como passar segurança para os nossos clientes de energia solar."* (Analista do Setor de Operações).
+* **Avaliação da comunidade**: preencher depois da atividade com número real de respondentes e resultados calculados a partir das fichas. Não inserir médias estimadas.
+* **Depoimento**: usar apenas fala real, autorizada e anonimizada. Se não houver autorização, omitir.
 
 #### Slide 19: Referências Bibliográficas (Normas ABNT NBR 6023)
 * BRASIL. **Lei nº 13.709, de 14 de agosto de 2018**. Lei Geral de Proteção de Dados Pessoais (LGPD). Brasília, DF: Presidência da República, 2018.
@@ -146,7 +143,7 @@ pie title Distribuição dos 100 Pontos da Disciplina
 ## 3. O Guia das 3 Fotos Presenciais (Garantia dos 50 Pontos)
 
 > [!IMPORTANT]
-> A apresentação presencial e as 3 fotos valem **50% de toda a sua nota**. Siga este checklist para não haver qualquer questionamento da tutora:
+> A atividade presencial e as fotos são requisitos da entrega indicados no roteiro. Conferir no AVA os critérios/pontuação vigentes. Fotografar somente com autorização e sem expor dados pessoais.
 
 1. **Foto 1 (Ambiente Geral)**:
    - **Como tirar**: Uma foto aberta da sala de reuniões ou do espaço de trabalho na Performa Energy.

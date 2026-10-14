@@ -1,58 +1,51 @@
-# Project: APEX V — Performa Energy (TI / Unyleya)
+# Projeto: APEX V — Performalog Atendimento (Tecnologia em Banco de Dados / Unyleya)
 
-## Architecture
-O projeto de extensão universitária APEX V estrutura-se na integração entre a formação cidadã do estudante de TI, a aplicação de Inteligência Artificial generativa e preditiva no setor de energia solar, e a entrega de valor real à comunidade corporativa da **Performa Energy** (gestora de créditos de energia solar).
+## 1. Visão Geral da Arquitetura
+O núcleo do trabalho extensionista agora é a implementação do módulo **Atendimento** e do **Agente Inteligente de Cobrança** no CRM/ERP corporativo **Performalog**, da **Performa Energy**.
+O projeto integra a **WhatsApp Cloud API oficial da Meta (Graph API v26.0)** ao banco de dados relacional MySQL (Azure), resolvendo a fragmentação da comunicação legada (Maxbot), reduzindo a inadimplência e esclarecendo dúvidas complexas sobre o rateio de créditos de energia solar (concessionária CEMIG).
 
-### Mapeamento dos Módulos Acadêmicos (1 a 4) e Pontuação (100 pts)
-- **Módulo 1 (até 10 pts)**: Etapa 1 do Template Padrão (Slides 2 a 6) — Identificação, ODS (7, 9 e 13) e Local de Implementação (Performa Energy).
-- **Módulo 2 (até 10 pts)**: Etapa 2 do Template Padrão (Slides 8 a 10) — Participantes (cargos anônimos) e Desafio/Questão-Problema (leitura de faturas, LGPD, opacidade algorítmica e IA ética).
-- **Módulo 3 (até 10 pts)**: Etapa 3 do Template Padrão (Slides 12 a 20) — Planejamento andragógico, material educativo digital, autoavaliação nas 5 dimensões, avaliação da comunidade e referências ABNT NBR 6023 + Certificação iTalents Figma.
-- **Módulo 4 (até 70 pts)**:
-  * Link da atividade de extensão / protótipo Figma + Certificado iTalents (até 20 pts).
-  * Apresentação presencial na Performa Energy com registro estrito de 3 fotos obrigatórias (até 50 pts).
+### Princípio Arquitetural de Ouro: Grounding Determinístico
+O agente de IA atua exclusivamente na camada conversacional humanizada. **A IA nunca calcula nem inventa valores monetários, encargos ou saldos de energia.** Todos os dados de consumo em kWh, faturas e propostas autorizadas são consultados diretamente nas tabelas relacionais do banco de dados e injetados de forma estrita no contexto.
 
 ---
 
-## Feature Inventory
-| # | Feature | Description | Milestone | Source |
-|---|---------|-------------|-----------|--------|
-| 1 | Preenchimento Etapa 1 (Slides 2-6) | Identificação, ODS 7, 9 e 13, Ementa oficial e Apresentação da Performa Energy | M1 | Survey (PDFs/Slides) |
-| 2 | Preenchimento Etapa 2 (Slides 8-10) | Participantes (cargos corporativos), Diagnóstico de IA na Performa Energy, ADMs e Ética | M1 | Survey (PDFs/Slides) |
-| 3 | Preenchimento Etapa 3 (Slides 12-20) | Plano pedagógico/andragógico, Material educativo, Autoavaliação (5 dimensões), Avaliação da comunidade e Referências ABNT | M1 | Survey (PDFs/Slides) |
-| 4 | Geração do Arquivo PPTX Preenchido | Criação física do PPTX preenchido baseado no template oficial | M1 | Survey & Requisitos R1 |
-| 5 | Documento Completo dos Slides (.md) | Registro integral e editável de todos os textos slide a slide para conferência | M1 | Survey & Requisitos R1 |
-| 6 | Arquitetura de Informação & Fluxos Figma | Mapa de telas (L1-L3), taxonomia e 5 fluxos do protótipo Performa Solar IA | M2 | Survey & Requisitos R2 |
-| 7 | Design System & Telas Detalhadas Figma | Tokens de cor WCAG AAA, tipografia, componentes UI e especificações de tela | M2 | Survey & Requisitos R2 |
-| 8 | Roteiro de Apresentação Presencial (90 min) | Estrutura em 5 blocos para workshop corporativo na sede da Performa Energy | M3 | Survey & Requisitos R3 |
-| 9 | Protocolo Rigoroso das 3 Fotos Obrigatórias | Checklist visual e especificações para as 3 fotos da avaliação de 50 pontos | M3 | Survey & Requisitos R3 |
-| 10 | Instrumentos de Avaliação e Declaração | Questionário Likert de avaliação da comunidade e Termo/Declaração Institucional da empresa | M3 | Survey & Requisitos R3 |
-| 11 | Validação E2E, Review, Challenge & Auditoria | Testes de conformidade das entregas, desafio empírico e auditoria forense sem hardcodes | M4 | Critérios Institucionais |
+## 2. Modelagem do Banco de Dados Relacional (MySQL Performalog)
+
+### Tabelas do Subsistema de Mensageria (WhatsApp Cloud API)
+- `wa_phone_number`: Cadastro dos números empresariais oficiais, WABA ID, limites e status de qualidade da linha da Meta.
+- `wa_contact`: Identidade do cliente (telefone E.164, BSUID, vínculo com `cliente_id` do Performalog, opt-in/opt-out e conformidade com a LGPD).
+- `wa_conversation`: Registro de cada protocolo de atendimento, setor atribuído, atendente, situação (bot, fila, atendimento, encerrada) e controle da janela de 24 horas da Meta.
+- `wa_message`: Histórico integral de mensagens com identificador global `wamid`, autor (cliente, bot, atendente, sistema), payload, status de entrega (`sent`, `delivered`, `read`) e carimbo de tempo.
+- `wa_campaign` & `wa_campaign_recipient`: Gestão de réguas de cobrança automatizadas e disparos em massa com templates pré-aprovados pela Meta.
+- `wa_webhook_event`: Registro bruto de webhooks recebidos com validação de assinatura SHA-256 para auditoria de segurança.
+
+### Tabelas de Energia e Faturamento Integradas
+- `cemig_gd_report`: Leitura analítica mensal de créditos por Unidade Consumidora (UC), consumo ativo e injeção solar.
+- `energy_balance_item`: Balanço mensal comparando relatório XML da concessionária, planilhas e previsões.
+- `client_integration_bill`: Faturas integradas via API da Digital Grid (status, saldo devedor, Pix e linha digitável).
 
 ---
 
-## Milestones
-| # | Name | Scope | Dependencies | Status |
-|---|------|-------|-------------|--------|
-| M1 | Template PPTX Preenchido (R1) | Elaborar os textos dos 20 slides e gerar o arquivo PPTX preenchido e documento consolidado | Survey | PLANNED |
-| M2 | Especificação do Protótipo Figma (R2) | Especificação técnica completa do Performa Solar IA (arquitetura, 5 fluxos, design system, telas) | Survey | PLANNED |
-| M3 | Guia Presencial & Protocolo 3 Fotos (R3) | Roteiro presencial, checklist fotográfico de 50 pts, questionário e declaração empresarial | Survey | PLANNED |
-| M4 | Verificação E2E, Review & Auditoria | Revisão acadêmica, desafio empírico e auditoria forense de integridade | M1, M2, M3 | PLANNED |
+## 3. Mapeamento das Entregas Acadêmicas na Unyleya (APEX V — 100 Horas)
+
+| Etapa | Módulo AVA | Entregável Oficial | Status Técnico Atual |
+|:---:|:---:|---|---|
+| **1ª Etapa** | **Módulo 1** (Até 10 pts) | Slides 1 a 6 do Template Padrão (Identificação, Ementa Oficial, ODS 7, 9 e 12, Local de Implementação) | **100% Gerado no PPTX e PDF modular.** Pronto para envio. |
+| **2ª Etapa** | **Módulo 2** (Até 10 pts) | Slides 1 a 10 do Template Padrão (Participantes, Diagnóstico de Problema, Aprofundamento Teórico em Banco de Dados e IA) | **100% Gerado no PPTX e PDF modular.** Pronto para envio assim que liberar no AVA. |
+| **3ª Etapa** | **Módulo 3** (Até 10 pts) | Certificado iTalents do curso de Figma + Template completo (Slides 1 a 20) | Template de 20 slides preenchido integralmente. Pendente realização do curso iTalents pelo estudante. |
+| **4ª Etapa** | **Módulo 4** (Até 70 pts) | (a) Link do protótipo interativo no Figma + Certificado (Até 20 pts)<br>(b) Apresentação presencial com as 3 fotos obrigatórias e fichas de avaliação (Até 50 pts) | Especificação das 37 telas e 5 fluxos principais mapeada no Figma. Roteiro e Ficha de Avaliação Likert finalizados. |
 
 ---
 
-## Interface Contracts
-### Survey ↔ Milestone Workers
-- **Entrada para M1**: Matriz de slides de `teamwork_preview_explorer_survey_2/handoff.md` + placeholders de `pptx_full_dump.txt` + template original `TEMPLATE PADRÃO PARA DESENVOLVIMENTO DOS TRABALHOS DE EXTENSÃO _ POR ETAPAS-1 (1).pptx`.
-- **Entrada para M2**: Especificação de arquitetura, fluxos e design system de `teamwork_preview_explorer_survey_3/handoff.md`.
-- **Entrada para M3**: Roteiro de 5 blocos, protocolo fotográfico e instrumentos de avaliação de `teamwork_preview_explorer_survey_3/handoff.md`.
-- **Entrada para M4**: Artefatos finais gerados por M1, M2 e M3 inspecionados por Reviewer, Challenger e Forensic Auditor.
+## 4. Inventário dos Arquivos do Projeto
 
----
-
-## Code Layout
-Os arquivos de entrega serão gerados exclusivamente na raiz do projeto (`c:\Users\rafas\Documents\performa\trabalho`):
-- `c:\Users\rafas\Documents\performa\trabalho\TEMPLATE_PREENCHIDO_APEX_V_PERFORMA_ENERGY.pptx` (Arquivo PPTX pronto para submissão nos Módulos 1, 2 e 3)
-- `c:\Users\rafas\Documents\performa\trabalho\DOCUMENTO_ENTREGA_SLIDES_APEX_V_PERFORMA_ENERGY.md` (Documento acadêmico com todos os slides formatados e prontos para inserção)
-- `c:\Users\rafas\Documents\performa\trabalho\ESPECIFICACAO_PRODUTO_FIGMA_PERFORMA_SOLAR_IA.md` (Especificação completa do protótipo Figma para o Módulo 3 e 4)
-- `c:\Users\rafas\Documents\performa\trabalho\GUIA_APRESENTACAO_PRESENCIAL_E_FOTOS_PERFORMA_ENERGY.md` (Guia presencial de 50 pontos, roteiro, protocolo das 3 fotos, questionário e declaração)
-- `c:\Users\rafas\Documents\performa\trabalho\RELATORIO_CONSOLIDADO_FINAL_APEX_V.md` (Dossiê executivo e acadêmico completo do projeto)
+- `TEMPLATE_PREENCHIDO_APEX_V_PERFORMA_ENERGY.pptx` e `.pdf`: Apresentação completa com os 20 slides preenchidos, com layout e ABNT rigorosamente aplicados.
+- `APEX_V_Modulo_1_Etapa_1_Slides_1_a_6.pptx` e `.pdf`: Pacote dedicado para submissão da 1ª Etapa no Módulo 1 (slides 1 a 6).
+- `APEX_V_Modulo_2_Etapa_2_Slides_1_a_10.pptx` e `.pdf`: Pacote dedicado para submissão da 2ª Etapa no Módulo 2 (slides 1 a 10).
+- `DOCUMENTO_ENTREGA_SLIDES_APEX_V_PERFORMA_ENERGY.md`: Transcrição textual integral de todos os 20 slides em estrita correspondência com a apresentação.
+- `build_updated_apex_v.py`: Script Python oficial para geração determinística dos slides preenchidos e das versões modulares.
+- `convert_all_pptx_to_pdf.py`: Script para conversão de apresentações em PDF com limpeza de marcas d'água.
+- `ESPECIFICACAO_FIGMA_APEX_V_REVISTA.md`: Guia de arquitetura de interface e tokens de design para o Figma.
+- `GUIA_APRESENTACAO_APEX_V_REVISTO.md`: Roteiro de 90 minutos para a oficina presencial e protocolo das 3 fotos.
+- `FICHA_DE_AVALIACAO_PRESENCIAL_PERFORMA_ENERGY.html`: Instrumento de avaliação em escala Likert pronto para impressão em 1 página A4.
+- `performalog_atendimento/`: Diretório com o protótipo funcional completo e especificações detalhadas de negócio e APIs.

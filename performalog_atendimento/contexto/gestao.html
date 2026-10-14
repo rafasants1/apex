@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gestão e relatórios · Contexto</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<div class="wrap">
+ <nav class="top"><a href="index.html">Início</a><a href="operacao.html">Operação</a><a href="automacao.html">Automação</a><a href="disparos.html">Disparos</a><a href="cobranca.html">Cobrança</a><a href="agente-cobranca.html">Agente de cobrança</a><a href="gestao.html" aria-current="page">Gestão</a><a href="configuracao.html">Configuração</a><a href="api-meta.html">API da Meta</a><a href="telas.html">Telas e fluxos</a></nav>
+ <header>
+  <span class="eyebrow">Área 5 · fase 1 · prioridade 4</span>
+  <h1>Gestão e relatórios</h1>
+  <p>Na Maxbot, o painel novo (V5) mostra um Dashboard vazio; os relatórios estão na interface V4. Acesso apenas do administrador.</p>
+ </header>
+
+ <section>
+  <h2>Relatórios</h2>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Relatório</th><th>Detalhe</th><th>Origem</th><th>Situação</th></tr></thead><tbody>
+   <tr><td class="id">GE-01</td><td><b>Atendimento</b></td><td>Lista de protocolos ou de encaminhamentos no período. Filtros: setor, atendente, situação, tipo de encerramento, padrão ou silencioso. Sai na tela ou por e-mail.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i> · colunas</td></tr>
+   <tr><td class="id">GE-02</td><td><b>Quantitativo de atendimento</b></td><td>Volume no período, com filtro por setor, situação do atendente (ativo/inativo), atendente e situação do protocolo.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">GE-03</td><td><b>Tempo médio de espera</b></td><td>Da entrada na fila até o atendente assumir.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">GE-04</td><td><b>Tempo médio de atendimento</b></td><td>Duração do atendimento humano por protocolo.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">GE-05</td><td><b>Curva de atendimento</b></td><td>Gráfico de protocolos por hora ou por dia, filtrado por setor.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">GE-06</td><td><b>Chamadas de menu</b></td><td>Quantas vezes cada opção do menu foi escolhida.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">GE-07</td><td><b>Chamadas de setor</b></td><td>Atendimentos por equipe.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">GE-08</td><td><b>Pesquisa de satisfação</b></td><td>Resultados do CSAT por setor e atendente, totalizado ou detalhado. Há também um painel de CSAT.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i> · escala Q-OP6</td></tr>
+   <tr><td class="id">GE-09</td><td><b>Atendimento por segmentação</b></td><td>Atendimentos agrupados pela segmentação do protocolo (motivo) ou do contato, com saída na tela ou por e-mail.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">GE-10</td><td><b>Total de mensagens no período</b></td><td>Mensagens enviadas e recebidas.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">GE-11</td><td><b>Desempenho por atendente</b></td><td>Protocolos, tempo médio, primeira resposta e CSAT de cada atendente.</td><td><i class="o o-site">SITE</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">GE-12</td><td><b>Relatório de disparos</b></td><td>Por campanha: enviadas, entregues, lidas, respostas, falhas por código da Meta, pedidos de saída.</td><td><i class="o o-meta">META</i><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">GE-13</td><td><b>Relatório de cobrança</b></td><td>Valor recuperado, pagamento após mensagem, conversão por etapa da régua, acordos, promessas cumpridas e quebradas, contestações por categoria.</td><td><i class="o o-doc">DOC</i><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-perg">PERGUNTA</i> Q-GE2</td></tr>
+   <tr><td class="id">GE-14</td><td><b>Custos da Meta</b></td><td>Mensagens cobradas por categoria (marketing, utilidade, autenticação, serviço), lidas do campo pricing dos webhooks. Acompanhar o gasto desde a última fatura da Meta e conferir com a <code>pricing_analytics</code>: ver AP-81 em <a href="api-meta.html">API da Meta</a>.</td><td><i class="o o-meta">META</i><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">GE-15</td><td><b>Desempenho do bot e da IA</b></td><td>Resolvidas sem pessoa, transferidas e motivos de transferência.</td><td><i class="o o-site">SITE</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">GE-29</td><td><b>Gasto desde a última fatura</b></td><td>Painel com o gasto na Meta do dia seguinte ao fechamento da última fatura até agora. Mostra: total acumulado, gasto por dia, projeção até o próximo fechamento e divisão por número, categoria (marketing, utilidade, autenticação), origem (campanha, régua de cobrança, atendimento, bot) e campanha. Também mostra quantas mensagens foram grátis e quantas foram cobradas. O número vem da soma do <code>pricing</code> dos status, conferida uma vez por dia com a <code>pricing_analytics</code> da Meta; a diferença entre as duas aparece no painel. É uma estimativa: o valor oficial é o da fatura. A data de fechamento é cadastrada na configuração, porque a API não a informa. Detalhe técnico em AP-81 (<a href="api-meta.html">API da Meta</a>).</td><td><i class="o o-perf">PERFORMA</i><i class="o o-meta">META</i></td><td><i class="s s-def">DEFINIDO</i> · fechamento e teto Q-GE6</td></tr>
+  </tbody></table></div>
+ </section>
+
+ <section>
+  <h2>Painel e recursos dos relatórios</h2>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Funcionalidade</th><th>Detalhe</th><th>Origem</th><th>Situação</th></tr></thead><tbody>
+   <tr><td class="id">GE-20</td><td><b>Dashboard em tempo real</b></td><td>Filas, conversas abertas, SLA e produtividade ao vivo. Na Maxbot V5 a tela existe mas está vazia; há uma configuração de Dashboard na V4.</td><td><i class="o o-site">SITE</i><i class="o o-max">MAXBOT</i></td><td><i class="s s-perg">PERGUNTA</i> Q-GE1</td></tr>
+   <tr><td class="id">GE-21</td><td><b>Filtro por período</b></td><td>Data inicial e final em todos os relatórios.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">GE-22</td><td><b>Exportação</b></td><td>Exportar para planilha e PDF. A Maxbot manda relatórios grandes por e-mail em vez de gerar na tela.</td><td><i class="o o-site">SITE</i></td><td><i class="s s-perg">PERGUNTA</i> Q-GE3</td></tr>
+   <tr><td class="id">GE-23</td><td><b>Metas e alertas</b></td><td>Sem metas por enquanto.</td><td><i class="o o-site">SITE</i></td><td><i class="s s-def">DEFINIDO</i> Q-GE4</td></tr>
+  </tbody></table></div>
+ </section>
+
+ <section>
+  <h2>Encontrado no banco</h2>
+  <div class="db">
+   <p>Os dados para relatórios de cobrança e energia já existem: faturas por situação e vencimento (<code>client_integration_bill</code>), créditos por UC e usina (<code>cemig_gd_report</code>), casos de Sucesso do Cliente por motivo (<code>customer_success_cases</code>) e jornadas da Maxbot (<code>maxbot_control</code>). O CRM já tem dashboards Node.js na VM performalog-web (ex.: performa-energy), que podem servir de base visual e técnica.</p>
+  </div>
+ </section>
+
+ <section>
+  <h2>Presente no protótipo e ainda não listado</h2>
+  <p class="note">Auditoria de 08/10/2026: tudo que o protótipo já mostra e não estava registrado aqui. São escolhas do protótipo, não decisões da Performa: ficam como CONFIRMAR até alguém responder.</p>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Funcionalidade</th><th>Detalhe</th><th>Origem</th><th>Situação</th></tr></thead><tbody>
+   <tr><td class="id">GE-24</td><td><b>Alertas do painel ao vivo</b></td><td>Qualidade do número caiu, janela de 24 h fechando em menos de 2 h e modelos rejeitados pela Meta.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> 08/10/2026</td></tr>
+   <tr><td class="id">GE-25</td><td><b>Indicadores do painel ao vivo</b></td><td>Na fila (com a maior espera), Em atendimento (com atendentes on-line), Com o bot e a IA e Alertas; carga por equipe (fila, em atendimento, nº de atendentes).</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> 08/10/2026</td></tr>
+   <tr><td class="id">GE-26</td><td><b>Relatório de envios e entrega</b></td><td>Funil aceitas → enviadas → entregues → lidas e tabela por origem (atendimento, campanha, cobrança) com falhas.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> 08/10/2026</td></tr>
+   <tr><td class="id">GE-27</td><td><b>Custos da Meta em detalhe</b></td><td>Mensagens grátis × cobradas e custo da régua de cobrança.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">GE-28</td><td><b>Conversas por dia</b></td><td>Gráfico separando bot e atendente.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> 08/10/2026</td></tr>
+  </tbody></table></div>
+  <p class="note">Diferenças com o protótipo: todas corrigidas em 08/10/2026.</p>
+ </section>
+
+ <section>
+  <h2>Perguntas para a Performa</h2>
+  <div class="qs">
+   <div class="q r"><b>Q-GE1 · RESPONDIDA</b>Quais números o gestor precisa ver na primeira tela, ao vivo? (ex.: fila por equipe, conversas abertas, tempo de espera, valor recuperado no mês)<div class="ans"><strong>Respondida pela Performa em 08/10/2026</strong>O painel ao vivo do protótipo: fila por equipe, tempo de espera, atendentes e recuperado no mês.</div></div>
+   <div class="q"><b>Q-GE2</b>Quais indicadores de cobrança importam para vocês? Existe meta de recuperação?</div>
+   <div class="q r"><b>Q-GE3 · RESPONDIDA</b>Os relatórios precisam ser exportados? Em qual formato e para quem?<div class="ans"><strong>Respondida pela Performa em 08/10/2026</strong>Sim, em Excel e CSV.</div></div>
+   <div class="q r"><b>Q-GE4 · RESPONDIDA</b>Existem metas por equipe (tempo de resposta, CSAT, recuperação) que o sistema deve acompanhar e alertar?<div class="ans"><strong>Respondida pela Performa em 08/10/2026</strong>Sem metas por enquanto. Observação: as metas de SLA que existem no Performalog medem o processo de venda e contrato (criação até aprovação final, ciclo de cancelamento etc.), não o atendimento.</div></div>
+   <div class="q p"><b>Q-GE5 · PARCIAL</b>Quais relatórios da Maxbot vocês usam de fato hoje? Algum pode ser descartado?<div class="ans"><strong>Resposta em 08/10/2026 · ainda falta</strong>Os relatórios da Maxbot que ninguém usa ficam de fora. Falta: a lista dos que são usados.</div></div>
+   <div class="q"><b>Q-GE6</b>Gasto desde a última fatura (GE-29): em que dia do mês fecha a fatura da Meta (ou da Gupshup, enquanto ela pagar)? Querem um teto de gasto mensal, com alerta no Painel ao vivo quando chegar a 80% e a 100%? O painel deve aparecer só para o administrador? Mesma pergunta que Q-AP11.</div>
+  </div>
+ </section>
+ <footer>Atualizado em 08/10/2026 · fontes listadas no <a href="index.html">início</a>.</footer>
+</div>
+</body>
+</html>

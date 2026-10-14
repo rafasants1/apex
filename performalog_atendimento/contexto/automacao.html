@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Automação · Contexto</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<div class="wrap">
+ <nav class="top"><a href="index.html">Início</a><a href="operacao.html">Operação</a><a href="automacao.html" aria-current="page">Automação</a><a href="disparos.html">Disparos</a><a href="cobranca.html">Cobrança</a><a href="agente-cobranca.html">Agente de cobrança</a><a href="gestao.html">Gestão</a><a href="configuracao.html">Configuração</a><a href="api-meta.html">API da Meta</a><a href="telas.html">Telas e fluxos</a></nav>
+ <header>
+  <span class="eyebrow">Área 2 · fase 1 · prioridade 5 · replicar o fluxo de automação da Maxbot</span>
+  <h1>Automação</h1>
+  <p>Na Maxbot, o menu Automação tem: Interação Padrão, Interação IA, Editor de Fluxo, Inteligência Artificial, Variável, Lista, Ponto de Inicialização e Agendamento. O novo sistema replica essas telas. Os fluxos rodam no backend a cada mensagem recebida pela API da Meta.</p>
+ </header>
+
+ <section>
+  <h2>Editor de fluxo</h2>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Funcionalidade</th><th>Detalhe</th><th>Origem</th><th>Situação</th></tr></thead><tbody>
+   <tr><td class="id">AU-01</td><td><b>Editor visual de fluxos</b></td><td>Canvas com nós ligados por conexões, menu de nós pelo botão direito, seleção múltipla, copiar e colar, zoom, minimapa, tipo de linha e waypoints.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AU-02</td><td><b>Nós de canal</b></td><td>Chat Web e WhatsApp.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-perg">PERGUNTA</i> canais: ver Q-OP / Q-CF1</td></tr>
+   <tr><td class="id">AU-03</td><td><b>Nós de mensagem</b></td><td>Texto, imagem, documento, áudio, vídeo, contato, localização e template.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AU-04</td><td><b>Nós de captura</b></td><td>Texto, número, telefone, e-mail, data e hora, escolha, documento, imagem, áudio, vídeo, contato e localização. O valor capturado vai para uma variável.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AU-05</td><td><b>Nós de lógica</b></td><td>Variável, condição e cronômetro.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AU-06</td><td><b>Nós de integração</b></td><td>Atendimento (transferir), webhook, requisição HTTP, IA, LGPD verificar, LGPD autorizar e LGPD bloquear.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AU-07</td><td><b>Comentário</b></td><td>Anotação no canvas.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AU-08</td><td><b>Nó "Agente de cobrança"</b></td><td>Nó que entrega a conversa ao agente de cobrança. Não existe na Maxbot.</td><td><i class="o o-perf">PERFORMA</i><i class="o o-doc">DOC</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AU-09</td><td><b>Menu interativo (lista ou botões)</b></td><td>Interação Padrão da Maxbot tem formato de menu "Lista" ou "Botões". Limites da Meta: até 3 botões (20 caracteres) e até 10 linhas na lista (24 caracteres).</td><td><i class="o o-max">MAXBOT</i><i class="o o-meta">META</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AU-10</td><td><b>Validação e publicação</b></td><td>No protótipo: aponta nós sem saída, destinos inexistentes e templates não aprovados; publica com número de versão.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">AU-11</td><td><b>Vários fluxos</b></td><td>Há vários fluxos: botões Salvar (título e "liberado para uso"), Carregar (escolhe o fluxo) e Publicar (escolhe qual fluxo fica ativo).</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+  </tbody></table></div>
+ </section>
+
+ <section>
+  <h2>Inteligência artificial</h2>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Funcionalidade</th><th>Detalhe</th><th>Origem</th><th>Situação</th></tr></thead><tbody>
+   <tr><td class="id">AU-20</td><td><b>Cadastro de agentes de IA</b></td><td>Lista com agente, "agente de atendimento" (sim/não), modelo, descrição e arquivos. Situação: pronto para uso, processando ou falha. Na conta da Performa existe o agente "TESTE 1" com GPT-4o (OpenAI) e 1 arquivo.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AU-21</td><td><b>Base de conhecimento por arquivos</b></td><td>Arquivos enviados ao agente (a Maxbot mostra contagem e tamanho).</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AU-22</td><td><b>Formulário do agente</b></td><td>Campos: nome do agente, descrição (2000 caracteres), competências (2000), tipo (só ChatGPT), chave da API, função (perguntas e respostas sobre documentos, texto para áudio, áudio para texto, orçamento ou personalizada), até 5 PDFs, instruções (8000) e função personalizada. Não há campos de tom ou temperatura.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">AU-23</td><td><b>Interação IA</b></td><td>Tela com as conversas atendidas por IA: canal, contato, protocolo, duração, início e situação.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AU-24</td><td><b>Modelo de IA</b></td><td>Provedor e modelo do novo sistema.</td><td>—</td><td><i class="s s-perg">PERGUNTA</i> Q-AU1</td></tr>
+   <tr><td class="id">AU-25</td><td><b>Transferir quando a IA não souber</b></td><td>No site: transfere para o atendente certo com o contexto. Critério de confiança mínima é proposta do protótipo.</td><td><i class="o o-site">SITE</i><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+  </tbody></table></div>
+ </section>
+
+ <section>
+  <h2>Variáveis, listas, pontos de inicialização e agendamento</h2>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Funcionalidade</th><th>Detalhe</th><th>Origem</th><th>Situação</th></tr></thead><tbody>
+   <tr><td class="id">AU-30</td><td><b>Variáveis</b></td><td>Cadastro com código, tipo e descrição. Na conta da Performa a lista está vazia.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AU-31</td><td><b>Listas de automação</b></td><td>Na tela de templates existe um campo "Lista" que liga o template a uma lista de automação. Como o contato entra na lista continua sem aparecer na tela.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">AU-32</td><td><b>Pontos de inicialização</b></td><td>Título, etapa (ID do nó) e token. Permitem começar um fluxo em um nó específico. A Performa tem 8: Jornada do cliente · Assinatura do termo, Cadastro CEMIG, Conectado, Duas faturas, Dúvidas, Em andamento, Primeira mensagem, Processo finalizado.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i> · conteúdo Q-AU2</td></tr>
+   <tr><td class="id">AU-33</td><td><b>Disparo por API</b></td><td>Os agendamentos da Performa são criados pelo responsável "API-MAXBOT": algum sistema chama a API para iniciar a jornada.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-perg">PERGUNTA</i> Q-AU3</td></tr>
+   <tr><td class="id">AU-34</td><td><b>Agendamentos</b></td><td>Data, ponto de inicialização, contato, canal, responsável e situação (agendado, iniciado, falha, cancelado) com o motivo da falha.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AU-35</td><td><b>Tratamento de falhas do agendamento</b></td><td>Falhas reais vistas na conta da Performa: "Interação em andamento pré-existente encontrada" e "Automation Entry Point does not exist in the current flow". O novo sistema precisa mostrar o motivo e permitir tentar de novo.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i> · regra Q-AU4</td></tr>
+   <tr><td class="id">AU-36</td><td><b>Ponto que começa com template</b></td><td>Fora da janela de 24 h, a jornada só pode começar com template aprovado.</td><td><i class="o o-meta">META</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AU-37</td><td><b>Histórico de execuções</b></td><td>No protótipo: cada execução de fluxo com caminho percorrido, variáveis e como terminou.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+  </tbody></table></div>
+ </section>
+
+ <section>
+  <h2>Interação padrão</h2>
+  <p class="note">Seções vistas na Maxbot (V4): Autorização Legal, Mensagem de Boas-vindas, Menu de Opções, Auto Atendimento, Interação MaxChat, Processamento de Protocolos, Processamento de Fila de Espera, Processamento do Atendimento, Distribuição do Atendimento e Fuso Horário. Interação ativada ou desativada ("Direcionando atendimentos" / "Não realizando atendimentos").</p>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Funcionalidade</th><th>Detalhe</th><th>Origem</th><th>Situação</th></tr></thead><tbody>
+   <tr><td class="id">AU-40</td><td><b>Ligar e desligar a automação</b></td><td>Desligada, toda conversa vai direto para a fila.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AU-41</td><td><b>Boas-vindas e menu de opções</b></td><td>Texto de boas-vindas e opções do menu inicial.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i> · conteúdo Q-AU5 · sem opção para novos clientes (AU-86)</td></tr>
+   <tr><td class="id">AU-42</td><td><b>Autorização legal</b></td><td>Liga ou desliga o pedido de autorização (opt-in) antes do atendimento. Campos: mensagem de autorização (até 1000 caracteres, com [CANAL_INFO]) e o texto das opções Sim e Não.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">AU-43</td><td><b>Auto atendimento e Interação MaxChat</b></td><td>Auto atendimento: tipo, setor, orientação ao atendente e ao contato (1000 caracteres cada) e informe ao cliente. MaxChat: setor e atendente de destino. As opções do tipo de auto atendimento não foram registradas.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">AU-44</td><td><b>Processamento de protocolos, fila e atendimento</b></td><td>Prazos de abertura automática de protocolo e de encerramento por falta de resposta. Encerramento: não haverá (Q-OP7). Abertura sem escolha no menu: ver OP-20.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-perg">PERGUNTA</i> Q-OP7 (parcial)</td></tr>
+   <tr><td class="id">AU-45</td><td><b>Distribuição do atendimento</b></td><td>Setor e atendente de destino. A conversa vai para a fila do setor e a equipe divide entre si (Q-OP3).</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i> Q-OP3</td></tr>
+   <tr><td class="id">AU-46</td><td><b>Palavras que transferem para pessoa</b></td><td>No protótipo: "atendente", "humano", "pessoa" transferem em qualquer etapa.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+  </tbody></table></div>
+ </section>
+
+ <section>
+  <h2>Encontrado no banco</h2>
+  <div class="db">
+   <h3>A Jornada do cliente é comandada pelo CRM Plog</h3>
+   <p>O CRM guarda o endereço da API da Maxbot e um token por ponto de inicialização (Primeira mensagem, Assinatura do termo, Em andamento, Conectado, Cadastro CEMIG, Duas faturas, Dúvidas, Processo finalizado). Cada venda tem um controle de estado (<code>maxbot_control</code>) e um histórico de transições (<code>maxbot_history</code>).</p>
+   <ol class="flow" style="margin:0;padding:0">
+    <li><div><b>Venda criada</b> no CRM → estado <code>PRIMEIRA_MENSAGEM</code> (evento <code>SALE_CREATED</code>)</div></li>
+    <li><div><b>Lembrete de assinatura</b> às 09:00 enquanto não assina (<code>CRON_E1_SIGNATURE_REMINDER_0900</code>); reenvio manual possível da primeira mensagem e do termo</div></li>
+    <li><div><b>Contrato aprovado</b> (manual) → <code>EM_ANDAMENTO</code></div></li>
+    <li><div><b>Conectado</b> após resposta do cliente ou 24 h sem resposta (<code>TIMEOUT_24H</code>)</div></li>
+    <li><div><b>Cadastro CEMIG</b> (crons <code>CRON_M1_BD3</code>, <code>CRON_E4_PLUS_7D</code>)</div></li>
+    <li><div><b>Processo finalizado</b> (<code>CRON_M2_BD1</code>, <code>CRON_E5_PLUS_10D</code>); <code>DUAS_FATURAS</code> encerra a jornada</div></li>
+   </ol>
+   <p class="note">Respostas do cliente chegam ao CRM pelo webhook da Maxbot (<code>WEBHOOK_RESPONSE_PROCEED</code> para seguir, <code>WEBHOOK_RESPONSE_SUPPORT</code> para pedir suporte). Hoje há 33 jornadas abertas e 2 finalizadas. Das chamadas para agendar automação, 63 deram certo e 21 falharam (15 com HTTP 422).</p>
+  </div>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Funcionalidade</th><th>Detalhe</th><th>Origem</th><th>Situação</th></tr></thead><tbody>
+   <tr><td class="id">AU-50</td><td><b>Jornada do cliente com estados</b></td><td>Replicar a máquina de estados do CRM: estados, eventos (sistema, cron, webhook, manual) e histórico com chave de idempotência.</td><td><i class="o o-db">BANCO</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AU-51</td><td><b>Lembretes agendados por dia útil</b></td><td>Crons como "3º dia útil" (BD3), "1º dia útil" (BD1), "+7 dias", "+10 dias", "às 09:00".</td><td><i class="o o-db">BANCO</i></td><td><i class="s s-def">DEFINIDO</i> · regras Q-AU6</td></tr>
+   <tr><td class="id">AU-52</td><td><b>Resposta "seguir" ou "suporte"</b></td><td>O cliente escolhe continuar a jornada ou pedir suporte; suporte abre atendimento.</td><td><i class="o o-db">BANCO</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AU-53</td><td><b>Modo de teste da jornada</b></td><td>O CRM tem <code>MAXBOT_TEST_MODE</code> e <code>MAXBOT_TEST_STEP_MINUTES = 5</code> (passos de 5 minutos em teste).</td><td><i class="o o-db">BANCO</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+  </tbody></table></div>
+ </section>
+
+  <section>
+  <h2>Visto na Maxbot e ainda não listado</h2>
+  <p class="note">Telas da Maxbot (interface V4) lidas em 07/10/2026, só a estrutura: campos, opções e botões. "Confirmar" significa que o recurso existe na Maxbot e falta a Performa dizer se o novo sistema precisa dele.</p>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Funcionalidade</th><th>Detalhe</th><th>Origem</th><th>Situação</th></tr></thead><tbody>
+   <tr><td class="id">AU-60</td><td><b>Nó de IA no fluxo</b></td><td>Função "Interação" (a IA conversa) ou "Comando" (a IA executa uma instrução e grava o resultado numa variável). Responde a partir da 1ª ou 2ª mensagem; prazo de resposta de 3 min a 8 h.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">AU-61</td><td><b>Regras das capturas</b></td><td>Limite de erros (2 a 5) e prazo para resposta (3 min a 1 h) em toda captura. Texto: mínimo e máximo de caracteres. Número: validação CPF, CNPJ ou CEP. Telefone: formato, DDI, obrigar fixo ou celular. Data: formato e separadores. Escolha: até 10 opções com gatilhos, texto exato ou "contém", origem na mensagem, na IA ou numa variável. Arquivos: tamanho máximo (50 KB a 250 MB) e tipos aceitos.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">AU-62</td><td><b>Destino da mensagem</b></td><td>Um nó de mensagem pode enviar ao contato de origem, a outro contato ou ao atendente, e escolher o canal. Tem um template próprio para quando a janela de 24 h está fechada.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">AU-63</td><td><b>Tipos de variável</b></td><td>Texto curto (45), médio (1000) e longo (3000), número inteiro, decimal, data, data e hora, arquivo e JSON; com ordem. O valor vem de uma captura ou de um webhook, e pode ser substituível ou fixo. Há cerca de 120 variáveis de sistema ([CAD_NOME], [CAD_CPF_CNPJ]…).</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">AU-64</td><td><b>Webhook e requisição HTTP</b></td><td>Webhook de entrada e de saída: método, autenticação, URL, cabeçalho, carga original ou convertida, destino URL ou outro nó, simulação de retorno. Requisição HTTP: parâmetros ou JSON, prazo de 5 s a 10 min, resultado numa variável.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">AU-65</td><td><b>Nó de atendimento completo</b></td><td>Além de setor e atendente: segmentação de protocolo e contato, orientação ao atendente, permitir iniciar conversa, permitir que o contato encerre (palavra-chave), autoencerramento ocioso, avisos de fila, identificar atendente, distribuição e motivo obrigatório. São as mesmas regras de OP-62 a OP-68, só que por fluxo.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">AU-66</td><td><b>Textos padrão do bot</b></td><td>Título do menu, opção inválida, voltar ao menu anterior, voltar ao menu inicial, texto de horário de atendimento e informe do número de protocolo.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">AU-67</td><td><b>Tela de interações</b></td><td>Lista das conversas no bot com situação (em andamento, concluído, protocolo aberto), etapa atual, origem e filtros por CPF, CNPJ, protocolo e código do cliente. Ações: sussurro, encaminhar e encerrar.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+  </tbody></table></div>
+ </section>
+
+ <section>
+  <h2>Presente no protótipo e ainda não listado</h2>
+  <p class="note">Auditoria de 08/10/2026: tudo que o protótipo já mostra e não estava registrado aqui. São escolhas do protótipo, não decisões da Performa: ficam como CONFIRMAR até alguém responder.</p>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Funcionalidade</th><th>Detalhe</th><th>Origem</th><th>Situação</th></tr></thead><tbody>
+   <tr><td class="id">AU-68</td><td><b>Validações do editor de fluxo</b></td><td>Erros que bloqueiam Publicar: menu sem opções, mais de 3 botões, mais de 10 itens de lista, captura sem variável, nó de IA sem os caminhos resolveu/transferir. Avisos: nó solto, condição sem "senão", título acima do limite, fluxo não padrão que começa sem template, ponto que aponta para nó inexistente. Selo "Rascunho com alterações".</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> 08/10/2026</td></tr>
+   <tr><td class="id">AU-69</td><td><b>Caminhos de exceção nos nós</b></td><td>Template: caminho por botão e "se responder sem tocar em botão". Menu: número de tentativas, mensagem quando não entender e caminho "se não entender". Captura: tentativas e caminho "se esgotar"; tipos texto, número, e-mail, telefone, data, CPF e escolha.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> 08/10/2026</td></tr>
+   <tr><td class="id">AU-70</td><td><b>Nó de condição em detalhe</b></td><td>Regras em ordem (a primeira verdadeira decide), operadores =, ≠, contém, &gt;, &lt;, existe e não existe, e caminho "senão".</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> 08/10/2026</td></tr>
+   <tr><td class="id">AU-71</td><td><b>Cronômetro</b></td><td>Espera em minutos; avisa que espera acima de 24 h exige template na mensagem seguinte.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> 08/10/2026</td></tr>
+   <tr><td class="id">AU-72</td><td><b>Requisição HTTP em detalhe</b></td><td>POST, GET, PUT ou PATCH; corpo JSON; salva o campo id da resposta; caminhos "se der certo" e "se der erro".</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> 08/10/2026</td></tr>
+   <tr><td class="id">AU-73</td><td><b>Nó de IA</b></td><td>Primeira mensagem, máximo de respostas da IA e caminhos "resolveu" e "transferir".</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> 08/10/2026</td></tr>
+   <tr><td class="id">AU-74</td><td><b>Nós de LGPD</b></td><td>Autorizar: envia botões Aceito / Não aceito e grava data, hora e canal. Bloquear: marca o contato sem opt-in e fora dos disparos.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> 08/10/2026</td></tr>
+   <tr><td class="id">AU-75</td><td><b>Nó transferir</b></td><td>Escolhe a equipe, o motivo que aparece para o atendente e envia a mensagem de encaminhamento.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> 08/10/2026</td></tr>
+   <tr><td class="id">AU-76</td><td><b>Testar e iniciar fluxo</b></td><td>"Usar como início" num nó; fluxo que não é o padrão só pode ser testado com um ponto de inicialização; painel "Pontos neste fluxo"; aviso de execução em andamento.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> 08/10/2026</td></tr>
+   <tr><td class="id">AU-77</td><td><b>Agente de IA: campos do protótipo</b></td><td>Tom de voz; respostas da base (palavras-chave → resposta, com "responder e transferir"); arquivos .pdf, .md, .txt, .docx e .csv indexados; escolha do modelo (Claude Sonnet como padrão, Haiku, Opus ou GPT-4o — Q-AU1 segue aberta).</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">AU-78</td><td><b>Variáveis: regras</b></td><td>Escopo contato (fica salva) ou conversa (some ao encerrar); colunas "Usada em N nós" e "Contatos com valor"; variável em uso não pode ser removida; código em minúsculas com _ e sem repetir; sintaxe {{contato.x}} nas mensagens. No menu aparece como Configurações › Campos de contato.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> 08/10/2026</td></tr>
+   <tr><td class="id">AU-79</td><td><b>Pontos: situação e token</b></td><td>Selo de situação do ponto: "Abre com template", "Exige janela aberta" ou "Nó inexistente"; botão para copiar o token.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> 08/10/2026</td></tr>
+   <tr><td class="id">AU-80</td><td><b>Listas manuais</b></td><td>Contatos marcados à mão (sem opt-in fica desativado), com "Iniciar agora" ou "Agendar" em data e hora.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> 08/10/2026</td></tr>
+   <tr><td class="id">AU-81</td><td><b>Contrato da API de disparo de fluxo</b></td><td>POST /api/v1/automacao/disparos com token, telefone e variáveis. Resposta 202 "iniciado" ou 409 "falha" com motivo: interação em andamento, ponto inexistente, sem opt-in ou janela fechada. Responsável registrado: API-PERFORMA.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> 08/10/2026</td></tr>
+   <tr><td class="id">AU-82</td><td><b>Agendamentos: gestão</b></td><td>O backend verifica a cada minuto; filtros por situação com contagem; novo agendamento manual (ponto, contato, quando); cancelar pendente.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> 08/10/2026</td></tr>
+   <tr><td class="id">AU-83</td><td><b>Interação padrão: escolhas gerais</b></td><td>Qual fluxo atende mensagens novas, formato padrão do menu e equipe padrão de transbordo.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> 08/10/2026</td></tr>
+   <tr><td class="id">AU-84</td><td><b>Execuções: situações e colunas</b></td><td>Em andamento, concluída, transferida e abandonada, com indicador por situação; colunas Origem e Duração.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> 08/10/2026</td></tr>
+   <tr><td class="id">AU-85</td><td><b>Como o bot escolhe a equipe</b></td><td>Cobrança: 2ª via/Pix sem resolução, botões PAGO/FIN, contestação, régua D+30. Sucesso do Cliente: créditos e faturas, resposta a campanha, pedido de atendente, bot sem entender. Mostrado na tela de perfis.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">AU-86</td><td><b>Foco no atendimento de clientes</b></td><td>O bot atende quem já é cliente da Performa. Sai do menu a opção "Quero economizar" (simulação para novos clientes), que veio da cópia do funil de vendas da Maxbot, com os nós de captura de valor da conta e e-mail, o envio do lead ao CRM e as variáveis valor_conta, email_proposta e lead_id. Restos de captação no protótipo: Q-AU8.</td><td><i class="o o-perf">PERFORMA</i></td><td><i class="s s-def">DEFINIDO</i> · 08/10/2026</td></tr>
+  </tbody></table></div>
+  <h3>Onde o protótipo está diferente do contexto</h3>
+  <p class="note">As outras diferenças foram corrigidas em 08/10/2026. Estas dependem de resposta da Performa ou ficaram fora do escopo; até lá vale o contexto.</p>
+  <div class="tbl"><table><thead><tr><th>Item</th><th>O que o contexto diz</th><th>O que o protótipo faz hoje</th></tr></thead><tbody>
+   <tr><td>AU-01</td><td>Canvas com arrastar, zoom, minimapa e waypoints.</td><td>Layout automático em camadas; ligação escolhendo o "Próximo" num campo.</td></tr>
+   <tr><td>AU-63</td><td>Tipos texto curto/médio/longo, inteiro, decimal, data e hora, arquivo, JSON; formato [CAD_NOME].</td><td>Tipos texto, número, e-mail, telefone, data, CPF, escolha; formato {{contato.x}}.</td></tr>
+</tbody></table></div>
+ </section>
+
+ <section>
+  <h2>Perguntas para a Performa</h2>
+  <div class="qs">
+   <div class="q p"><b>Q-AU1 · PARCIAL</b>Qual modelo de IA usar no novo sistema? Hoje o agente de teste da Maxbot usa GPT-4o (OpenAI). Existe preferência de provedor ou restrição de custo e de dados?<div class="ans"><strong>Resposta parcial pelo banco · ainda falta</strong>O CRM tem uma chave <code>AI_SUMMARY_API_KEY</code> (resumo por IA), sem indicar o provedor. Falta: qual modelo usar no novo sistema.</div></div>
+   <div class="q p"><b>Q-AU2 · PARCIAL</b>O que cada ponto da "Jornada do cliente" envia e quando: Primeira mensagem, Assinatura do termo, Cadastro CEMIG, Conectado, Duas faturas, Dúvidas, Em andamento, Processo finalizado? Podem compartilhar os textos atuais?<div class="ans"><strong>Resposta parcial pelo banco · ainda falta</strong>A sequência de estados e os gatilhos estão no quadro acima. Falta: os textos de cada mensagem (ficam na Maxbot) e o significado exato de cada cron.</div></div>
+   <div class="q r"><b>Q-AU3 · RESPONDIDA</b>Qual sistema chama a API para iniciar essas jornadas hoje ("API-MAXBOT")? ERP, CRM, Plog?<div class="ans"><strong>Respondida pelo banco</strong>É o próprio <b>CRM Plog</b>: ele chama a API da Maxbot com os tokens dos pontos de inicialização (parâmetros <code>MAXBOT_INITIALIZATION_TOKEN_*</code>) e recebe os webhooks da Maxbot na tabela <code>maxbot_inbound_webhook</code>.</div></div>
+   <div class="q p"><b>Q-AU4 · PARCIAL</b>Quando um agendamento falha porque já existe conversa aberta, o que deve acontecer: tentar de novo depois, avisar alguém ou descartar?<div class="ans"><strong>Resposta parcial pelo banco · ainda falta</strong>Hoje a falha fica registrada em <code>maxbot_log_integration</code> (21 falhas, 15 com HTTP 422) e não há reenvio automático visível. Falta decidir a regra no novo sistema.</div></div>
+   <div class="q"><b>Q-AU5</b>Qual é o menu inicial atual da Maxbot (opções e textos)? Ele deve ser mantido igual?</div>
+   <div class="q"><b>Q-AU6</b>O que significam exatamente os crons BD3 e BD1 (3º e 1º dia útil de quê?) e os prazos de +7 e +10 dias na jornada?</div>
+   <div class="q"><b>Q-AU7</b>A jornada continua sendo comandada pelo CRM Plog (o novo sistema só recebe as chamadas), ou passa a rodar inteira no novo sistema?</div>
+   <div class="q"><b>Q-AU8</b>O protótipo ainda tem outros restos de captação de novos clientes: contatos com a etiqueta "lead", o segmento "Leads frios (30+ dias)" e a campanha de exemplo para leads. Removemos tudo, ou a Performa usa o WhatsApp para falar com quem ainda não é cliente (indicação, por exemplo)?</div>
+  </div>
+ </section>
+ <footer>Atualizado em 08/10/2026 · fontes listadas no <a href="index.html">início</a>.</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contexto · Performa Mensageria</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<div class="wrap">
+ <header>
+  <span class="eyebrow">Performa Energy · plataforma de mensagens · contexto do projeto</span>
+  <h1>Funcionalidades necessárias por área</h1>
+  <p>Um arquivo por área do sistema, listando o que cada parte precisa fazer. A referência é a Maxbot, que a Performa Energy usa hoje, somada aos pedidos da equipe, ao documento "Agente cobrança" e às regras da WhatsApp Cloud API da Meta. O que ainda não foi definido aparece como pergunta. Nenhuma lacuna foi preenchida por suposição.</p>
+ </header>
+ <p class="note"><b>Onde o sistema fica (08/10/2026):</b> é uma nova aba <b>Atendimento</b> na barra superior do Performalog. Ao clicar nela abre a área do Atendimento, com o próprio menu e todos os fluxos deste projeto. Login, usuários, setores, clientes e motivos vêm do Performalog. Usa as mesmas cores e a fonte do Performalog, com modo claro e noturno (CF-49). Detalhes em <a href="telas.html">Telas e fluxos</a>.</p>
+ <p class="note"><b>Auditoria do protótipo (08/10/2026):</b> cada arquivo de área tem agora a seção "Presente no protótipo e ainda não listado" (itens novos como CONFIRMAR) e a tabela "Onde o protótipo está diferente do contexto". As correções foram feitas no mesmo dia; restam 7 diferenças, que dependem de resposta da Performa ou ficaram fora do escopo (canvas de arrastar, tipos de variável). Ficam de fora, por serem só ferramentas de demonstração: troca de usuário logado, relógio +25 h, simulador do celular do cliente, console da API, página "Como a API funciona" com botões de teste, abas do Performalog fora do Atendimento e o botão "Conversar como a cliente" do agente.</p>
+
+ <p class="note"><b>Integração com a Meta (08/10/2026):</b> a página <a href="api-meta.html">API da Meta</a> reúne tudo o que o backend do Performalog precisa para a WhatsApp Cloud API (itens AP-01 a AP-92, exemplos de payload, erros e modelo de banco), com 10 perguntas novas (Q-AP1 a Q-AP10). A principal: se a WABA dos dois números já é da Performa, o sistema novo pode rodar em paralelo com a Maxbot sem migrar número.</p>
+
+ <section>
+  <h2>Áreas</h2>
+  <div class="grid">
+   <a class="card" href="operacao.html"><b>Operação</b><span>Atendimento, filas, protocolos, contatos, opt-in e LGPD.</span></a>
+   <a class="card" href="automacao.html"><b>Automação</b><span>Fluxos, agentes de IA, variáveis, pontos de inicialização, listas, agendamentos e interação padrão.</span></a>
+   <a class="card" href="disparos.html"><b>Disparos</b><span>Templates, segmentação e disparo em massa de template para um segmento.</span></a>
+   <a class="card" href="cobranca.html"><b>Cobrança inteligente</b><span>Régua de envios, configuração de dias, eventos e integrações de pagamento.</span></a>
+   <a class="card" href="agente-cobranca.html"><b>Agente de cobrança</b><span>Fluxo completo do agente, conforme o documento "Agente cobrança".</span></a>
+   <a class="card" href="gestao.html"><b>Gestão e relatórios</b><span>Painel, relatórios de atendimento, disparos, cobrança e custos.</span></a>
+   <a class="card" href="telas.html"><b>Telas e fluxos</b><span>Divisão das telas e botões, perfis e os 12 fluxos principais, antes do visual.</span></a>
+   <a class="card" href="api-meta.html"><b>API da Meta</b><span>Base técnica da integração: conta, chamadas, webhooks, chats, modelos, disparo em massa, erros, preço e tabelas do banco.</span></a>
+   <a class="card" href="configuracao.html"><b>Configuração</b><span>Conta WhatsApp e API da Meta, canais, usuários e perfis, integrações e segurança.</span></a>
+  </div>
+ </section>
+
+ <section>
+  <h2>Como ler cada item</h2>
+  <div class="legend">
+   <span><b>Origem</b></span>
+   <span><i class="o o-max">MAXBOT</i>visto no painel da Maxbot da Performa</span>
+   <span><i class="o o-site">SITE</i>descrito no site público da Maxbot</span>
+   <span><i class="o o-perf">PERFORMA</i>pedido da equipe Performa</span>
+   <span><i class="o o-doc">DOC</i>documento "Agente cobrança"</span>
+   <span><i class="o o-meta">META</i>regra da WhatsApp Cloud API</span>
+   <span><i class="o o-prot">PROTÓTIPO</i>proposta feita no protótipo, ainda sem aprovação</span>
+   <span><i class="o o-db">BANCO</i>encontrado no banco performalog (CRM Plog)</span>
+  </div>
+  <div class="legend">
+   <span><b>Situação</b></span>
+   <span><i class="s s-def">DEFINIDO</i>pedido ou regra clara</span>
+   <span><i class="s s-conf">CONFIRMAR</i>existe na referência, falta a Performa dizer se quer</span>
+   <span><i class="s s-ver">VERIFICAR NA MAXBOT</i>tela da Maxbot ainda não aberta em detalhe</span>
+   <span><i class="s s-perg">PERGUNTA</i>depende de resposta da Performa</span>
+   <span><i class="s s-resp">RESPONDIDA</i>o banco respondeu</span>
+   <span><i class="s s-parc">PARCIAL</i>o banco respondeu em parte</span>
+  </div>
+ </section>
+
+ <section>
+  <h2>Prioridade definida pela Performa</h2>
+  <p class="note"><b>Ordem de implementação (08/10/2026):</b> primeiro se constrói o sistema inteiro integrado ao Performalog (fase 1). Só depois dessa construção começa a execução do agente de cobrança (fase 2), que usa a base pronta: atendimento, filas, templates, régua e relatórios.</p>
+  <h3>Fase 1 · sistema integrado ao Performalog</h3>
+  <ol class="flow" style="margin:0;padding:0">
+   <li><div><b>Atendimento pela API da Meta com chatbot</b> · aba Atendimento no Performalog, com a <a href="configuracao.html">configuração</a> e a <a href="api-meta.html">integração com a Meta</a> como base</div></li>
+   <li><div><b>Disparos em massa</b> · construção de templates, segmentação, envio para o segmento</div></li>
+   <li><div><b>Cobrança inteligente</b> · dias antes e depois do vencimento escolhidos livremente</div></li>
+   <li><div><b>Relatórios</b></div></li>
+   <li><div><b>Automação</b> · replicar o fluxo da Maxbot</div></li>
+  </ol>
+  <h3>Fase 2 · execução do agente</h3>
+  <ol class="flow" style="margin:0;padding:0" start="6">
+   <li><div><b>Agente de cobrança</b> · "um dos principais focos do software", seguir ao máximo o documento. Começa depois que a fase 1 estiver construída.</div></li>
+  </ol>
+ </section>
+
+ <section>
+  <h2>O que o banco revelou</h2>
+  <div class="db">
+   <ul class="plain">
+    <li><b>O CRM Plog já integra com a Maxbot</b>: guarda tokens dos pontos de inicialização e roda a Jornada do cliente como máquina de estados (tabelas <code>maxbot_control</code>, <code>maxbot_history</code>, <code>maxbot_inbound_webhook</code>). Ver <a href="automacao.html">Automação</a>.</li>
+    <li><b>As faturas vêm da Digital Grid</b> para a tabela <code>client_integration_bill</code>, com status Pago, Vencido, Negativado, Parcelado, Aguardando, Arquivado, Aberto e Aprovação. Ver <a href="cobranca.html">Cobrança</a>.</li>
+    <li><b>Os créditos de energia já estão no banco</b>: relatório da CEMIG por UC (<code>cemig_gd_report</code>) e balanço mensal XML × planilha × previsão (<code>energy_balance_item</code>). Ver <a href="agente-cobranca.html">Agente de cobrança</a>.</li>
+    <li><b>Existe uma área de Sucesso do Cliente</b> com 1,6 mil casos registrados, motivos padronizados e encaminhamento para Comercial e Financeiro. Ver <a href="operacao.html">Operação</a>.</li>
+    <li><b>A API da Digital Grid traz faturas completas</b> (situação, pagamento, linha digitável, Pix, composição em kWh, bandeiras, envio por e-mail/WhatsApp), mas não tem recurso para criar acordo ou parcelamento. Ver <a href="cobranca.html">Cobrança</a>.</li>
+    <li><b>Também há uma instância Z-API</b> (WhatsApp não oficial) e uma chave de IA para resumos cadastradas no CRM. Ver <a href="configuracao.html">Configuração</a>.</li>
+   </ul>
+  </div>
+ </section>
+
+ <section>
+  <h2>Fontes</h2>
+  <ul class="plain note">
+   <li>Site público maxbot.com.br: /produto, /planos-maxbot e /servicos-2025/*, consultados em 07/10/2026.</li>
+   <li>Painel da Maxbot da Performa (interfaces nova e V4), só leitura, em 07/10/2026. Na segunda leitura, no mesmo dia, as 47 telas da V4 foram lidas (só estrutura: campos, opções e botões). Os itens que faltavam estão nas seções "Visto na Maxbot e ainda não listado" de cada área.</li>
+   <li>Documento <code>Agente cobrança.docx</code>, na pasta do projeto.</li>
+   <li>Documentação da WhatsApp Cloud API (Graph API v26.0, lançada em 29/07/2026), webhooks de status, tabela de preços por mensagem, faturamento em BRL, limites por portfólio e BSUID, conferida de novo em 08/10/2026.</li>
+   <li>Protótipo navegável: <code>prototipo-mensageria.html</code>.</li>
+   <li>Documento <code>TABELAS-SC/explicacao-calculo-multa.html</code>: cálculo da multa rescisória já implementado (tela <code>/multa-rescisoria</code>).</li>
+   <li>Banco MySQL <code>performalog</code> do CRM Plog (Azure), consultado só para leitura em 07/10/2026, com a base de conhecimento <code>performa-db-knowledge</code>. Só estrutura e totais agregados; nenhum dado pessoal de cliente foi copiado para estes arquivos.</li>
+   <li>API da Digital Grid em <code>https://gestao.dg.energy/api/v1/</code>, consultada só para leitura em 07/10/2026 com o token do <code>.env</code>. Só estrutura e totais.</li>
+  </ul>
+ </section>
+ <footer>Atualizado em 08/10/2026. Corrija os itens diretamente nestes arquivos ou responda às perguntas de cada página.</footer>
+</div>
+</body>
+</html>

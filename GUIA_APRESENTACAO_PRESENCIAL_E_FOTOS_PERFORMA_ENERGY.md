@@ -1,6 +1,9 @@
 # GUIA MESTRE E ROTEIRO DE APRESENTAÇÃO PRESENCIAL NA PERFORMA ENERGY
-## PROTOCOLO TÉCNICO RIGOROSO DAS 3 FOTOS OBRIGATÓRIAS (MÓDULO 4 — 50 PONTOS)
-### DISCIPLINA: AMBIENTE PROFISSIONAL E DE EXTENSÃO — APEX V (CURSOS DE TI)
+
+> **ARQUIVO LEGADO — NÃO USAR COMO ROTEIRO ATUAL.** Contém afirmações não verificadas sobre atividade, Figma/IA/OCR, resultados e LGPD. A versão segura de planejamento é `GUIA_APRESENTACAO_APEX_V_REVISTO.md`. Nenhum trecho deste arquivo comprova que oficina ocorreu.
+## ROTEIRO PROPOSTO E ORIENTAÇÕES DE REGISTRO DA AÇÃO (MÓDULO 4)
+### DISCIPLINA: AMBIENTE PROFISSIONAL E DE EXTENSÃO EM BANCO DE DADOS V
+> Material de planejamento do estudante, não documento oficial da Faculdade. Confirmar no AVA os requisitos atuais; este guia não comprova que a atividade ocorreu.
 **Faculdade Unyleya | Programa de Extensão Curricular Institucional "Educando para a Cidadania"**  
 **Conformidade Normativa**: Resolução CNE/CES MEC nº 7/2018 e Marco Regulatório da GD (Lei nº 14.300/2022)
 
@@ -11,17 +14,17 @@
 | Item | Especificação Institucional e Corporativa |
 |---|---|
 | **Instituição de Ensino Superior** | Faculdade Unyleya — Diretoria de Graduação |
-| **Curso de Graduação** | Tecnologia em Análise e Desenvolvimento de Sistemas (TADS) / Cursos de TI |
+| **Curso de Graduação** | Tecnologia em Banco de Dados (conforme portal do aluno) |
 | **Componente Curricular** | Ambiente Profissional e de Extensão — APEX V (Carga Horária: 100 horas) |
 | **Professora Orientadora / Coordenadora** | Profa. Dra. Carla Tavares |
 | **Tema Gerador Oficial da Disciplina** | O Impacto da Inteligência Artificial (IA) nas Carreiras de TI e no Cotidiano |
 | **Título da Ação de Extensão** | *Performa Solar IA: Inteligência Artificial Ética, Governança de Dados (LGPD) e Eficiência Energética na Gestão de Créditos Solares* |
 | **Empresa Parceira / Comunidade Concedente** | **Performa Energy** (Soluções Inteligentes em Créditos de Energia Solar Compartilhada e Gestão Sustentável) |
-| **Local de Implementação Físico** | Sede Corporativa da Performa Energy — Sala de Reuniões e Treinamento Executivo |
-| **Público-Alvo Participante** | Colaboradores da Performa Energy: Analistas de Operações e Faturas, Consultores Comerciais de Energia Solar, Especialistas de Atendimento ao Cliente (Customer Success), Desenvolvedores e Coordenadores de Sustentabilidade (Total: 8 a 15 participantes) |
-| **Duração da Apresentação Presencial** | 90 minutos (1 hora e 30 minutos cronometrados em 5 blocos) |
+| **Local de Implementação Físico** | A confirmar com a Performa Energy; registrar local/endereço somente após autorização. |
+| **Público-Alvo Participante** | Colaboradores indicados pela empresa; funções, quantidade e disponibilidade a confirmar. |
+| **Duração da Apresentação Presencial** | Proposta de 90 minutos; ajustar ao tempo autorizado e registrar a duração efetiva. |
 | **Objetivos de Desenvolvimento Sustentável (ODS)** | **ODS 7** (Energia Limpa e Acessível), **ODS 9** (Indústria, Inovação e Infraestrutura) e **ODS 13** (Ação Contra a Mudança Global do Clima), com alinhamento transversal ao **ODS 4** (Educação Continuada) e **ODS 8** (Trabalho Decente) |
-| **Meta de Avaliação Acadêmica** | Obtenção da nota máxima no Módulo 4: **50 pontos** referentes à Apresentação Presencial documentada com as **3 fotos obrigatórias**, somados aos **20 pontos** do Produto Digital no Figma e Certificação iTalents |
+| **Pontuação** | Conferir os critérios e a pontuação diretamente na atividade correspondente do AVA. |
 
 ---
 
@@ -96,7 +99,7 @@ O workshop presencial foi estruturado segundo os princípios da **Andragogia de 
 #### BLOCO 1: ABERTURA, BOAS-VINDAS E CONTEXTO EXTENSIONISTA (00 a 15 min)
 - **Objetivo Andragógico**: Situar a plateia sobre a relevância acadêmica e corporativa do encontro, estabelecendo uma atmosfera de acolhimento, respeito ao tempo profissional e pertencimento comunitário.
 - **Tópicos Abordados**:
-  1. Apresentação individual do estudante extensionista do curso de Análise e Desenvolvimento de Sistemas da Faculdade Unyleya.
+  1. Apresentação individual do estudante extensionista do curso de Banco de Dados da Faculdade Unyleya.
   2. O que é a Extensão Curricular Universitária (Resolução MEC nº 7/2018): o conhecimento científico gerado na faculdade transposto diretamente para a sociedade e o setor produtivo.
   3. O papel da Performa Energy na transição energética sustentável brasileira e a vinculação aos **ODS 7** (Energia Limpa), **ODS 9** (Inovação Tecnológica) e **ODS 13** (Ação Climática).
   4. Apresentação da questão-problema: a complexidade técnica das faturas de energia elétrica, a assimetria de informações que afasta os consumidores da energia solar e os riscos operacionais do uso desregrado de ferramentas de IA (*Shadow AI*).
@@ -188,7 +191,7 @@ A oratória do estudante deve equilibrar rigor acadêmico, linguagem acessível 
 
 *Quero iniciar expressando minha mais sincera gratidão à diretoria e a cada um de vocês da equipe da Performa Energy por abrirem as portas da empresa e disponibilizarem este tempo precioso na agenda de vocês.*
 
-*Meu nome é [Nome Completo do Aluno], sou colaborador aqui na empresa e atualmente curso Tecnologia em Análise e Desenvolvimento de Sistemas na Faculdade Unyleya. Estou aqui hoje conduzindo o projeto de extensão curricular da disciplina APEX V, sob a coordenação da Professora Doutora Carla Tavares.*
+*Meu nome é [Nome Completo do Aluno], sou colaborador aqui na empresa e atualmente curso Tecnologia em Banco de Dados na Faculdade Unyleya. Estou aqui hoje conduzindo o projeto de extensão curricular da disciplina APEX V, sob a coordenação da Professora Doutora Carla Tavares.*
 
 *Vocês podem estar se perguntando: 'O que exatamente é um projeto de extensão universitária?'. A extensão é a ponte viva entre a faculdade e a comunidade real. Por meio de uma diretriz do Ministério da Educação, a Resolução MEC nº 7/2018, as universidades brasileiras têm a missão obrigatória de levar o conhecimento tecnológico produzido nas salas de aula para apoiar a sociedade, solucionar gargalos práticos e promover a cidadania.*
 
@@ -498,7 +501,7 @@ Empresa Parceira: PERFORMA ENERGY (Gestão Inteligente de Créditos de Energia S
 Endereço: Sede Corporativa da Performa Energy — Sala de Treinamento Executivo
 Data da Realização: _____ / _____ / 2026          Carga Horária Efetiva: 1 hora e 30 minutos (90 min)
 Nome do Aluno Extensionista: ______________________________________________________________________
-Matrícula Unyleya: _________________________ Curso: Tecnologia em Análise e Desenvolvimento de Sistemas
+Matrícula Unyleya: _________________________ Curso: Tecnologia em Banco de Dados
 
 II. IDENTIFICAÇÃO DO COLABORADOR AVALIADOR (COMUNIDADE ATENDIDA):
 Nome do Colaborador: _____________________________________________________________________________
@@ -564,31 +567,28 @@ Após o término da apresentação, o aluno deve tabular as notas obtidas e pree
 
 | Dimensão Avaliada | Perguntas do Instrumento | Média Geral Obtida (1 a 5) | Percentual de Aprovação |
 |---|---|:---:|:---:|
-| **Dimensão 1: Relevância Temática** | Alinhamento da IA e LGPD ao setor de energia solar | **4.9 / 5.0** | **98%** |
-| **Dimensão 2: Qualidade no Figma** | Usabilidade, estética e clareza do protótipo digital | **4.8 / 5.0** | **96%** |
-| **Dimensão 3: Segurança e LGPD** | Higienização de contas e combate à Shadow AI | **4.9 / 5.0** | **98%** |
-| **Dimensão 4: Mediação Pedagógica** | Clareza, domínio do aluno e gestão dialógica | **5.0 / 5.0** | **100%** |
-| **Dimensão 5: Impacto Socioambiental** | Agregação de valor e compromisso com os ODS 7, 9 e 13 | **4.9 / 5.0** | **98%** |
-| **ÍNDICE CONSOLIDADO GERAL** | **Média Ponderada da Avaliação Comunitária** | **4.90 / 5.0** | **98.0%** |
+| **Dimensão 1: Relevância** | [critério aplicado] | [calcular após coleta] | [calcular após coleta] |
+| **Dimensão 2: Material apresentado** | [critério aplicado] | [calcular após coleta] | [calcular após coleta] |
+| **Dimensão 3: Privacidade e IA** | [critério aplicado] | [calcular após coleta] | [calcular após coleta] |
+| **Dimensão 4: Clareza** | [critério aplicado] | [calcular após coleta] | [calcular após coleta] |
+| **Dimensão 5: Relevância percebida** | [critério aplicado] | [calcular após coleta] | [calcular após coleta] |
+| **Síntese** | Informar n válido e método de cálculo | [calcular após coleta] | [calcular após coleta] |
 
 #### Depoimentos Qualitativos Estruturados para o Slide 18 (Anonimizados por Função):
-1. **Analista de Operações e Faturas**:
-   > *"Nós lidamos diariamente com faturas despadronizadas de diversas concessionárias e o medo de enviar dados para ferramentas públicas de IA sempre existiu. O workshop e a demonstração do protótipo no Figma trouxeram clareza imediata sobre como criar um fluxo auditável e seguro. A dinâmica de higienização de contas em 30 segundos já se tornou padrão operacional na nossa mesa de conferência."*
-2. **Consultor Comercial de Energia Solar**:
-   > *"O protótipo no Figma resolveu nossa maior dificuldade com clientes: explicar a economia real sem gerar desconfiança. O botão de explicabilidade e as respostas fundamentadas da assistente Lia trazem um nível de segurança que eleva o fechamento de contratos de energia compartilhada a outro patamar de maturidade."*
-3. **Coordenador de Sustentabilidade e Inovação**:
-   > *"O discente demonstrou maturidade acadêmica e técnica impressionantes. Conectar as metas do ODS 7 e 13 com as salvaguardas da LGPD e a tecnologia do Figma traduz com fidelidade o espírito da extensão universitária: gerar transformação e inteligência no mundo corporativo real."*
+1. [Inserir fala real, autorizada e anonimizada; não criar ou parafrasear como citação.]
+2. [Inserir fala real, autorizada e anonimizada; não criar ou parafrasear como citação.]
+3. [Inserir fala real, autorizada e anonimizada; não criar ou parafrasear como citação.]
 
 ---
 
 ## 7. MINUTA DA DECLARAÇÃO INSTITUCIONAL DA PERFORMA ENERGY
 
-Este documento comprova formalmente que a apresentação presencial ocorreu na data, horário e local acordados, devendo ser assinado pela gerência e mantido em guarda pelo aluno para submissão complementar caso a coordenação acadêmica solicite comprovação documental adicional às fotos.
+**Modelo de declaração, não comprobatório enquanto não preenchido e assinado.** Usar somente após a atividade realmente ocorrer, com autorização de representante da empresa; não preencher dados empresariais presumidos.
 
 ```
 ====================================================================================================
-               PERFORMA ENERGY — GESTÃO INTELIGENTE DE ENERGIA SOLAR LTDA.
-                 CNPJ: 00.000.000/0001-00 | SEDE CORPORATIVA — BRASIL
+                         PERFORMA ENERGY — IDENTIFICAÇÃO A CONFIRMAR
+                 CNPJ/endereço: preencher apenas com dado real e autorizado ou omitir
 ====================================================================================================
 
                      DECLARAÇÃO INSTITUCIONAL DE REALIZAÇÃO DE ATIVIDADE
@@ -601,7 +601,7 @@ estudante:
 
 Nome do Discente: __________________________________________________________________________________
 Número de Matrícula: _______________________________________________________________________________
-Curso Superior: TECNOLOGIA EM ANÁLISE E DESENVOLVIMENTO DE SISTEMAS / TI
+Curso Superior: TECNOLOGIA EM BANCO DE DADOS
 
 Realizou PRESENCIALMENTE nas dependências corporativas da empresa PERFORMA ENERGY, em nossa Sala de
 Reuniões Executiva, no dia _____ de ____________________ de 2026, com carga horária total de 1 hora
@@ -610,18 +610,16 @@ e 30 minutos (90 minutos), as atividades práticas do Projeto de Extensão intit
 "PERFORMA SOLAR IA: INTELIGÊNCIA ARTIFICIAL ÉTICA, GOVERNANÇA DE DADOS (LGPD) E EFICIÊNCIA ENERGÉTICA
 NA GESTÃO DE CRÉDITOS SOLARES"
 
-A intervenção extensionista contemplou com excelência as seguintes ações:
+A intervenção, se realizada, contemplou as ações efetivamente executadas (apagar itens não realizados):
 1. Contextualização do impacto social e ambiental da Inteligência Artificial aplicada ao setor elétrico
    e sua articulação com os Objetivos de Desenvolvimento Sustentável da ONU (ODS 7, ODS 9 e ODS 13);
-2. Demonstração interativa e testes de usabilidade do protótipo digital "Performa Solar IA", confeccionado
-   na plataforma Figma, demonstrando tecnologias de Smart OCR, Bounding Boxes e Paradigma Human-in-the-Loop;
+2. Apresentação do material educativo/protótipo efetivamente criado; descrever suas funções reais, sem atribuir OCR/IA não implementados;
 3. Mediação de debate sobre Riscos Algorítmicos (Armas de Destruição Matemática), Prevenção de Alucinações
    Técnicas e Conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018);
 4. Condução de oficina prática de higienização de faturas de energia e engenharia de prompts seguros;
 5. Coleta individual e formal dos Instrumentos de Avaliação da Comunidade junto aos colaboradores presentes.
 
-Atestamos que o(a) estudante demonstrou pleno domínio técnico, ética profissional, pontualidade e postura
-pedagógica exemplar, tendo sua iniciativa recebido avaliação amplamente positiva da nossa equipe.
+Atestamos somente a realização das atividades acima assinaladas. Não incluir avaliação de desempenho ou impacto que o signatário não tenha observado.
 
 
 Local e Data: ____________________________________________________, _____ de _________________ de 2026.

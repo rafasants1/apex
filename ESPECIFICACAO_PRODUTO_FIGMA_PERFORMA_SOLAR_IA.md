@@ -1,17 +1,19 @@
-# ESPECIFICAÇÃO E ESTRUTURAÇÃO COMPLETA DO PRODUTO DIGITAL NO FIGMA
-## PRODUTO: PERFORMA SOLAR IA — PORTAL INTELIGENTE DE ENERGIA LIMPA, OCR DE FATURAS & GOVERNANÇA ÉTICA
-### DISCIPLINA: AMBIENTE PROFISSIONAL E DE EXTENSÃO — APEX V (CURSOS DE TI / FACULDADE UNYLEYA)
+# ESPECIFICAÇÃO CONCEITUAL DO MATERIAL EDUCATIVO DIGITAL
+> **DOCUMENTO LEGADO/EXPLORATÓRIO — usar como fonte atual somente `ESPECIFICACAO_FIGMA_APEX_V_REVISTA.md`.** As seções seguintes contêm exemplos antigos de recursos, taxas e resultados que não foram implementados nem validados. Não copiar como fatos, garantias ou descrição do Figma.
+## PROPOSTA: PERFORMA SOLAR IA — LETRAMENTO SOBRE IA, PRIVACIDADE E ENERGIA SOLAR
+### DISCIPLINA: AMBIENTE PROFISSIONAL E DE EXTENSÃO EM BANCO DE DADOS V (FACULDADE UNYLEYA)
 ### INSTITUIÇÃO PARCEIRA: PERFORMA ENERGY — GESTÃO DE CRÉDITOS DE ENERGIA SOLAR
 
 ---
 
-**Documento Oficial de Engenharia de Produto, Design de Interface e Diretrizes de Implementação no Figma**  
-*Autor: Discente Extensionista de Tecnologia da Informação*  
+**Documento de planejamento; não é documento oficial da instituição nem comprovação de produto implementado.**
+*Escopo: proposta de conteúdo e telas para material educativo a prototipar no Figma.*
+*Autor: Rafael Silva, discente de Tecnologia em Banco de Dados*
 *Orientação Acadêmica: Profa. Dra. Carla Tavares (Coordenação APEX V)*  
 *Marco Regulatório Curricular: Resolução CNE/CES MEC nº 7/2018 (Extensão Universitária)*  
 *Setor de Aplicação: Geração Distribuída de Energia Solar Fotovoltaica (Lei nº 14.300/2022 & RN ANEEL nº 1.000/2021)*  
 *Governança Digital: Lei Geral de Proteção de Dados Pessoais (LGPD - Lei nº 13.709/2018)*  
-*Versão: 1.0 — Homologada para Módulo 3 (Atividade Digital) e Módulo 4 (Apresentação Presencial de 50 pts)*  
+*Status: proposta conceitual, ainda não homologada, implementada ou testada. Não afirmar que OCR, IA, cálculos, proteção técnica ou resultados existem até serem implementados e verificados.*
 
 ---
 
@@ -54,44 +56,43 @@
 # 1. VISÃO GERAL DO PRODUTO & ALINHAMENTO ESTRATÉGICO
 
 ## 1.1. Contexto e Problematização Real: A Performa Energy no Setor Solar
-A **Performa Energy** é uma empresa de vanguarda no ecossistema de transição energética brasileiro, especializada na gestão e distribuição de créditos de energia solar por assinatura (Geração Distribuída - GD Compartilhada). O modelo operacional da Performa Energy conecta usinas solares fotovoltaicas de médio e grande porte diretamente à rede das concessionárias distribuidoras locais (ex.: CEMIG, ENEL, CPFL, Neoenergia, Light), injetando energia limpa e convertendo-a em créditos de compensação na conta de luz de pessoas físicas (residenciais B1) e jurídicas (comerciais e industriais B3).
+O projeto toma como contexto temático a gestão de créditos de energia solar. Confirmar com a empresa a descrição de suas atividades e o escopo da comunidade antes de atribuir processos, sistemas ou resultados específicos à Performa Energy.
 
-Contudo, a expansão massiva dessa modalidade enfrenta gargalos operacionais e atritos cognitivos severos:
-1. **Complexidade Hermética das Faturas de Energia**: As faturas de energia elétrica no Brasil contêm dezenas de rubricas técnicas (TUSD - Tarifa de Uso do Sistema de Distribuição, TE - Tarifa de Energia, Adicionais de Bandeiras Tarifárias, Tributos ICMS, PIS/COFINS, Custo de Disponibilidade e Contribuição de Iluminação Pública - CIP/COSIP). O consumidor médio não compreende o que consome, gerando desconfiança sobre como os créditos de energia solar são abatidos.
-2. **Morosidade e Erros no Tratamento Manual de Faturas**: A análise manual de faturas pela equipe comercial e operacional da Performa Energy é um processo lento, repetitivo e sujeito a falhas de digitação, limitando a escala de atendimento da empresa.
-3. **Riscos de "Shadow AI" e Infrações à LGPD (Lei nº 13.709/2018)**: No anseio de acelerar análises, colaboradores podem recorrer a ferramentas públicas e não homologadas de Inteligência Artificial para transcrever faturas. Ao colar faturas completas em chats públicos, expõem dados altamente sensíveis (Nome, CPF/CNPJ, Endereço e Histórico de Consumo dos últimos 12 meses), violando as diretrizes da Autoridade Nacional de Proteção de Dados (ANPD).
-4. **Alucinações Algorítmicas e Promessas Ilusórias**: Modelos generativos comerciais sem parametrização regulatória costumam alucinar, afirmando que a energia solar "zera a conta de luz", ignorando a taxa de conexão mínima obrigatória por lei e o rateio do Fio B previsto pela Lei 14.300/2022.
+Questões educativas que podem ser abordadas, sem pressupor que sejam problemas já observados na empresa:
+1. **Leitura de faturas**: diversidade de rubricas pode tornar a interpretação difícil; usar apenas exemplos fictícios ou autorizados.
+2. **Privacidade**: documentos podem conter dados pessoais. Não afirmar uso de IA pública ou incidente na empresa sem evidência.
+3. **Confiabilidade**: OCR e IA podem errar; resultados financeiros/regulatórios requerem validação em fonte competente.
 
-A aplicação **Performa Solar IA** nasce como resposta extensionista e tecnológica a esses desafios, unindo design de ponta, visão computacional auditável, modelos preditivos explicáveis e governança algorítmica rigorosa.
+O **Performa Solar IA** é uma proposta de material educativo/protótipo conceitual para discutir esses temas. Não é serviço operacional, sistema de OCR, modelo preditivo, ferramenta de cálculo ou política aprovada pela empresa.
 
 ---
 
 ## 1.2. Missão, Visão e Proposta de Valor da "Performa Solar IA"
 
-- **Nome Oficial do Produto**: *Performa Solar IA — Portal Inteligente de Energia Limpa, OCR de Faturas & Governança Ética*
+- **Nome de trabalho da proposta**: *Performa Solar IA — IA responsável, privacidade e energia solar*
 - **Plataforma**: Aplicação Web Responsiva (Otimizada para Desktop 1440x900px e Mobile First 390x844px).
 - **Missão**: Democratizar o acesso à energia solar compartilhada por meio de uma interface transparente, educativa e segura, capacitando clientes e colaboradores na compreensão exata de suas faturas e créditos de energia limpa sem pegadinhas contratuais.
 - **Visão**: Ser a referência nacional em usabilidade e ética digital no setor de energia renovável, demonstrando que a Inteligência Artificial pode potencializar a sustentabilidade com responsabilidade social e total respeito à privacidade.
 - **Proposta de Valor**:
-  1. *Para o Consumidor*: Transparência total. Leitura instantânea da conta de luz em menos de 10 segundos, simulação de economia líquida garantida (15% a 20%) sem obras ou custo de adesão, e esclarecimento de dúvidas regulatórias sem juridiquês.
-  2. *Para a Performa Energy*: Automação segura do pipeline de qualificação de faturas, redução drástica do ciclo de vendas, eliminação de erros humanos de digitação e garantia de compliance total com a LGPD e a ANEEL.
+  1. *Para o público*: material simples para reconhecer limites de IA, proteger dados pessoais e conferir informações sobre energia.
+  2. *Para a comunidade parceira*: conteúdo educativo a validar com a empresa; não promete automação, economia, melhoria operacional ou conformidade regulatória.
   3. *Para a Sociedade*: Aceleração da transição energética justa, descarbonização da matriz elétrica e promoção do letramento digital em IA.
 
 ---
 
 ## 1.3. Personas e Mapeamento do Público-Alvo
 
-### Persona 1: Consumidor Residencial / Pequeno Comércio (Público Externo)
+### Persona ilustrativa 1: Consumidor (cenário fictício, não pesquisado)
 - **Perfil**: Carlos Eduardo, 42 anos, proprietário de uma pequena padaria comercial (Tarifa B3 convencional).
 - **Dores**: Paga faturas de energia elevadas (média de R$ 1.850,00/mês), não entende o impacto das bandeiras tarifárias e tem receio de golpes ou contratos de fidelidade enganosos.
 - **Necessidades no Protótipo**: Fazer upload fácil da fatura em PDF/foto, ver imediatamente quanto vai economizar em Reais (R$) e entender com clareza como funciona o desconto sem precisar instalar placas solares no telhado alugado.
 
-### Persona 2: Analista de Operações e Faturas da Performa Energy (Público Interno)
+### Persona ilustrativa 2: Analista (cenário fictício, não pesquisado)
 - **Perfil**: Mariana Silva, 28 anos, analista responsável por conferir centenas de contas de luz de clientes antes da emissão de contratos.
 - **Dores**: Sobrecarga de trabalho manual em planilhas, medo de erros de conferência em tarifas de distribuidoras distintas (CEMIG vs. CPFL) e pressão por velocidade.
 - **Necessidades no Protótipo**: Sistema OCR inteligente com delimitação visual dos campos extraídos (*bounding boxes*), indicador de nível de confiança da IA, validação rápida *human-in-the-loop* e cálculo automático de créditos em conformidade com o marco da Lei 14.300/2022.
 
-### Persona 3: Consultor Comercial / SDR de Energia Solar (Público Interno)
+### Persona ilustrativa 3: Consultor (cenário fictício, não pesquisado)
 - **Perfil**: Lucas Mendes, 31 anos, consultor de vendas diretas de energia solar compartilhada.
 - **Dores**: Perde vendas quando clientes questionam regras regulatórias complexas ou quando o cliente acha que "energia solar zera a conta".
 - **Necessidades no Protótipo**: Acesso ao assistente conversacional "SolarBot IA" para tirar dúvidas de clientes em tempo real com embasamento jurídico na ANEEL, demonstrativo gráfico do impacto ESG para envio ao cliente e painel de transparência que gera credibilidade instantânea.

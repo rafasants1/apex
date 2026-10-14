@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Configuração · Contexto</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<div class="wrap">
+ <nav class="top"><a href="index.html">Início</a><a href="operacao.html">Operação</a><a href="automacao.html">Automação</a><a href="disparos.html">Disparos</a><a href="cobranca.html">Cobrança</a><a href="agente-cobranca.html">Agente de cobrança</a><a href="gestao.html">Gestão</a><a href="configuracao.html" aria-current="page">Configuração</a><a href="api-meta.html">API da Meta</a><a href="telas.html">Telas e fluxos</a></nav>
+ <header>
+  <span class="eyebrow">Área 6 · base de tudo</span>
+  <h1>Configuração</h1>
+  <p>Conta WhatsApp e API da Meta, canais, usuários e perfis, integrações, segurança e regionalidade. Acesso apenas do administrador.</p>
+ </header>
+
+ <section>
+  <h2>WhatsApp Cloud API</h2>
+  <p class="note">O como fazer de cada item abaixo (rotas, payloads, webhooks, erros, tabelas) está em <a href="api-meta.html">API da Meta</a>. Lá a lista de campos do webhook foi ampliada (qualidade de modelo, nome exibido, alertas e limite da conta) e há o BSUID, novo identificador do cliente.</p>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Funcionalidade</th><th>Detalhe</th><th>Origem</th><th>Situação</th></tr></thead><tbody>
+   <tr><td class="id">CF-01</td><td><b>Conexão direta com a Cloud API ou via parceiro</b></td><td>Na Maxbot os números aparecem com "Saldo Gupshup" e "MM Lite", o que indica conexão por um parceiro (BSP). O novo sistema pode falar direto com a Meta ou continuar com um parceiro.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-perg">PERGUNTA</i> Q-CF2</td></tr>
+   <tr><td class="id">CF-02</td><td><b>Números conectados</b></td><td>A Performa tem 2 números WhatsApp Oficial (um chamado "Comercial"). Na tela: canal, número, WABA ID, conexão Meta, MM Lite, saldo, token do canal, última atualização.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i> · migração Q-CF3</td></tr>
+   <tr><td class="id">CF-03</td><td><b>Identificadores</b></td><td>WABA ID e Phone Number ID por número; versão da Graph API.</td><td><i class="o o-meta">META</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">CF-04</td><td><b>Token de sistema</b></td><td>Guardado só no backend, nunca no navegador.</td><td><i class="o o-meta">META</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">CF-05</td><td><b>Webhook</b></td><td>URL de callback, verify token, validação da assinatura X-Hub-Signature-256, resposta 200 imediata e processamento em fila. Campos: messages, message_template_status_update, template_category_update, phone_number_quality_update, account_update.</td><td><i class="o o-meta">META</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">CF-06</td><td><b>Robustez dos webhooks</b></td><td>Ignorar repetidos (wamid + status), status nunca regride, gravar o wa_id devolvido (celulares antigos do Brasil podem vir sem o 9).</td><td><i class="o o-meta">META</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">CF-07</td><td><b>Qualidade e limite</b></td><td>Mostrar a qualidade do número (verde, amarelo, vermelho) e o limite de envio do portfólio.</td><td><i class="o o-meta">META</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">CF-08</td><td><b>Perfil do WhatsApp Business</b></td><td>Nome exibido, foto, descrição, selo verificado.</td><td><i class="o o-meta">META</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+  </tbody></table></div>
+ </section>
+
+ <section>
+  <h2>Canais e integrações</h2>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Funcionalidade</th><th>Detalhe</th><th>Origem</th><th>Situação</th></tr></thead><tbody>
+   <tr><td class="id">CF-10</td><td><b>Outros canais</b></td><td>A Maxbot oferece Chat Web, Instagram, Messenger e Telegram. A licença da Performa tem MaxChat, Chat Web e WhatsApp (2).</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-perg">PERGUNTA</i> Q-CF1</td></tr>
+   <tr><td class="id">CF-11</td><td><b>Botão de Chat Web e link de WhatsApp</b></td><td><b>Botão Chat Web</b>: código, título, exigir autenticação, setor e atendente, segmentações, orientações, cor e tamanho do botão, ícone e nome do bot, logomarca, texto de autorização (400), textos dos botões e campos (nome, sobrenome, e-mail, WhatsApp), entrada por e-mail ou por "tenho uma chave", entrada por Google/Facebook, QR Code, e opção de mandar para um número de WhatsApp com template. <b>Link de WhatsApp</b>: número e texto pré-preenchido.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">CF-12</td><td><b>Integração de e-mail</b></td><td>Remetente, nome, entrada IMAP ou POP3, host e porta de entrada e saída, segurança (SSL ou TLS), autenticação, prefixo, corpo e rodapé. A tela "Integração de Canal" também configura uma conta de e-mail (IMAP e SMTP) como canal.</td><td><i class="o o-max">MAXBOT</i><i class="o o-doc">DOC</i></td><td><i class="s s-conf">CONFIRMAR</i> · Q-CF4</td></tr>
+   <tr><td class="id">CF-13</td><td><b>Integrações cadastradas</b></td><td>Lista com integração, última execução e última atualização. Na Performa: Digital GRID (Cobrança) e mais registros não identificados (4 no total).</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-ver">VERIFICAR NA MAXBOT</i></td></tr>
+   <tr><td class="id">CF-14</td><td><b>Integrações citadas pela Maxbot</b></td><td>getCRM, RD Station, Telegram, RBXsoft, RadiusNet, SGP.</td><td><i class="o o-site">SITE</i></td><td><i class="s s-perg">PERGUNTA</i> Q-CF5</td></tr>
+   <tr><td class="id">CF-15</td><td><b>Integrações do agente de cobrança</b></td><td>ERP/cadastro, XML de rateio da CEMIG, Digital Grid, gateway de pagamento, Plog, bureau de crédito, e-mail, IVI Energia, modelo de IA.</td><td><i class="o o-doc">DOC</i></td><td><i class="s s-def">DEFINIDO</i> · detalhes no <a href="agente-cobranca.html">agente</a></td></tr>
+   <tr><td class="id">CF-16</td><td><b>API própria</b></td><td>A Maxbot tem "API Maxbot" e API de cobranças (listar, inserir, atualizar, excluir). O novo sistema precisa de API para ERP e outros sistemas iniciarem jornadas e enviarem títulos.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i> · Q-AU3</td></tr>
+  </tbody></table></div>
+ </section>
+
+ <section>
+  <h2>Usuários, equipes e segurança</h2>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Funcionalidade</th><th>Detalhe</th><th>Origem</th><th>Situação</th></tr></thead><tbody>
+   <tr><td class="id">CF-20</td><td><b>Usuários e setores</b></td><td><b>Colaborador</b>: dados pessoais, usuário, senha, idioma e <b>permissões por tela</b> (acessar, editar e apagar em cerca de 58 telas). <b>Atendente de setor</b>: colaborador, apelido, setores, visibilidade das conversas, carga e limite (ver OP-61, OP-62). <b>Setor</b>: código, nome, responsável, horários e mensagens (ver OP-65).</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">CF-21</td><td><b>Perfis de acesso</b></td><td>Administrador (configura o sistema a fundo) e Atendente. Sucesso do Cliente e Cobrança têm o mesmo acesso, com todas as informações.</td><td><i class="o o-perf">PERFORMA</i></td><td><i class="s s-def">DEFINIDO</i> Q-CF6</td></tr>
+   <tr><td class="id">CF-22</td><td><b>Permissões aplicadas no backend</b></td><td>A filtragem de conversas e ações por perfil acontece na API interna, não só na tela.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">CF-23</td><td><b>Segurança</b></td><td>Como o sistema é uma aba do Performalog, a segurança de acesso (senha e autenticação em duas etapas) é a do Performalog. Na Maxbot havia código de 6 dígitos por e-mail. Falta saber se o Performalog já tem duas etapas (Q-CF7).</td><td><i class="o o-max">MAXBOT</i><i class="o o-perf">PERFORMA</i></td><td><i class="s s-conf">CONFIRMAR</i> Q-CF7</td></tr>
+   <tr><td class="id">CF-24</td><td><b>Login</b></td><td>Sem login próprio: quem está logado no Performalog entra direto pela aba Atendimento. Perfil e equipe vêm do cadastro do usuário no Performalog.</td><td><i class="o o-perf">PERFORMA</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">CF-46</td><td><b>Aba Atendimento no Performalog</b></td><td>O sistema é uma nova aba "Atendimento" na barra superior do Performalog (depois de Vendas). Ao clicar, abre a área do Atendimento com menu próprio e todos os fluxos; a barra do Performalog continua em cima. Decisão de 08/10/2026.</td><td><i class="o o-perf">PERFORMA</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">CF-47</td><td><b>Quem vê a aba Atendimento</b></td><td>Quem não tem acesso ao Atendimento não vê a aba. O acesso é liberado no <b>Controle de Acesso do Performalog</b>, junto das outras permissões; o Atendimento só lê o perfil e a equipe.</td><td><i class="o o-perf">PERFORMA</i></td><td><i class="s s-def">DEFINIDO</i> Q-CF9</td></tr>
+   <tr><td class="id">CF-48</td><td><b>Contador na aba</b></td><td>A aba Atendimento mostra quantas conversas estão na fila da equipe do usuário, visível em qualquer aba do Performalog. No protótipo o administrador vê a soma de todas as filas, e os menus Conversas e Cobrança também têm contador. Sugestão do planejamento.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">CF-49</td><td><b>Cores e modo claro/noturno</b></td><td>Mesma paleta e fonte do Performalog: Roboto, fundo #F1F2F3 com cartões brancos, barra #191E3A, primária #1B55E2, sucesso #8DBF42, alerta #E2A03F, perigo #DC3545. Dois modos num botão da barra: Claro (igual ao Performalog) e Noturno (fundo #060818, cartões #0E1726). A escolha fica salva por usuário; sem escolha, segue o modo do computador. Decisão de 08/10/2026.</td><td><i class="o o-perf">PERFORMA</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">CF-25</td><td><b>Auditoria</b></td><td>Registro de quem fez o quê: aprovações, acordos formalizados, configurações salvas.</td><td><i class="o o-doc">DOC</i><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+  </tbody></table></div>
+ </section>
+
+ <section>
+  <h2>Regionalidade, notificações e outros</h2>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Funcionalidade</th><th>Detalhe</th><th>Origem</th><th>Situação</th></tr></thead><tbody>
+   <tr><td class="id">CF-30</td><td><b>Regionalidade</b></td><td>Fuso horário da conta (padrão Brasília) e formatos de data, número e moeda.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">CF-31</td><td><b>Notificações</b></td><td>Notificações do navegador: ligar e desligar, e avisar novas mensagens do chat.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">CF-32</td><td><b>Legislação e jurídico</b></td><td>Item no menu Ajuda (V4). Conteúdo não aberto.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-ver">VERIFICAR NA MAXBOT</i></td></tr>
+   <tr><td class="id">CF-33</td><td><b>Financeiro da plataforma</b></td><td>Na Maxbot mostra licença, limites e faturas da própria Maxbot. No sistema próprio, o equivalente seria o gasto com a Meta (ver relatórios).</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+  </tbody></table></div>
+ </section>
+
+ <section>
+  <h2>Encontrado no banco</h2>
+  <div class="db">
+   <ul class="plain">
+    <li><b>Maxbot</b>: o CRM guarda o endereço da API v1 da Maxbot, token, token do canal, segredo do webhook e os tokens dos pontos de inicialização.</li>
+    <li><b>Z-API</b>: há uma instância Z-API cadastrada (WhatsApp não oficial), com tokens.</li>
+    <li><b>IA</b>: chave <code>AI_SUMMARY_API_KEY</code> para resumos.</li>
+    <li><b>Assinatura digital</b>: Clicksign e ZapSign (parâmetros e tabelas de assinatura).</li>
+    <li><b>Hospedagem</b>: os dashboards do CRM rodam na VM performalog-web (Azure), ao lado do CRM; banco MySQL no Azure com firewall por IP.</li>
+   </ul>
+   <p class="note">Credenciais não foram copiadas para estes arquivos.</p>
+  </div>
+ </section>
+
+  <section>
+  <h2>Visto na Maxbot e ainda não listado</h2>
+  <p class="note">Telas da Maxbot (interface V4) lidas em 07/10/2026, só a estrutura: campos, opções e botões. "Confirmar" significa que o recurso existe na Maxbot e falta a Performa dizer se o novo sistema precisa dele.</p>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Funcionalidade</th><th>Detalhe</th><th>Origem</th><th>Situação</th></tr></thead><tbody>
+   <tr><td class="id">CF-40</td><td><b>Conectar número na tela</b></td><td>Cadastro do número com broker (Meta, 360Dialog ou Gupshup), PIN de 6 dígitos do registro e modo de conexão: WhatsApp Oficial ou <b>coexistência</b> com o app WhatsApp Business no mesmo número.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">CF-41</td><td><b>Perfil comercial na tela</b></td><td>Foto, sobre, endereço, descrição, e-mail, dois sites e setor de atuação. Completa o CF-08.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">CF-42</td><td><b>Webhooks da API Maxbot</b></td><td>Sete eventos: mensagem recebida, mensagem recebida em atendimento, novo contato, contato atualizado, novo protocolo, protocolo atualizado e status da mensagem. A Performa usa seis, com execuções em 06 e 07/10/2026; o CRM recebe esses eventos na tabela <code>maxbot_inbound_webhook</code>. Ao trocar a Maxbot, o novo sistema precisa mandar os mesmos eventos, senão a Jornada do cliente para.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">CF-43</td><td><b>Permissões por tela</b></td><td>A Maxbot dá permissão de acessar, editar e apagar tela por tela. O plano atual tem só dois perfis fixos (CF-21).</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">CF-44</td><td><b>Painéis do dashboard</b></td><td>Quais blocos aparecem e em que ordem: atendentes on-line, atendentes, contatos, colaboradores, uso da licença.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">CF-45</td><td><b>Permitir excluir contato pela API</b></td><td>Opção de segurança da API.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+  </tbody></table></div>
+ </section>
+
+ <section>
+  <h2>Presente no protótipo e ainda não listado</h2>
+  <p class="note">Auditoria de 08/10/2026: tudo que o protótipo já mostra e não estava registrado aqui. São escolhas do protótipo, não decisões da Performa: ficam como CONFIRMAR até alguém responder.</p>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Funcionalidade</th><th>Detalhe</th><th>Origem</th><th>Situação</th></tr></thead><tbody>
+   <tr><td class="id">CF-50</td><td><b>Vazão e qualidade do número</b></td><td>Erros de vazão 130429 e 131056; o webhook de qualidade do número alerta o gestor e pausa o marketing.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">CF-51</td><td><b>Chamadas à Meta</b></td><td>GET message_templates para sincronizar os modelos e POST /media para subir arquivos (boleto, NF).</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> 08/10/2026</td></tr>
+   <tr><td class="id">CF-52</td><td><b>Token de verificação na tela</b></td><td>O protótipo mostra o token de verificação do webhook em texto aberto; o sistema real deve mascarar.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> 08/10/2026</td></tr>
+  </tbody></table></div>
+  <h3>Onde o protótipo está diferente do contexto</h3>
+  <p class="note">As outras diferenças foram corrigidas em 08/10/2026. Estas dependem de resposta da Performa ou ficaram fora do escopo; até lá vale o contexto.</p>
+  <div class="tbl"><table><thead><tr><th>Item</th><th>O que o contexto diz</th><th>O que o protótipo faz hoje</th></tr></thead><tbody>
+   <tr><td>CF-49</td><td>Modo claro/noturno salvo por usuário.</td><td>Fica salvo só no navegador.</td></tr>
+</tbody></table></div>
+ </section>
+
+ <section>
+  <h2>Perguntas para a Performa</h2>
+  <div class="qs">
+   <div class="q r"><b>Q-CF1 · RESPONDIDA</b>Além do WhatsApp, quais canais o novo sistema precisa ter: Chat Web no site, Instagram, Messenger, Telegram, e-mail, SMS?<div class="ans"><strong>Respondida pela Performa em 08/10/2026</strong>WhatsApp (pela API da Meta, no chat do sistema), e-mail e chat no site. Sem Instagram e Messenger.</div></div>
+   <div class="q p"><b>Q-CF2 · PARCIAL</b>O novo sistema vai se conectar direto à Meta (Cloud API) ou por um parceiro como a Gupshup, que aparece na Maxbot hoje?<div class="ans"><strong>Resposta parcial pelo banco · ainda falta</strong>Hoje a conexão é pela Maxbot, que usa a Gupshup como parceiro, e o CRM também tem uma instância Z-API (não oficial). Falta: decidir o caminho do novo sistema (Cloud API direto ou parceiro) e para que a Z-API é usada hoje.</div></div>
+   <div class="q r"><b>Q-CF3 · RESPONDIDA</b>Os dois números atuais serão migrados da Maxbot para o novo sistema? Algum deles é só para ofertas?<div class="ans"><strong>Respondida pela Performa em 08/10/2026</strong>Sim, os dois números atuais migram da Maxbot.</div></div>
+   <div class="q"><b>Q-CF4</b>Qual provedor de e-mail usar (envio e recebimento) e qual endereço recebe as respostas de cobrança?</div>
+   <div class="q r"><b>Q-CF5 · RESPONDIDA</b>Alguma das integrações citadas pela Maxbot (getCRM, RD Station etc.) é usada pela Performa? Há um CRM?<div class="ans"><strong>Respondida pelo banco</strong>O CRM da Performa é o <b>Plog</b> (app.performalog.com, banco <code>performalog</code>). Integrações já existentes: Maxbot, Digital Grid, Z-API, Clicksign, ZapSign, relatório da CEMIG.</div></div>
+   <div class="q r"><b>Q-CF6 · RESPONDIDA</b>Além de administrador e atendente, existe outro perfil (ex.: supervisor de equipe que aprova acordos sem ver configurações)?<div class="ans"><strong>Respondida pela Performa em 08/10/2026</strong>Não. Atendentes de Sucesso do Cliente e de Cobrança têm o mesmo acesso, com todas as informações necessárias. Só o administrador mexe a fundo no sistema (configurações, régua, disparos, aprovações). Para referência, o Performalog tem perfis como Atendente SC, Analista, Supervisor, Coordenador, Gerente, Inside Sales e BKO na operação Performa Energy.</div></div>
+   <div class="q p"><b>Q-CF7 · PARCIAL</b>Como os usuários vão entrar no sistema? Precisa de autenticação em dois fatores?<div class="ans"><strong>Respondida pela Performa em 08/10/2026 · ainda falta</strong>Pela sessão do Performalog: o sistema é a aba Atendimento dentro dele, sem login próprio. Falta: o Performalog tem (ou terá) autenticação em duas etapas?</div></div>
+   <div class="q r"><b>Q-CF9 · RESPONDIDA</b>Onde se libera o acesso de um usuário à aba Atendimento: no Controle de Acesso do Performalog ou nas Configurações do próprio Atendimento?<div class="ans"><strong>Respondida pela Performa em 08/10/2026</strong>No Controle de Acesso do Performalog.</div></div>
+   <div class="q r"><b>Q-CF8 · RESPONDIDA</b>Dois perfis fixos (administrador e atendente) bastam, ou vocês precisam de permissões por tela como a Maxbot tem (acessar, editar, apagar)?<div class="ans"><strong>Respondida pela Performa em 08/10/2026</strong>Dois perfis bastam: administrador e atendente, com o mesmo acesso para as duas equipes.</div></div>
+  </div>
+ </section>
+ <footer>Atualizado em 07/10/2026 · fontes listadas no <a href="index.html">início</a>.</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Disparos · Contexto</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<div class="wrap">
+ <nav class="top"><a href="index.html">Início</a><a href="operacao.html">Operação</a><a href="automacao.html">Automação</a><a href="disparos.html" aria-current="page">Disparos</a><a href="cobranca.html">Cobrança</a><a href="agente-cobranca.html">Agente de cobrança</a><a href="gestao.html">Gestão</a><a href="configuracao.html">Configuração</a><a href="api-meta.html">API da Meta</a><a href="telas.html">Telas e fluxos</a></nav>
+ <header>
+  <span class="eyebrow">Área 3 · fase 1 · prioridade 2</span>
+  <h1>Disparos em massa</h1>
+  <p>A partir de uma segmentação e de um template aprovado pela Meta, enviar a mensagem do template para todos os contatos do segmento. Na Maxbot isso está em Atendimento › Templates, Mensagens, Mensagens em Massa, Segmentação e Categoria de Template (telas V4).</p>
+ </header>
+
+ <section>
+  <h2>Fluxo do disparo</h2>
+  <ol class="flow" style="margin:0;padding:0">
+   <li><div><b>Template aprovado</b> · criado no sistema, enviado à Meta, aprovado ou rejeitado por webhook</div></li>
+   <li><div><b>Segmento</b> · regras sobre os contatos (tags, segmentação e outros campos)</div></li>
+   <li><div><b>Variáveis</b> · cada <code>{{1}}</code>, <code>{{2}}</code> do template recebe um dado do contato</div></li>
+   <li><div><b>Envio</b> · agora ou agendado, em fila, respeitando limites da Meta</div></li>
+   <li><div><b>Acompanhamento</b> · enviada, entregue, lida, respondida e falha por contato, pelos webhooks de status</div></li>
+  </ol>
+ </section>
+
+ <p class="note">O motor que executa o disparo (limite do portfólio, vazão, tentativas, pausa automática, custo real) e os payloads de criação e envio de modelos estão em <a href="api-meta.html">API da Meta</a>, itens AP-60 a AP-80.</p>
+
+ <section>
+  <h2>Templates</h2>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Funcionalidade</th><th>Detalhe</th><th>Origem</th><th>Situação</th></tr></thead><tbody>
+   <tr><td class="id">DI-01</td><td><b>Criar template e enviar à Meta</b></td><td>Nome, idioma, categoria, cabeçalho, corpo com variáveis, rodapé e botões. A Meta devolve PENDING e responde por webhook (aprovado ou rejeitado com motivo).</td><td><i class="o o-max">MAXBOT</i><i class="o o-meta">META</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">DI-02</td><td><b>Tipos de template</b></td><td>Na Maxbot: Chat, Follow Up, Aviso, Bot de Fluxo, BOT, Cobrança Inteligente, Autenticação, Histórico de Protocolo.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-perg">PERGUNTA</i> Q-DI1</td></tr>
+   <tr><td class="id">DI-03</td><td><b>Categorias do canal</b></td><td>Na Maxbot: Geral, WABA, Interativo, SMS e E-mail. Categorias da Meta para WABA: Marketing, Utilidade, Autenticação.</td><td><i class="o o-max">MAXBOT</i><i class="o o-meta">META</i></td><td><i class="s s-def">DEFINIDO</i> (WABA) · SMS/e-mail Q-CF1</td></tr>
+   <tr><td class="id">DI-04</td><td><b>Situação na Meta</b></td><td>Enviado, aprovado, pendente, rejeitado, deleção pendente, deletado, desabilitado, erro interno.</td><td><i class="o o-max">MAXBOT</i><i class="o o-meta">META</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">DI-05</td><td><b>Template por número</b></td><td>A Performa tem dois números WABA; o template é escolhido por número.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">DI-06</td><td><b>Idiomas</b></td><td>pt_BR, pt_PT, en, es, fi.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i> (pt_BR)</td></tr>
+   <tr><td class="id">DI-07</td><td><b>Interativos e botões</b></td><td>Lista interativa, botões de resposta rápida, botão com link, botão de telefone, senha descartável (OTP).</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">DI-08</td><td><b>Pagamento no template</b></td><td>PIX dinâmico, link de pagamento e "detalhes do pedido".</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">DI-09</td><td><b>Natureza (agendamento)</b></td><td>Confirmação, confirmado, reagendado, cancelado, lembrete, agendado.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-perg">PERGUNTA</i> Q-DI2</td></tr>
+   <tr><td class="id">DI-10</td><td><b>Mídia no cabeçalho</b></td><td>Imagem (JPG, JPEG, PNG), documento (PDF, DOC, XLS, PPT), vídeo (MP4), com limites de tamanho.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">DI-11</td><td><b>Templates para outros canais</b></td><td>Templates de Facebook Messenger e Instagram (botões e links).</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-perg">PERGUNTA</i> Q-CF1</td></tr>
+   <tr><td class="id">DI-12</td><td><b>Categoria interna de template</b></td><td>Só um campo: título. Serve para agrupar templates internamente.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">DI-13</td><td><b>Validação antes de enviar à Meta</b></td><td>Nome em minúsculas com _, variáveis em sequência, sem variável no início ou fim, marketing com forma de sair.</td><td><i class="o o-meta">META</i><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">DI-14</td><td><b>Reclassificação pela Meta</b></td><td>A Meta pode trocar a categoria (ex.: utilidade para marketing) e avisa por webhook. Muda o preço.</td><td><i class="o o-meta">META</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+  </tbody></table></div>
+ </section>
+
+ <section>
+  <h2>Segmentação</h2>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Funcionalidade</th><th>Detalhe</th><th>Origem</th><th>Situação</th></tr></thead><tbody>
+   <tr><td class="id">DI-20</td><td><b>Segmentação de contatos</b></td><td>Cadastro simples: tipo (contato ou protocolo) e título. Não há regras: o contato entra ou sai da segmentação por ação em massa na lista de contatos (incluir, retirar, substituir). A Performa tem mais de 100 segmentações de contato, quase todas criadas por campanha (ex.: "30 DIAS ATRASO (25-09-2026)").</td><td><i class="o o-max">MAXBOT</i><i class="o o-perf">PERFORMA</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">DI-21</td><td><b>Critérios do segmento</b></td><td>No protótipo: tag, cidade, opt-in, dias sem contato e fatura em atraso, com contagem ao vivo.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-perg">PERGUNTA</i> Q-DI3</td></tr>
+   <tr><td class="id">DI-22</td><td><b>Excluir quem não tem opt-in</b></td><td>Sempre, mesmo que o segmento não filtre.</td><td><i class="o o-meta">META</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">DI-23</td><td><b>Segmento por lista importada</b></td><td>Subir uma planilha de telefones como público do disparo. Aceito (Q-DI4).</td><td>—</td><td><i class="s s-def">DEFINIDO</i> Q-DI4</td></tr>
+  </tbody></table></div>
+ </section>
+
+ <section>
+  <h2>Envio em massa</h2>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Funcionalidade</th><th>Detalhe</th><th>Origem</th><th>Situação</th></tr></thead><tbody>
+   <tr><td class="id">DI-30</td><td><b>Mensagens (disparos)</b></td><td>Tela "Mensagens" da Maxbot: lista com mensagem, detalhes e situação; filtros de situação (ex.: enviada) e categoria; ações Executar, Agendar e Salvar.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">DI-31</td><td><b>Mensagens em Massa</b></td><td>Campanha: título, canal, tipo (follow-up ou aviso), categoria, template, mensagem de até 3000 caracteres com tags, <b>setor e atendente que recebem as respostas</b>, envio agora ou agendado (data e hora de meia em meia hora). Situações: preparando, agendado, iniciado, concluído, erro, erro de execução, paralisado. Filtros por período, título, tipo, canal, responsável, categoria e template.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">DI-32</td><td><b>Template + segmento → envio</b></td><td>Escolher template aprovado e segmento, mapear variáveis e disparar para todos os contatos do segmento.</td><td><i class="o o-perf">PERFORMA</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">DI-33</td><td><b>Enviar agora ou agendar</b></td><td>Data e hora do disparo.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">DI-34</td><td><b>Mapeamento de variáveis</b></td><td>Cada variável do template recebe um campo do contato (nome, valor da fatura, vencimento…).</td><td><i class="o o-meta">META</i></td><td><i class="s s-def">DEFINIDO</i> · campos Q-DI5</td></tr>
+   <tr><td class="id">DI-35</td><td><b>Limite de envio do portfólio</b></td><td>Destinatários únicos por 24 h, somando todos os números do portfólio (250, 2 mil, 10 mil, 100 mil, ilimitado). Público maior vai em lotes.</td><td><i class="o o-meta">META</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">DI-36</td><td><b>Vazão e fila</b></td><td>Até cerca de 80 mensagens por segundo por número; envio em fila com nova tentativa.</td><td><i class="o o-meta">META</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">DI-37</td><td><b>Custo estimado antes de enviar</b></td><td>Contatos × preço da categoria (cobrança por mensagem entregue desde 07/2025).</td><td><i class="o o-meta">META</i><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">DI-38</td><td><b>Status por contato</b></td><td>Enviada, entregue, lida, respondeu, falhou (com código da Meta: 131026 sem WhatsApp, 131049 limite de marketing por pessoa, 131047 janela).</td><td><i class="o o-meta">META</i></td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">DI-39</td><td><b>Respostas ao disparo</b></td><td>Quem toca num botão do template abre conversa; o payload do botão define o caminho (fila, fluxo, agente).</td><td><i class="o o-meta">META</i></td><td><i class="s s-def">DEFINIDO</i> · destino Q-DI6</td></tr>
+   <tr><td class="id">DI-40</td><td><b>Frequência de marketing</b></td><td>Sem limite próprio; vale o limite de marketing por pessoa da Meta (131049).</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> Q-DI7</td></tr>
+   <tr><td class="id">DI-41</td><td><b>Pausar, retomar e reenviar falhas</b></td><td>Controle do disparo em andamento e novo envio só para quem falhou.</td><td>—</td><td><i class="s s-def">DEFINIDO</i> Q-DI8</td></tr>
+   <tr><td class="id">DI-42</td><td><b>Quem pode disparar</b></td><td>Só o administrador, sem segunda aprovação.</td><td><i class="o o-perf">PERFORMA</i></td><td><i class="s s-def">DEFINIDO</i> Q-DI9</td></tr>
+  </tbody></table></div>
+ </section>
+
+ <section>
+  <h2>Encontrado no banco</h2>
+  <div class="db">
+   <h3>Campos que já existem para segmentar</h3>
+   <div class="tbl"><table><thead><tr><th>Campo</th><th>Onde está</th><th>Exemplos de valores (totais)</th></tr></thead><tbody>
+    <tr><td><b>Desconto contratado</b></td><td><code>consortium_members.discount</code></td><td class="note">20% (1.549) · 18% (607) · 25% (227) · 30% (154) · 15% (120) · 22% (119) · outros até 40%</td></tr>
+    <tr><td><b>Dia de vencimento</b></td><td><code>consortium_members.due_day</code></td><td class="note">11 (697) · 17 (465) · 22 (328) · 27 (250) · 6 (198) · 1 (124) …</td></tr>
+    <tr><td><b>Tipo de instalação</b></td><td><code>consortium_members.installation_type</code></td><td class="note">Residencial e Comercial (mono, bi e trifásico), Rural; 2 mil sem preenchimento</td></tr>
+    <tr><td><b>Usina</b></td><td><code>consortium_members.plant</code>, <code>plant</code></td><td class="note">Matozinhos, Matozinhos 2, Daxtra, Pro Sol, Paracatu, Via Energia (várias UCs)</td></tr>
+    <tr><td><b>Cancelado</b></td><td><code>consortium_members.is_cancelled</code></td><td class="note">319 de 2.968</td></tr>
+    <tr><td><b>Créditos de outra empresa</b></td><td><code>consortium_members.another_company</code></td><td class="note">53 membros</td></tr>
+    <tr><td><b>Situação da fatura</b></td><td><code>client_integration_bill.status</code></td><td class="note">Pago, Vencido, Negativado, Parcelado, Aguardando, Arquivado</td></tr>
+    <tr><td><b>Etapa da jornada</b></td><td><code>maxbot_control.current_state</code></td><td class="note">Primeira mensagem, Em andamento, Conectado, Cadastro CEMIG…</td></tr>
+    <tr><td><b>Origem, tag, regional da venda</b></td><td><code>form_sales</code> + <code>form_sale_origin</code>, <code>tag</code>, <code>regionals</code></td><td class="note">filtros já usados nos dashboards do CRM</td></tr>
+   </tbody></table></div>
+  </div>
+ </section>
+
+  <section>
+  <h2>Visto na Maxbot e ainda não listado</h2>
+  <p class="note">Telas da Maxbot (interface V4) lidas em 07/10/2026, só a estrutura: campos, opções e botões. "Confirmar" significa que o recurso existe na Maxbot e falta a Performa dizer se o novo sistema precisa dele.</p>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Funcionalidade</th><th>Detalhe</th><th>Origem</th><th>Situação</th></tr></thead><tbody>
+   <tr><td class="id">DI-50</td><td><b>Uso liberado e código rápido</b></td><td>Cada template tem "uso liberado" (sim/não), para esconder templates dos atendentes, e um "código rápido" para chamá-lo no chat.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">DI-51</td><td><b>Mais opções de botão</b></td><td>Até 10 botões de resposta rápida em template WABA, botão para pedir os dados de contato do cliente, OTP com minutos de expiração e aviso de segurança.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">DI-52</td><td><b>Várias mídias por template</b></td><td>Até 6 imagens, 3 arquivos e 3 vídeos. A própria tela avisa que a Meta passou a aceitar só uma mídia no cadastro.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">DI-53</td><td><b>Template de e-mail</b></td><td>Assunto, remetente e rodapé.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">DI-54</td><td><b>Grupos de tags</b></td><td>As tags do texto vêm em grupos: cadastro, atendimento, informação, agendamento, quadro ágil, cobrança inteligente e variável.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">DI-55</td><td><b>Mensagens enviadas e agendadas</b></td><td>Filtro por campanha e por situação (enviada, agendada, falha); cancelar uma mensagem agendada com motivo; reagendar.</td><td><i class="o o-max">MAXBOT</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+  </tbody></table></div>
+ </section>
+
+ <section>
+  <h2>Presente no protótipo e ainda não listado</h2>
+  <p class="note">Auditoria de 08/10/2026: tudo que o protótipo já mostra e não estava registrado aqui. São escolhas do protótipo, não decisões da Performa: ficam como CONFIRMAR até alguém responder.</p>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Funcionalidade</th><th>Detalhe</th><th>Origem</th><th>Situação</th></tr></thead><tbody>
+   <tr><td class="id">DI-56</td><td><b>Limites do modelo</b></td><td>Corpo até 1.024 caracteres, cabeçalho até 60, cada botão até 25, no máximo 3 botões de resposta rápida (DI-51 cita até 10). O nome precisa ser único.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> 08/10/2026</td></tr>
+   <tr><td class="id">DI-57</td><td><b>Editar e duplicar modelo</b></td><td>Modelo aprovado ou em análise não pode ser editado; "Duplicar" cria cópia com sufixo _v2 em Rascunho.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> 08/10/2026</td></tr>
+   <tr><td class="id">DI-58</td><td><b>Custo na lista de modelos</b></td><td>Coluna "Custo fora da janela" por categoria, com a nota "Utilidade dentro da janela é grátis".</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">DI-59</td><td><b>Regras do segmento</b></td><td>Regras combinadas só com E (todas); operadores: etiqueta contém/não contém, cidade é/não é, dias sem contato ≥/≤. Painel de alcance com custo em Utilidade e em Marketing e marca "sem WA".</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> 08/10/2026</td></tr>
+   <tr><td class="id">DI-60</td><td><b>Cálculo do custo estimado</b></td><td>Conta Utilidade só para quem está fora da janela de 24 h. Mostra US$ e R$ com câmbio fixo de 5,40 no protótipo; a fonte do câmbio está por definir.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">DI-61</td><td><b>Pulados por campanha</b></td><td>A campanha lista quem foi pulado e o motivo: sem opt-in ou próximo lote do limite de 24 h.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> 08/10/2026</td></tr>
+   <tr><td class="id">DI-62</td><td><b>Variáveis da campanha</b></td><td>O protótipo usa 5 variáveis fixas: primeiro nome, mês de referência, vencimento, valor e link de pagamento. A lista real depende de Q-DI5.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">DI-63</td><td><b>Proteções visíveis no assistente</b></td><td>Caixas fixas e desligadas: "excluir sem opt-in (sempre)" e "respeitar limite de 24 h".</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> 08/10/2026</td></tr>
+  </tbody></table></div>
+  <p class="note">Diferenças com o protótipo: todas corrigidas em 08/10/2026.</p>
+ </section>
+
+ <section>
+  <h2>Perguntas para a Performa</h2>
+  <div class="qs">
+   <div class="q"><b>Q-DI1</b>Quais tipos de template vocês usam de fato hoje (Chat, Follow Up, Aviso, Cobrança Inteligente…)? Algum pode ficar de fora?</div>
+   <div class="q"><b>Q-DI2</b>Vocês usam templates de agendamento (confirmação, lembrete, reagendado)? Para quê?</div>
+   <div class="q p"><b>Q-DI3 · PARCIAL</b>Por quais critérios vocês precisam segmentar? Exemplos possíveis: distribuidora, cidade, status do contrato (ativo, em adesão, cancelado), etapa da jornada, faturas em atraso, modalidade. Quais desses existem nos seus dados?<div class="ans"><strong>Resposta parcial pelo banco · ainda falta</strong>A tabela acima lista os campos que existem hoje nos dados. Falta: quais deles vocês querem usar para segmentar disparos.</div></div>
+   <div class="q r"><b>Q-DI4 · RESPONDIDA</b>Precisam disparar para uma lista de telefones vinda de planilha, fora da base de contatos?<div class="ans"><strong>Respondida pela Performa em 08/10/2026</strong>Sim, aceita lista vinda de planilha.</div></div>
+   <div class="q"><b>Q-DI5</b>Quais dados do cliente costumam ir nas variáveis dos templates?</div>
+   <div class="q r"><b>Q-DI6 · RESPONDIDA</b>Quando o cliente responde a um disparo, a conversa vai para qual equipe ou fluxo?<div class="ans"><strong>Respondida pela Performa em 08/10/2026</strong>As respostas voltam para o fluxo do bot.</div></div>
+   <div class="q r"><b>Q-DI7 · RESPONDIDA</b>Existe regra de frequência máxima de mensagens de marketing por cliente?<div class="ans"><strong>Respondida pela Performa em 08/10/2026</strong>Sem limite próprio de frequência; vale só o limite da Meta (erro 131049).</div></div>
+   <div class="q r"><b>Q-DI8 · RESPONDIDA</b>Precisam pausar um disparo em andamento e reenviar só para quem falhou?<div class="ans"><strong>Respondida pela Performa em 08/10/2026</strong>Sim: pausar, retomar e reenviar só para quem falhou.</div></div>
+   <div class="q r"><b>Q-DI9 · RESPONDIDA</b>Disparo em massa precisa de aprovação de uma segunda pessoa antes de sair?<div class="ans"><strong>Respondida pela Performa em 08/10/2026</strong>Não. Só o administrador dispara, sem segunda aprovação.</div></div>
+  </div>
+ </section>
+ <footer>Atualizado em 07/10/2026 · fontes listadas no <a href="index.html">início</a>.</footer>
+</div>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Performa Solar IA — Protótipo Interativo Figma</title>
+    <title>Performa Solar IA — Demonstração web educativa (HTML)</title>
     <style>
         :root {
             --solar-gold: #F59E0B;
@@ -52,6 +52,16 @@
             border-radius: 4px;
             font-weight: 600;
             margin-right: 8px;
+        }
+
+        .demo-notice {
+            width: 100%;
+            padding: 10px 18px;
+            background: #fff7ed;
+            color: #7c2d12;
+            border-bottom: 2px solid #fb923c;
+            font-size: 14px;
+            line-height: 1.45;
         }
 
         .screen-tabs {
@@ -442,22 +452,24 @@
 </head>
 <body>
 
-    <!-- Barra de Controle estilo Figma -->
+    <!-- Controles da demonstração HTML; não é interface do Figma -->
     <div class="figma-topbar">
         <div>
-            <span class="figma-badge">FIGMA PROTOTYPE</span>
-            <strong>Performa Solar IA</strong> — Visualizador de Telas Interativas
+            <span class="figma-badge">DEMO HTML — SIMULAÇÃO</span>
+            <strong>Performa Solar IA</strong> — protótipo web local demonstrativo
         </div>
         <div class="screen-tabs">
-            <button class="screen-tab active" onclick="switchScreen('screen1')">1. Onboarding & LGPD</button>
-            <button class="screen-tab" onclick="switchScreen('screen2')">2. OCR de Fatura</button>
-            <button class="screen-tab" onclick="switchScreen('screen3')">3. Simulador de Economia</button>
-            <button class="screen-tab" onclick="switchScreen('screen4')">4. Assistente Virtual Lia</button>
+            <button class="screen-tab active" onclick="switchScreen('screen1')">1. Apresentação</button>
+            <button class="screen-tab" onclick="switchScreen('screen2')">2. Dados fictícios</button>
+            <button class="screen-tab" onclick="switchScreen('screen3')">3. Cálculo didático</button>
+            <button class="screen-tab" onclick="switchScreen('screen4')">4. Respostas simuladas</button>
         </div>
         <div style="font-size: 11px; color: #888;">
             Ambiente de Extensão — APEX V (Unyleya)
         </div>
     </div>
+
+    <div class="demo-notice" role="note"><strong>Demonstração educativa em HTML:</strong> dados fictícios; sem IA/OCR real, upload, armazenamento de faturas ou cálculo tarifário. Não usar para decisões comerciais, financeiras ou jurídicas.</div>
 
     <!-- Área de Visualização do Frame do Protótipo -->
     <div class="canvas-container">
@@ -482,39 +494,39 @@
             <div class="proto-content">
                 <div class="hero-banner">
                     <div>
-                        <h2 class="hero-title">Inteligência Artificial para Créditos de Energia Solar</h2>
+                        <h2 class="hero-title">IA responsável e energia solar — demonstração educativa</h2>
                         <p class="hero-desc">
-                            Descubra em segundos quanto você pode economizar na sua conta de luz através de energia solar compartilhada, sem obras, sem placas no telhado e com total proteção aos seus dados pessoais.
+                            Explore conceitos de IA responsável, privacidade e energia solar com dados fictícios. Esta página não estima sua conta, economia ou condição de fornecimento.
                         </p>
                     </div>
                     <button class="btn-primary" onclick="switchScreen('screen2')">
-                        Fazer Simulação com IA &rarr;
+                        Explorar demonstração &rarr;
                     </button>
                 </div>
 
                 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
                     <div class="metric-card">
-                        <div class="metric-label">1. Leitura Inteligente (OCR)</div>
+                        <div class="metric-label">1. Exemplo de dados (sem OCR)</div>
                         <p style="font-size: 13px; color: #64748b; margin-top: 8px;">
-                            Nossa visão computacional extrai apenas os dados essenciais da fatura (consumo kWh e tarifa), descartando dados sensíveis.
+                            Exemplo didático; esta página não recebe nem processa faturas e não usa OCR ou IA real.
                         </p>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-label">2. Economia Garantida</div>
+                        <div class="metric-label">2. Exemplo de estimativa</div>
                         <p style="font-size: 13px; color: #64748b; margin-top: 8px;">
-                            Cálculo preditivo de créditos solares com 15% de desconto líquido real na fatura da sua distribuidora.
+                            Exemplo hipotético, sem garantia de desconto ou economia. Valores não são oferta comercial.
                         </p>
                     </div>
                     <div class="metric-card">
                         <div class="metric-label">3. Ética & Transparência</div>
                         <p style="font-size: 13px; color: #64748b; margin-top: 8px;">
-                            Conformidade integral com a LGPD (Lei 13.709/18) e explicações matemáticas claras de cada cobrança (XAI).
+                            Material educativo demonstrativo; não comprova conformidade legal nem substitui análise profissional.
                         </p>
                     </div>
                 </div>
 
                 <div style="margin-top: 25px; padding: 14px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 12px; color: #64748b;">
-                    🔒 <strong>Termo de Privacidade e Governança Ética:</strong> Os dados da sua fatura são processados exclusivamente para o cálculo estimativo de créditos de compensação energética sob supervisão humana (Art. 20 da LGPD).
+                    Esta demonstração usa dados fictícios e não realiza processamento de fatura. Não envie dados pessoais.
                 </div>
             </div>
         </div>
@@ -526,19 +538,19 @@
                     <div class="brand-logo">⚡</div>
                     <div class="brand-text">
                         <h1>PERFORMA ENERGY</h1>
-                        <span>Diagnóstico Inteligente de Fatura (OCR)</span>
+                        <span>Exemplo de dados fictícios (sem OCR)</span>
                     </div>
                 </div>
                 <div class="proto-nav">
                     <button class="screen-tab" style="color: #fff;" onclick="switchScreen('screen1')">&larr; Voltar</button>
-                    <span class="tag-ods green">Validação Human-in-the-Loop</span>
+                    <span class="tag-ods green">Exercício de revisão humana</span>
                 </div>
             </div>
 
             <div class="proto-content">
-                <h2 style="font-size: 18px; margin-bottom: 6px;">Leitura e Extração Segura da Conta de Energia</h2>
+                <h2 style="font-size: 18px; margin-bottom: 6px;">Tela demonstrativa com valores fictícios</h2>
                 <p style="font-size: 13px; color: #64748b; margin-bottom: 20px;">
-                    A IA generativa realizou a leitura dos campos tarifários. Revise os dados abaixo antes de calcular os créditos.
+                    Os campos abaixo são exemplos estáticos/fictícios. Nenhuma fatura foi enviada, lida ou processada por IA/OCR.
                 </p>
 
                 <div class="ocr-view">
@@ -547,35 +559,35 @@
                         <div style="font-weight: bold; border-bottom: 1px solid #ddd; padding-bottom: 6px; margin-bottom: 10px;">
                             FATURA DE ENERGIA ELÉTRICA — CONCESSIONÁRIA
                         </div>
-                        <p>UNIDADE CONSUMIDORA: <strong>[DADO ANONIMIZADO PELA IA]</strong></p>
-                        <p>TITULAR: <strong>[PROTEGIDO PELA LGPD]</strong></p>
+                        <p>UNIDADE CONSUMIDORA: <strong>[EXEMPLO FICTÍCIO]</strong></p>
+                        <p>TITULAR: <strong>[EXEMPLO FICTÍCIO]</strong></p>
                         <br>
                         <p>HISTÓRICO DE CONSUMO ATIVO:</p>
-                        <p>MÊS ATUAL: <span class="bill-box-highlight" style="position: static;">750 kWh</span> (Detectado)</p>
+                        <p>DADO FICTÍCIO: <span class="bill-box-highlight" style="position: static;">750 kWh</span></p>
                         <p>TARIFA TUSD/TE: <span class="bill-box-highlight" style="position: static;">R$ 0,92 / kWh</span></p>
                         <p>VALOR TOTAL FATURADO: <span class="bill-box-highlight" style="position: static;">R$ 690,00</span></p>
                         <br>
                         <div style="background: #e2e8f0; padding: 6px; border-radius: 4px; font-size: 10px;">
-                            ✓ Higienização Algorítmica Concluída: CPF, endereço e número da instalação foram removidos antes do processamento.
+                            Dados inteiramente ilustrativos; nenhum processo de anonimização ocorreu.
                         </div>
                     </div>
 
                     <!-- Campos Formulário para Conferência Humana -->
                     <div class="extracted-fields">
                         <div class="form-group">
-                            <label>Distribuidora de Energia <span class="confidence-tag">99.8% Confiança</span></label>
-                            <input type="text" class="form-input" value="CEMIG / ENEL / CPFL">
+                            <label>Distribuidora (exemplo fictício)</label>
+                            <input type="text" class="form-input" value="EXEMPLO — não corresponde a cliente real">
                         </div>
                         <div class="form-group">
-                            <label>Consumo Mensal Médio (kWh) <span class="confidence-tag">98.5% Confiança</span></label>
+                            <label>Consumo de exemplo (kWh)</label>
                             <input type="number" id="inputKwh" class="form-input" value="750">
                         </div>
                         <div class="form-group">
-                            <label>Valor Total Atual da Fatura (R$) <span class="confidence-tag">99.1% Confiança</span></label>
+                            <label>Valor de exemplo (R$)</label>
                             <input type="text" id="inputReais" class="form-input" value="R$ 690,00">
                         </div>
                         <button class="btn-primary" style="width: 100%; justify-content: center; margin-top: 10px;" onclick="calculateAndGo()">
-                            Confirmar Dados e Simular Créditos Solares &rarr;
+                            Ver cálculo didático &rarr;
                         </button>
                     </div>
                 </div>
@@ -594,7 +606,7 @@
                 </div>
                 <div class="proto-nav">
                     <button class="screen-tab" style="color: #fff;" onclick="switchScreen('screen2')">&larr; Voltar</button>
-                    <span class="tag-ods green">Simulação Preditiva</span>
+                    <span class="tag-ods green">Simulação didática</span>
                 </div>
             </div>
 
@@ -608,37 +620,37 @@
 
                 <div class="metrics-grid">
                     <div class="metric-card">
-                        <div class="metric-label">Economia Mensal Estimada</div>
+                        <div class="metric-label">Resultado hipotético da fórmula</div>
                         <div class="metric-val green" id="valMensal">R$ 103,50</div>
-                        <div class="metric-sub">15% de desconto líquido garantido</div>
+                        <div class="metric-sub">premissas fictícias; sem oferta ou garantia</div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-label">Economia Acumulada Anual</div>
+                        <div class="metric-label">Total anual ilustrativo</div>
                         <div class="metric-val" id="valAnual">R$ 1.242,00</div>
-                        <div class="metric-sub">Economia sem nenhum investimento</div>
+                        <div class="metric-sub">multiplicação didática do valor mensal por 12</div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-label">Redução de CO₂ (ODS 13)</div>
-                        <div class="metric-val" id="valCo2" style="color: #0284c7;">1,8 Ton</div>
-                        <div class="metric-sub">Equivalente a 12 árvores plantadas/ano</div>
+                        <div class="metric-label">Indicador ambiental</div>
+                        <div class="metric-val" id="valCo2" style="color: #0284c7;">—</div>
+                        <div class="metric-sub">não calculado nesta demonstração</div>
                     </div>
                 </div>
 
                 <!-- Gaveta de Explicabilidade (XAI) -->
                 <div class="xai-box">
-                    <strong>🔍 Transparência Algorítmica (Explainable AI): Como a IA chegou a este valor?</strong>
+                    <strong>Exemplo de aritmética simplificada (não é cálculo tarifário regulatório):</strong>
                     <p style="margin-top: 6px; font-size: 12px; line-height: 1.5;">
-                        Fórmula Auditável: <code>Créditos Solares = (Consumo Compensável × Tarifa TE) × 15% Desconto</code>.<br>
-                        O cálculo respeita o Custo de Disponibilidade (taxa mínima) e a taxa de iluminação pública da sua cidade conforme a Resolução Normativa ANEEL nº 1.000/2021 e a Lei 14.300/2022. Não há pegadinhas nem cobrança oculta.
+                        <code>valor de exemplo = consumo informado × tarifa fictícia × percentual ilustrativo</code>.<br>
+                        Não incorpora regras de distribuidora, tributos, custo de disponibilidade ou condições contratuais; não usar para decisão financeira.
                     </p>
                 </div>
 
                 <div style="display: flex; gap: 12px; margin-top: 25px;">
                     <button class="btn-primary" onclick="switchScreen('screen4')">
-                        Falar com a Assistente Virtual Lia &rarr;
+                        Falar com resposta demonstrativa &rarr;
                     </button>
-                    <button class="btn-primary" style="background: var(--slate-900); color: white;" onclick="alert('Relatório de Economia gerado em PDF com sucesso!')">
-                        📄 Baixar Relatório Auditado
+                    <button class="btn-primary" style="background: var(--slate-900); color: white;" onclick="alert('Demonstração: nenhum relatório é gerado ou auditado.')">
+                        📄 Ver aviso da demonstração
                     </button>
                 </div>
             </div>
@@ -651,52 +663,52 @@
                     <div class="brand-logo">⚡</div>
                     <div class="brand-text">
                         <h1>PERFORMA ENERGY</h1>
-                        <span>Lia &bull; Assistente Virtual Ética de Energia Solar</span>
+                        <span>Respostas predefinidas para demonstração — não é um assistente IA</span>
                     </div>
                 </div>
                 <div class="proto-nav">
                     <button class="screen-tab" style="color: #fff;" onclick="switchScreen('screen3')">&larr; Voltar</button>
-                    <span class="tag-ods green">IA Regulada (Sem Alucinações)</span>
+                    <span class="tag-ods green">Respostas roteirizadas — sem IA</span>
                 </div>
             </div>
 
             <div class="proto-content">
-                <h2 style="font-size: 18px; margin-bottom: 6px;">Atendimento Inteligente & Letramento Regulatório</h2>
+                <h2 style="font-size: 18px; margin-bottom: 6px;">Exercício com perguntas hipotéticas</h2>
                 <p style="font-size: 13px; color: #64748b; margin-bottom: 20px;">
-                    Tire dúvidas sobre seu desconto, faturas e o funcionamento da compensação solar na Performa Energy.
+                    As respostas abaixo são textos estáticos de exemplo; não prestam orientação comercial, tarifária ou jurídica.
                 </p>
 
                 <div class="chat-container">
                     <div class="chat-history" id="chatBox">
                         <div class="chat-msg bot">
-                            Olá! Sou a <strong>Lia</strong>, assistente virtual da Performa Energy. Fui programada com base no marco legal da energia solar no Brasil para tirar suas dúvidas com total transparência. Como posso te ajudar hoje?
+                            Esta área demonstra uma resposta roteirizada; ela não consulta fontes nem processa perguntas com IA.
                         </div>
                         <div class="chat-msg user">
                             Preciso fazer alguma obra ou instalar painéis solares no meu telhado?
                         </div>
                         <div class="chat-msg bot">
-                            <strong>Não!</strong> Você não precisa fazer nenhuma obra, reforma ou comprar equipamentos. A energia é gerada nas usinas solares da Performa Energy e injetada na rede da sua distribuidora local. Os créditos são compensados diretamente na sua fatura.
+                            Este exemplo não representa oferta ou condição contratual. Consulte a distribuidora e o fornecedor para confirmar regras e condições aplicáveis.
                             <br>
-                            <span class="chat-citation">Fonte: Marco Legal da Micro e Minigeração Distribuída (Lei nº 14.300/2022)</span>
+                            <span class="chat-citation">Referência ilustrativa — consultar texto oficial da Lei nº 14.300/2022</span>
                         </div>
                         <div class="chat-msg user">
                             E se chover ou estiver nublado, eu fico sem energia?
                         </div>
                         <div class="chat-msg bot">
-                            <strong>De forma alguma!</strong> O fornecimento de energia continua sendo garantido pela rede da sua distribuidora com 100% de estabilidade. Você apenas paga menos pela energia consumida.
+                            Esta demonstração não presta aconselhamento nem garante continuidade, desconto ou condição de fornecimento. Consulte o contrato e a distribuidora.
                             <br>
-                            <span class="chat-citation">Fonte: Resolução Normativa ANEEL nº 1.000/2021</span>
+                            <span class="chat-citation">Referência ilustrativa — consultar resolução vigente da ANEEL</span>
                         </div>
                     </div>
 
                     <div class="chat-input-bar">
-                        <input type="text" id="userInput" class="chat-input" placeholder="Digite sua pergunta aqui (ex: como cancelar, taxas mínimas...)" onkeypress="handleChat(event)">
+                        <input type="text" id="userInput" class="chat-input" placeholder="Digite uma pergunta (será exibida uma resposta demonstrativa predefinida)" onkeypress="handleChat(event)">
                         <button class="btn-primary" style="padding: 8px 16px;" onclick="sendMsg()">Enviar</button>
                     </div>
                 </div>
 
                 <div style="margin-top: 15px; font-size: 11px; color: #64748b; text-align: center;">
-                    🤖 <em>Salvaguarda Ética: A assistente Lia utiliza modelos auditados e cita normas oficiais para evitar alucinações de dados. Caso deseje atendimento humano, você pode ser transferido a qualquer momento.</em>
+                    <em>Demonstração local: as respostas são textos roteirizados, não vêm de IA nem de consulta jurídica/regulatória.</em>
                 </div>
             </div>
         </div>
@@ -730,11 +742,9 @@
             const faturaAtual = kwh * tarifa;
             const economiaMensal = faturaAtual * 0.15;
             const economiaAnual = economiaMensal * 12;
-            const co2 = (kwh * 12 * 0.0002).toFixed(1);
-
             document.getElementById('valMensal').innerText = 'R$ ' + economiaMensal.toFixed(2).replace('.', ',');
             document.getElementById('valAnual').innerText = 'R$ ' + economiaAnual.toFixed(2).replace('.', ',');
-            document.getElementById('valCo2').innerText = co2.replace('.', ',') + ' Ton';
+            document.getElementById('valCo2').innerText = '—';
         }
 
         function handleChat(e) {
@@ -759,7 +769,7 @@
             setTimeout(() => {
                 const bDiv = document.createElement('div');
                 bDiv.className = 'chat-msg bot';
-                bDiv.innerHTML = 'Recebi sua pergunta sobre "<strong>' + txt + '</strong>". Todos os créditos de energia solar da Performa Energy seguem estritamente as regras de compensação homologadas pela ANEEL e a Lei 14.300/2022, garantindo segurança jurídica e economia sem fidelidade forçada.<br><span class="chat-citation">Fonte: Regulação ANEEL & Conformidade Performa Energy</span>';
+                bDiv.textContent = 'Resposta simulada: esta demonstração não usa IA e não verifica contratos ou regras atuais. Consulte fontes oficiais e atendimento qualificado.';
                 box.appendChild(bDiv);
                 box.scrollTop = box.scrollHeight;
             }, 600);

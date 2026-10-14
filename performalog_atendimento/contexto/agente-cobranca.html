@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agente de cobrança · Contexto</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<div class="wrap">
+ <nav class="top"><a href="index.html">Início</a><a href="operacao.html">Operação</a><a href="automacao.html">Automação</a><a href="disparos.html">Disparos</a><a href="cobranca.html">Cobrança</a><a href="agente-cobranca.html" aria-current="page">Agente de cobrança</a><a href="gestao.html">Gestão</a><a href="configuracao.html">Configuração</a><a href="api-meta.html">API da Meta</a><a href="telas.html">Telas e fluxos</a></nav>
+ <header>
+  <span class="eyebrow">Fase 2 · depois do sistema integrado ao Performalog · um dos principais focos do software</span>
+  <h1>Agente de cobrança</h1>
+  <p>Tudo nesta página vem do documento <code>Agente cobrança.docx</code>, salvo os itens marcados como protótipo. Onde o documento é incompleto ou se contradiz, a decisão fica nas perguntas do fim da página.</p>
+ </header>
+
+ <section>
+  <h2>Princípio de atendimento</h2>
+  <ol class="flow" style="margin:0;padding:0">
+   <li><div><b>Entender</b> · por que o cliente não pagou, antes de qualquer outra coisa</div></li>
+   <li><div><b>Explicar</b> · a cobrança, com os dados reais, quando necessário</div></li>
+   <li><div><b>Oferecer</b> · só alternativas que a Performa permite</div></li>
+   <li><div><b>Solução</b> · a condição que o cliente consegue cumprir</div></li>
+   <li><div><b>Formalizar</b> · registrar o que foi combinado</div></li>
+   <li><div><b>Cobrar</b> · cordialidade não é deixar de cobrar: validado o débito e apresentadas as alternativas, informar com clareza que o débito segue no fluxo de cobrança</div></li>
+  </ol>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Regra de conduta</th><th>Detalhe</th><th>Situação</th></tr></thead><tbody>
+   <tr><td class="id">AG-01</td><td><b>Atendimento humano das 08:00 às 18:00</b></td><td>Fora desse horário, transferências ficam na fila para o dia seguinte.</td><td><i class="s s-def">DEFINIDO</i> · dias Q-AG10</td></tr>
+   <tr><td class="id">AG-02</td><td><b>Perguntar em vez de afirmar</b></td><td>Ex.: "Você tem condições de fazer o pagamento à vista nos próximos cinco dias? Se sim, conseguimos liberar multa e juros."</td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AG-03</td><td><b>Objetivo: pagamento inicial que firme o compromisso</b></td><td>Se o acordo não for cumprido, multa e juros voltam a valer sobre o valor não pago.</td><td><i class="s s-def">DEFINIDO</i> · regra de sinal Q-AG1</td></tr>
+   <tr><td class="id">AG-04</td><td><b>Isenção de multa via outro setor</b></td><td>O documento sugere dizer que o setor financeiro será consultado e retornará com a liberação. No protótipo isso virou um pedido real de aprovação, registrado.</td><td><i class="s s-perg">PERGUNTA</i> Q-AG2</td></tr>
+   <tr><td class="id">AG-05</td><td><b>Tom</b></td><td>Cordial, objetivo, voltado para solução. Não começar com ameaça ou confronto; informar com clareza o débito e as consequências.</td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AG-06</td><td><b>Três perfis de inadimplente</b></td><td>Não consegue pagar · não entendeu a cobrança · não quer pagar. Os três recebem tratativas diferentes.</td><td><i class="s s-def">DEFINIDO</i></td></tr>
+  </tbody></table></div>
+ </section>
+
+ <section>
+  <h2>Funcionalidades necessárias (seções 1 a 15 do documento)</h2>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Funcionalidade</th><th>O que o agente precisa fazer</th><th>Depende de</th><th>Situação</th></tr></thead><tbody>
+   <tr><td class="id">AG-10</td><td><b>1 · Identificação automática</b></td><td>Localizar o cadastro por CPF/CNPJ, número da UC, telefone ou e-mail e retornar os contratos e unidades vinculados.</td><td>Cadastro de clientes (ERP)</td><td><i class="s s-def">DEFINIDO</i> · fonte Q-AG11</td></tr>
+   <tr><td class="id">AG-11</td><td><b>2 · Consulta financeira em tempo real</b></td><td>Faturas em aberto, vencidas e pagas; vencimento; valor original; juros e multa; dias de atraso; histórico de pagamentos; acordos e negociações; status de negativação.</td><td>ERP / Digital Grid</td><td><i class="s s-def">DEFINIDO</i> · fonte Q-AG11</td></tr>
+   <tr><td class="id">AG-12</td><td><b>3 · Consulta do contrato / Termo de Adesão</b></td><td>Identificar prazo de fidelidade, percentual de desconto, regra de cancelamento, multa rescisória e condições específicas.</td><td>Termo em PDF ou campos no ERP</td><td><i class="s s-def">DEFINIDO</i> · formato Q-AG12</td></tr>
+   <tr><td class="id">AG-13</td><td><b>4 · Créditos de energia</b></td><td>Saldo em kWh, créditos disponibilizados, consumidos, em processamento, último rateio, quanto ainda será creditado pela concessionária, competência e valor do kWh de faturamento.</td><td>Relatório XML de rateio (CEMIG)</td><td><i class="s s-def">DEFINIDO</i> · fonte Q-AG13</td></tr>
+   <tr><td class="id">AG-14</td><td><b>5 · Explicar a composição da cobrança</b></td><td>Ex.: "Fatura de R$ 1.038,48 = 879 kWh × R$ 1,1814/kWh", somando o cálculo de juros e multa da régua.</td><td>—</td><td><i class="s s-def">DEFINIDO</i> · percentuais Q-AG5</td></tr>
+   <tr><td class="id">AG-15</td><td><b>6 · Segunda via</b></td><td>Boleto, Pix, código de barras, PDF da fatura, segunda via e link de pagamento por cartão.</td><td>Gateway de pagamento</td><td><i class="s s-def">DEFINIDO</i> · cartão Q-AG14</td></tr>
+   <tr><td class="id">AG-16</td><td><b>7 · Negociação só com regras autorizadas</b></td><td>Hoje é manual: um Excel é preenchido e enviado à Digital Grid para gerar o boleto. O agente apresenta somente propostas previamente autorizadas e não inventa negociação. Descontos são casos específicos e dependem de uma pessoa.</td><td>Digital Grid</td><td><i class="s s-def">DEFINIDO</i> · regras em conflito Q-AG1, Q-AG3, Q-AG4</td></tr>
+   <tr><td class="id">AG-17</td><td><b>8 · Formalização do acordo</b></td><td>Registrar o aceite e anexar comprovante no Plog ou pasta do cliente; gerar o acordo, os boletos ou Pix; enviar ao cliente; atualizar o status; registrar data, hora e condições. Função direcionada a um atendente humano. Retirar a negativação após o pagamento, se houver.</td><td>Digital Grid · Plog · bureau</td><td><i class="s s-def">DEFINIDO</i> · Q-AG8</td></tr>
+   <tr><td class="id">AG-18</td><td><b>9 · Contestação de cobrança</b></td><td>Ao ouvir "não reconheço", "não consumi", "já cancelei", "troquei a titularidade": abrir a contestação, registrar o motivo e reunir os dados antes de encaminhar para uma pessoa (dependendo da situação). Categorias abaixo.</td><td>—</td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AG-19</td><td><b>10 · Cancelamento</b></td><td>Consultar e informar: data da solicitação, saldo na data, créditos em processamento, faturas em aberto, multa rescisória, condição de isenção, previsão de encerramento (saldo na instalação × média de consumo), comprovante de encerramento, status e protocolo. Saldo, rateio pendente, faturas em aberto e multa já são calculados pela tela de multa rescisória.</td><td>ERP · tela de multa rescisória</td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AG-20</td><td><b>11 · Troca de titularidade</b></td><td>Ensinar o cliente a fazer a troca na distribuidora. Identificar que houve troca e orientar as possibilidades, inclusive transferência do saldo para outra instalação dentro do prazo permitido.</td><td>XML de rateio</td><td><i class="s s-def">DEFINIDO</i> · prazo Q-AG15 · UC que some Q-AG16</td></tr>
+   <tr><td class="id">AG-21</td><td><b>12 · Negativação e alertas</b></td><td>Consultar o status do débito e informar quando estiver sujeito à negativação. Alertas: D1 atraso + 2ª via · D5 contato amigável · D10 pendência · D20 verificar a dívida na política e propor · D25 pendência e possível negativação · D30+ fluxo de negativação.</td><td>Bureau de crédito</td><td><i class="s s-def">DEFINIDO</i> · bureau Q-AG17</td></tr>
+   <tr><td class="id">AG-22</td><td><b>13 · Canal de comunicação</b></td><td>Alertas por WhatsApp e e-mail. Se o cliente começou no WhatsApp e depois manda e-mail, direcionar para uma pessoa (possível formalização para ação judicial).</td><td>E-mail com recebimento</td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AG-23</td><td><b>14 · Histórico único</b></td><td>Linha do tempo para o atendente. Ex.: 19/08 pediu cancelamento · 20/08 informado saldo de 900 kWh · 22/08 boleto enviado · 25/08 contestou · 26/08 contestação analisada · 28/08 oferecida isenção da multa mediante pagamento da energia · 31/08 recusou a proposta.</td><td>—</td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AG-24</td><td><b>15 · Saber quando parar e transferir</b></td><td>Ameaça de processo, PROCON ou ANEEL; contestação jurídica complexa; cliente muito insatisfeito; inconsistência de valores; pedido fora das regras; erro sistêmico. Enviar ao atendente um resumo automático da conversa e do caso.</td><td>—</td><td><i class="s s-def">DEFINIDO</i></td></tr>
+  </tbody></table></div>
+ </section>
+
+ <section>
+  <h2>Visão geral 360°</h2>
+  <p>Ao abrir o cliente, atendente ou agente veem numa única tela:</p>
+  <div class="tbl"><table><thead><tr><th>Campo</th><th>Campo</th><th>Campo</th></tr></thead><tbody>
+   <tr><td>Cliente</td><td>UC</td><td>Contrato: ativo ou cancelado</td></tr>
+   <tr><td>Pedido de cancelamento (data, se foi concretizado)</td><td>Saldo energético (kWh)</td><td>Energia ainda a receber (kWh)</td></tr>
+   <tr><td>Faturas abertas (R$)</td><td>Faturas vencidas (R$)</td><td>Multa rescisória (R$)</td></tr>
+   <tr><td>Proposta autorizada (R$)</td><td>Dias de atraso</td><td>Negativação: elegível, concluída, em dia</td></tr>
+   <tr><td>Último contato</td><td>Próxima ação</td><td>Média de consumo (kWh)</td></tr>
+  </tbody></table></div>
+ </section>
+
+ <section>
+  <h2>Formas de tratativa</h2>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Situação do cliente</th><th>O que o agente faz</th><th>Situação</th></tr></thead><tbody>
+   <tr><td class="id">AG-30</td><td><b>1 · Dificuldade financeira</b></td><td>Perguntar para entender a capacidade de pagamento e buscar alternativas dentro das regras: alteração de vencimento, parcelamento, condição diferenciada previamente autorizada, entrada + parcelas, ou encaminhar para aprovação quando estiver fora da alçada. Nunca conceder desconto ou condição não autorizada.</td><td><i class="s s-def">DEFINIDO</i> · vencimento Q-AG9</td></tr>
+   <tr><td class="id">AG-31</td><td><b>2 · Não recebeu o boleto</b></td><td>Confirmar nome, e-mail e telefone (para corrigir o cadastro), verificar a fatura e oferecer na hora 2ª via, código de barras, Pix e PDF. Antes de encerrar, confirmar se o cliente conseguiu acessar o documento.</td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AG-32</td><td><b>3 · Não entende a cobrança</b></td><td>Antes de insistir no pagamento, explicar o valor com dados reais: kWh, valor aplicado, competência, créditos disponibilizados e demais componentes.</td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AG-33</td><td><b>4 · Contesta a cobrança</b></td><td>Não entrar em confronto. Classificar pela categoria, consultar o que houver e esclarecer se a informação estiver validada no sistema; se depender de documento ou decisão interna, registrar e encaminhar para uma pessoa.</td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AG-34</td><td><b>5 · Deseja negociar</b></td><td>Identificar as condições disponíveis para aquele débito e apresentar de forma objetiva. Buscar a regularização sem pressionar a aceitar algo que o cliente disse não conseguir cumprir.</td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AG-35</td><td><b>6 · Promete pagamento</b></td><td>Registrar valor, data, fatura e canal. Evitar cobranças repetitivas enquanto a promessa estiver no prazo. Avisar que um dia antes o sistema envia lembrete. Sem pagamento após a data, volta ao fluxo de cobrança.</td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AG-36</td><td><b>7 · Solicita prazo</b></td><td>Criar uma régua de prazos. Dentro da autonomia, registrar o compromisso; fora dela, informar alternativas ou encaminhar para aprovação.</td><td><i class="s s-perg">PERGUNTA</i> Q-AG6</td></tr>
+   <tr><td class="id">AG-37</td><td><b>8 · Não aceita nenhuma alternativa</b></td><td>Com o débito validado e as informações esclarecidas, sinalizar o motivo e transferir. Não ficar repetindo os mesmos argumentos.</td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AG-38</td><td><b>9 · Insatisfação ou irritação</b></td><td>Não reproduzir o tom. Reconhecer, manter cordialidade, explicar, apresentar possibilidades e transferir quando a automação não ajudar mais.</td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AG-39</td><td><b>10 · Ameaça processo, PROCON, ANEEL ou ação judicial</b></td><td>Não discutir questões jurídicas, não tentar impedir o cliente nem fazer ameaças. Registrar a manifestação e transferir.</td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AG-40</td><td><b>11 · Histórico de negociação</b></td><td>Antes de oferecer, verificar: acordo anterior, quebra de acordo, desconto já concedido, promessa vigente, contestação aberta, condição excepcional já recebida. Se qualquer resposta for sim, transferir para uma pessoa.</td><td><i class="s s-def">DEFINIDO</i> · Q-AG7</td></tr>
+  </tbody></table></div>
+ </section>
+
+ <section>
+  <h2>Contestação: categorias padronizadas</h2>
+  <p class="note">Transferir sempre para uma pessoa: CONT-01, CONT-13, CONT-14, CONT-15 e CONT-17. Nas demais, o documento diz "depende da situação": o agente esclarece quando a informação estiver validada no sistema, senão registra e encaminha. O que o agente mostra em cada uma é proposta do protótipo.</p>
+  <div class="tbl"><table><thead><tr><th>Código</th><th>Categoria</th><th>Descrição</th><th>Encaminhamento</th></tr></thead><tbody>
+   <tr><td class="id">CONT-01</td><td><b>Não reconhece a cobrança</b></td><td>Não reconhece o boleto, a cobrança ou o valor.</td><td><i class="s s-def">TRANSFERIR</i></td></tr>
+   <tr><td class="id">CONT-02</td><td><b>Valor divergente</b></td><td>Reconhece a cobrança, mas diz que o valor está errado.</td><td><i class="o o-prot">PROTÓTIPO</i> mostra a composição</td></tr>
+   <tr><td class="id">CONT-03</td><td><b>Energia não consumida</b></td><td>Alega não ter consumido a energia cobrada.</td><td><i class="o o-prot">PROTÓTIPO</i> mostra a composição</td></tr>
+   <tr><td class="id">CONT-04</td><td><b>Energia/crédito não recebido</b></td><td>Não recebeu ou não identificou os créditos.</td><td><i class="o o-prot">PROTÓTIPO</i> mostra os créditos</td></tr>
+   <tr><td class="id">CONT-05</td><td><b>Cobrança após cancelamento</b></td><td>Subcategorias: crédito disponibilizado antes do cancelamento; crédito recebido depois, mas já em processamento; fatura de consumo anterior; alegação de novos créditos após o cancelamento; divergência sobre a data da solicitação; troca de titularidade entendida como cancelamento.</td><td><i class="s s-perg">PERGUNTA</i> Q-AG18</td></tr>
+   <tr><td class="id">CONT-06</td><td><b>Multa rescisória</b></td><td>Não reconhece ou não concorda com a multa por encerramento antecipado.</td><td><i class="o o-db">CÁLCULO EXISTENTE</i> explica com o cálculo da multa rescisória</td></tr>
+   <tr><td class="id">CONT-07</td><td><b>Troca de titularidade</b></td><td>A UC não está mais na titularidade do cliente.</td><td><i class="o o-prot">PROTÓTIPO</i> orienta a troca</td></tr>
+   <tr><td class="id">CONT-08</td><td><b>Pagamento já realizado</b></td><td>A fatura cobrada já foi paga.</td><td><i class="o o-prot">PROTÓTIPO</i> pede comprovante e transfere</td></tr>
+   <tr><td class="id">CONT-09</td><td><b>Pagamento não identificado</b></td><td>Pagou, mas a fatura segue pendente.</td><td><i class="o o-prot">PROTÓTIPO</i> pede comprovante e transfere</td></tr>
+   <tr><td class="id">CONT-10</td><td><b>Juros e encargos</b></td><td>Questiona juros, multa por atraso ou outros encargos.</td><td><i class="o o-prot">PROTÓTIPO</i> mostra o cálculo</td></tr>
+   <tr><td class="id">CONT-11</td><td><b>Duplicidade</b></td><td>Duas cobranças para o mesmo consumo ou período.</td><td><i class="o o-prot">PROTÓTIPO</i> confere competências</td></tr>
+   <tr><td class="id">CONT-12</td><td><b>Cobrança emitida pela IVI Energia</b></td><td>Não reconhece a IVI Energia ou a procedência da fatura da parceira.</td><td><i class="s s-perg">PERGUNTA</i> Q-AG19</td></tr>
+   <tr><td class="id">CONT-13</td><td><b>Créditos de outra empresa</b></td><td>Tem créditos ou cobranças de outra empresa de energia ao mesmo tempo.</td><td><i class="s s-def">TRANSFERIR</i></td></tr>
+   <tr><td class="id">CONT-14</td><td><b>Desconto divergente</b></td><td>Desconto aplicado diferente do contratado.</td><td><i class="s s-def">TRANSFERIR</i></td></tr>
+   <tr><td class="id">CONT-15</td><td><b>Condição comercial divergente</b></td><td>Condições do vendedor diferentes das da cobrança ou do contrato.</td><td><i class="s s-def">TRANSFERIR</i></td></tr>
+   <tr><td class="id">CONT-16</td><td><b>Negativação</b></td><td>Contesta a inclusão ou a possibilidade de inclusão nos órgãos de proteção ao crédito.</td><td><i class="o o-prot">PROTÓTIPO</i> informa o status</td></tr>
+   <tr><td class="id">CONT-17</td><td><b>Contrato não reconhecido</b></td><td>Não reconhece a contratação ou a assinatura.</td><td><i class="s s-def">TRANSFERIR</i></td></tr>
+   <tr><td class="id">CONT-18</td><td><b>Outros</b></td><td>Só quando não couber em nenhuma categoria.</td><td><i class="o o-prot">PROTÓTIPO</i> transfere</td></tr>
+  </tbody></table></div>
+ </section>
+
+ <section>
+  <h2>Política de régua de negociação</h2>
+  <p>Ordem obrigatória: <b>1º à vista</b> → <b>2º cartão de crédito</b> → <b>3º boleto parcelado</b>. Boleto só depois da recusa do à vista e do cartão, salvo exceção futura cadastrada pela Performa.</p>
+  <div class="tbl"><table><thead><tr><th>Modalidade</th><th>Dívida</th><th>Parcelas</th><th>Primeira oferta → recusas</th></tr></thead><tbody>
+   <tr><td><b>À vista</b></td><td>Qualquer</td><td>1</td><td>Isenção integral de juros e multa por atraso; fica o valor principal</td></tr>
+   <tr><td rowspan="4"><b>Cartão de crédito</b></td><td>abaixo de R$ 300</td><td>2 a 3</td><td>2x → 3x</td></tr>
+   <tr><td>R$ 300 a R$ 700</td><td>3 a 5</td><td>3x → 4x → 5x</td></tr>
+   <tr><td>R$ 700 a R$ 1.500</td><td>5 a 6</td><td>5x → 6x</td></tr>
+   <tr><td>acima de R$ 1.500</td><td>6 a 10</td><td>6x, aumentando a cada recusa · agente até 7x · 8x a 10x com autorização</td></tr>
+   <tr><td rowspan="4"><b>Boleto parcelado</b></td><td>abaixo de R$ 300</td><td>1</td><td>Vencimento no mês seguinte</td></tr>
+   <tr><td>R$ 300 a R$ 700</td><td>até 2</td><td>—</td></tr>
+   <tr><td>R$ 700 a R$ 1.500</td><td>3 a 4</td><td>3x → 4x</td></tr>
+   <tr><td>acima de R$ 1.500</td><td>até 6</td><td>Começa pela menor quantidade aplicável e aumenta a cada recusa</td></tr>
+  </tbody></table></div>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Regra geral</th><th>Situação</th></tr></thead><tbody>
+   <tr><td class="id">AG-50</td><td>Nenhuma parcela abaixo de R$ 100,00.</td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AG-51</td><td>Efeito cascata: começar pela menor condição e só aumentar diante da recusa. Ex.: cartão, dívida de R$ 500 → 3x, recusa → 4x, recusa → 5x. Nunca começar oferecendo 5x.</td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AG-52</td><td>Não listar todas as condições de uma vez ("podemos fazer à vista, 3x, 4x ou 5x no cartão e 2x no boleto" é proibido). Registrar cada recusa antes de liberar a próxima.</td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AG-53</td><td>O sistema controla quais opções estão disponíveis conforme valor da dívida, forma de pagamento, parcela mínima, condições já recusadas e alçada de autorização. A régua é regra do sistema, não só orientação.</td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AG-54</td><td>Qualquer condição fora da política vai para autorização humana.</td><td><i class="s s-def">DEFINIDO</i></td></tr>
+   <tr><td class="id">AG-55</td><td>Cartão: até 7x pelo agente; 8x a 10x exige autorização. Boleto: máximo de 6 parcelas.</td><td><i class="s s-def">DEFINIDO</i> · conflito Q-AG3</td></tr>
+   <tr><td class="id">AG-56</td><td>Faixa da dívida calculada sobre o valor total (com encargos) ou só o principal.</td><td><i class="s s-perg">PERGUNTA</i> Q-AG20</td></tr>
+  </tbody></table></div>
+ </section>
+
+ <section>
+  <h2>Fluxo do agente</h2>
+  <ol class="flow" style="margin:0;padding:0">
+   <li><div><b>Entrada</b> · mensagem do cliente sobre fatura/pagamento, resposta a um template da régua, ou e-mail (que vai direto para uma pessoa)</div></li>
+   <li><div><b>Identificar</b> · pelo telefone; se não achar, pedir CPF/CNPJ, UC ou e-mail</div></li>
+   <li><div><b>Consultar</b> · faturas, contrato, créditos, negativação e histórico</div></li>
+   <li><div><b>Checar gatilhos de transferência</b> · ameaça jurídica, histórico de negociação, contestação que exige pessoa</div></li>
+   <li><div><b>Entender o motivo</b> · pergunta aberta sobre o que dificultou o pagamento e classificação do perfil</div></li>
+   <li><div><b>Tratativa</b> · conforme a situação: 2ª via, explicação, contestação, prazo, promessa, cancelamento, titularidade</div></li>
+   <li><div><b>Negociar em cascata</b> · uma condição por vez, registrando cada recusa</div></li>
+   <li><div><b>Aceite</b> · registrar data, hora, condições e canal; transferir para uma pessoa formalizar</div></li>
+   <li><div><b>Sem acordo</b> · informar que o débito segue devido e transferir com o motivo; a régua continua</div></li>
+   <li><div><b>Toda transferência</b> · com resumo automático do caso para o atendente</div></li>
+  </ol>
+ </section>
+
+ <section>
+  <h2>Arquitetura agêntica (proposta)</h2>
+  <p>Como o fluxo acima vira software. Proposta técnica de 08/10/2026, ainda não validada pela Performa. Há um exemplo em código em <code>agente-exemplo/agente.ts</code> e uma simulação passo a passo no protótipo, em Agente de cobrança → <b>Arquitetura e simulação</b> (com a IA simulada enquanto não há chave da API).</p>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Decisão</th><th>Detalhe</th><th>Situação</th></tr></thead><tbody>
+   <tr><td class="id">AG-57</td><td><b>Workflow em grafo, não agente livre</b></td><td>O código decide o caminho da conversa. O modelo de IA só faz duas coisas: <b>classificar</b> a mensagem e <b>redigir</b> a resposta. Assim as regras do documento ficam garantidas pelo código, não por uma instrução que o modelo pode esquecer.</td><td><i class="s s-conf">PROPOSTA</i></td></tr>
+   <tr><td class="id">AG-58</td><td><b>Etapas de cada turno</b></td><td>Webhook → fila e trava → carregar caso → portão → classificar (IA) → roteador → nó → redigir (IA) → verificar → gravar → enviar.</td><td><i class="s s-conf">PROPOSTA</i></td></tr>
+   <tr><td class="id">AG-59</td><td><b>Webhook só recebe</b></td><td>Confere a assinatura <code>X-Hub-Signature-256</code>, responde 200 na hora e põe a mensagem na fila. Não chama a IA.</td><td><i class="s s-conf">PROPOSTA</i></td></tr>
+   <tr><td class="id">AG-60</td><td><b>Fila com trava por conversa</b></td><td>Ignora mensagem repetida (mesmo <code>wamid</code>), junta mensagens enviadas em sequência num turno só e nunca roda dois turnos do mesmo cliente ao mesmo tempo. Sem isso, duas mensagens rápidas receberiam duas ofertas diferentes.</td><td><i class="s s-conf">PROPOSTA</i></td></tr>
+   <tr><td class="id">AG-61</td><td><b>Portão antes da IA</b></td><td>Barra o turno sem chamar o modelo quando o caso já está com uma pessoa, o cliente trocou para o e-mail (AG-22) ou há histórico de negociação (AG-40).</td><td><i class="s s-conf">PROPOSTA</i></td></tr>
+   <tr><td class="id">AG-62</td><td><b>Classificação com saída fechada</b></td><td>O modelo devolve só um JSON validado: intenção (8 opções), resposta à oferta (aceita, recusa, contraproposta, sem oferta), contestação (nenhuma ou CONT-01 a CONT-18), ameaça jurídica e irritação.</td><td><i class="s s-conf">PROPOSTA</i></td></tr>
+   <tr><td class="id">AG-63</td><td><b>Roteador em código</b></td><td>A ordem das regras define a prioridade: ameaça jurídica → contestação → irritação repetida → aceite → contraproposta → recusa → negociar → entender.</td><td><i class="s s-conf">PROPOSTA</i></td></tr>
+   <tr><td class="id">AG-64</td><td><b>Motor da régua em código</b></td><td>Escolhe a primeira condição não recusada da cascata (AG-50 a AG-55). O redator recebe <b>só essa condição</b>, por isso não consegue listar as outras (AG-52). Condição acima da alçada vira pedido de aprovação (AG-55).</td><td><i class="s s-conf">PROPOSTA</i></td></tr>
+   <tr><td class="id">AG-65</td><td><b>Verificador antes de enviar</b></td><td>Confere se a mensagem termina em pergunta (AG-02) e se os valores e parcelas citados batem com a oferta liberada. Se falhar, pede outra redação; na segunda falha usa um texto fixo.</td><td><i class="s s-conf">PROPOSTA</i></td></tr>
+   <tr><td class="id">AG-66</td><td><b>Estado do caso no banco</b></td><td>Fase, oferta atual, recusas e eventos ficam numa linha por caso. A dívida vem do Performalog e da Digital Grid; a IA nunca é a fonte do valor.</td><td><i class="s s-conf">PROPOSTA</i></td></tr>
+   <tr><td class="id">AG-67</td><td><b>Eventos agendados pelo mesmo grafo</b></td><td>A régua D1–D30, a promessa vencida e o pagamento confirmado entram na mesma fila como eventos. Fora da janela de 24 h, só com template aprovado.</td><td><i class="s s-conf">PROPOSTA</i></td></tr>
+   <tr><td class="id">AG-68</td><td><b>Modelo e chave</b></td><td>Claude (<code>claude-opus-5-5</code>) pela API da Anthropic, com a chave num workspace próprio para a cobrança, com limite de gasto e guardada em variável de ambiente. Nunca no navegador ou no protótipo.</td><td><i class="s s-conf">PROPOSTA</i></td></tr>
+   <tr><td class="id">AG-69</td><td><b>Implantação em etapas</b></td><td>Primeiro a simulação local, depois o número de teste da Meta, depois o <b>modo sombra</b> (o agente redige e uma pessoa aprova antes de enviar) e por fim produção para uma parte da carteira. Cada turno grava a classificação, a decisão e o texto, que viram casos de teste.</td><td><i class="s s-conf">PROPOSTA</i></td></tr>
+  </tbody></table></div>
+ </section>
+
+ <section>
+  <h2>De onde vem cada dado do agente (banco performalog)</h2>
+  <div class="db">
+   <div class="tbl"><table><thead><tr><th>Requisito</th><th>Tabela e campos</th><th>Cobertura</th></tr></thead><tbody>
+    <tr><td><b>1 · Identificação</b></td><td><code>client</code> (nome, documento, e-mail, telefone), <code>consortium_members</code> (documento, instalação/UC, whatsapp, e-mail), <code>client_integration_installation</code> (UC)</td><td><i class="s s-resp">EXISTE</i></td></tr>
+    <tr><td><b>2 · Financeiro</b></td><td><code>client_integration_bill</code>: valor, vencimento, situação (Pago, Vencido, Negativado, Parcelado…), competência, link</td><td><i class="s s-parc">PARCIAL</i> sem juros/multa nem histórico de acordos</td></tr>
+    <tr><td><b>3 · Contrato</b></td><td><code>consortium_members</code>: desconto, kWh, dia de vencimento, data de assinatura, data de cancelamento, outra empresa; instalação na Digital Grid: descontos por bandeira, kWh contratado</td><td><i class="s s-parc">PARCIAL</i> sem fidelidade nem multa rescisória</td></tr>
+    <tr><td><b>4 · Créditos</b></td><td><code>cemig_gd_report</code> por UC e mês: consumo, geração, compensação, saldo anterior, transferência, recebido, saldo atual, saldo exportado, saldo a expirar e data; <code>energy_balance_item</code>: XML × planilha × previsão; <code>allocation_sheet</code>: rateio enviado (kWh a injetar por UC e usina)</td><td><i class="s s-resp">EXISTE</i> dez/2024 a out/2026, 2.969 UCs</td></tr>
+    <tr><td><b>5 · Composição</b></td><td><code>client_integration_bill.injected_energy</code> e <code>value</code>; tarifa da operação em <code>parameters</code> ("Valor Tarifa de Energia Atual")</td><td><i class="s s-parc">PARCIAL</i></td></tr>
+    <tr><td><b>6 · 2ª via</b></td><td><code>client_integration_bill.invoice_link</code> (96% preenchido)</td><td><i class="s s-parc">PARCIAL</i> Pix e código de barras dependem da Digital Grid</td></tr>
+    <tr><td><b>10 · Cancelamento</b></td><td><code>consortium_members.cancel_date</code>, <code>form_sales_reason_cancellation</code> (motivos e tipo: "cancelamento em andamento" ou "cancelado"), motivos de cancelamento do Sucesso do Cliente</td><td><i class="s s-parc">PARCIAL</i></td></tr>
+    <tr><td><b>12 · Negativação</b></td><td>Situação "Negativado" na fatura da Digital Grid (2.530 faturas)</td><td><i class="s s-parc">PARCIAL</i> sem bureau nem data</td></tr>
+    <tr><td><b>CONT-13</b></td><td><code>consortium_members.another_company</code> (53 membros)</td><td><i class="s s-resp">EXISTE</i></td></tr>
+    <tr><td><b>Distribuição das dívidas</b></td><td>Faturas vencidas e negativadas por faixa da política</td><td class="note">Vencidas: 776 abaixo de R$ 300 · 159 de R$ 300 a 700 · 81 de R$ 700 a 1.500 · 75 acima. Negativadas: 1.618 · 487 · 224 · 201.</td></tr>
+   </tbody></table></div>
+   <p class="note">A maioria das dívidas está abaixo de R$ 300, faixa em que a política permite só 2–3x no cartão e boleto único no mês seguinte.</p>
+  </div>
+ </section>
+
+ <section>
+  <h2>O que a API da Digital Grid acrescenta ao agente</h2>
+  <div class="db">
+   <div class="tbl"><table><thead><tr><th>Requisito</th><th>Campo na API (<code>bills</code> / <code>installations</code>)</th><th>Cobertura</th></tr></thead><tbody>
+    <tr><td><b>2 · Financeiro em tempo real</b></td><td><code>payment_status</code>, <code>paid_at</code>, <code>paid_amount</code>, <code>payment_method</code>, <code>due_date</code>, <code>value</code>; filtro por UC (<code>installation</code>) e por situação</td><td><i class="s s-resp">EXISTE</i> sem juros/multa calculados</td></tr>
+    <tr><td><b>3 · Contrato</b></td><td><code>agent_discount</code> e descontos por bandeira, <code>contracted_kwh</code>, <code>signature_date</code>, <code>loyalty_time</code> (vazio), <code>cancellation_date</code>, <code>cancellation_reason</code></td><td><i class="s s-parc">PARCIAL</i> fidelidade e multa rescisória não preenchidas</td></tr>
+    <tr><td><b>4 · Créditos</b></td><td><code>balance_credits</code>, <code>injected_energy</code>, <code>compensated_energy_gd2</code>, <code>percentage_energy_used</code>; cota em <code>estimated-quota</code>; lançamentos em <code>financial-credits</code></td><td><i class="s s-resp">EXISTE</i></td></tr>
+    <tr><td><b>5 · Composição da cobrança</b></td><td><code>kwh_with_discount</code>, <code>compensated_energy_value_with_discount</code>, <code>total_amount_without_discount</code>, <code>amount_saved</code>, tarifas e tributos, bandeiras (dias e valores), iluminação pública</td><td><i class="s s-resp">EXISTE</i></td></tr>
+    <tr><td><b>6 · 2ª via</b></td><td><code>linecode</code> (linha digitável), <code>pixcode</code>, <code>our_number</code>; PDF pelo link do CRM</td><td><i class="s s-parc">PARCIAL</i> Pix nem sempre preenchido; sem link de cartão</td></tr>
+    <tr><td><b>7/8 · Acordo e formalização</b></td><td>Situação "Parcelado" existe, mas não há recurso para criar parcelamento</td><td><i class="s s-perg">FALTA</i></td></tr>
+    <tr><td><b>12 · Negativação</b></td><td>Situação "Negativado" (2.527); UC com rateio "Inadimplente"</td><td><i class="s s-parc">PARCIAL</i> sem data nem bureau</td></tr>
+    <tr><td><b>CONT-13</b></td><td><code>credits_from_another_generator</code> na fatura</td><td><i class="s s-resp">EXISTE</i></td></tr>
+    <tr><td><b>Canal</b></td><td><code>sent_by_email</code>, <code>sent_by_whatsapp</code>; na UC, <code>whatsapp_enabled</code>, <code>email_enabled</code></td><td><i class="s s-resp">EXISTE</i></td></tr>
+   </tbody></table></div>
+  </div>
+ </section>
+ <section>
+  <h2>Multa rescisória: regra já implementada</h2>
+  <div class="db">
+   <p>Fonte: <code>TABELAS-SC/explicacao-calculo-multa.html</code>, gerado do código da tela <code>/multa-rescisoria</code> (branch <code>multa-sem-fidelidade</code>, 07/10/2026). É a multa de <b>cancelamento</b>, não a multa por atraso de fatura.</p>
+   <div class="tbl"><table><thead><tr><th>Parcela</th><th>Fórmula</th><th>Dados</th></tr></thead><tbody>
+    <tr><td><b>Tarifa líquida</b> (base)</td><td>tarifa faturada × (1 − desconto do agente ÷ 100), 6 casas</td><td>Tarifa: <code>kwh_with_tax</code> da fatura mais recente na Digital Grid ou digitada pelo operador. Desconto: <code>agent_discount</code> da Digital Grid, conferido com <code>consortium_members.discount</code> (diferença acima de 0,01 p.p. bloqueia).</td></tr>
+    <tr><td><b>Multa contratual</b></td><td>kWh contratado × meses restantes × % da multa × tarifa líquida</td><td>kWh: <code>consortium_members.kwh</code>. Fidelidade: <code>form_sales.fidelity_type</code> no formato "N meses"; sem fidelidade válida a parcela é R$ 0. Meses restantes: meses inteiros entre hoje e (assinatura + N meses). Assinatura: e-assinatura do cliente; se não houver, a data do cadastro. % padrão <b>50%</b>, editável.</td></tr>
+    <tr><td><b>Saldo de energia</b></td><td>(saldo atual + rateio pendente) × tarifa líquida</td><td>Saldo: competência mais recente com status OK no consolidado da CEMIG (<code>cemig_gd_report</code>). Rateio pendente: <code>allocation_sheet</code>, energia enviada que compensa 2 meses depois e ainda não apareceu; não é cobrado se a UC está sem XML do mês anterior.</td></tr>
+    <tr><td><b>Faturas em aberto</b></td><td>Soma das faturas da Digital Grid com situação Aguardando, Vencido ou Negativado</td><td>Uma fatura por competência. Pago, Aberto, Arquivado e Parcelado ficam fora.</td></tr>
+   </tbody></table></div>
+   <p class="note">Bloqueios: contrato cancelado, assinatura ausente ou ambígua, UC não encontrada ou ambígua na Digital Grid, kWh ausente, desconto ausente ou divergente, sem tarifa, saldo do consolidado incompleto ou em conflito. Arredondamento bancário (half-even) com <code>decimal.js</code>; tarifa com 6 casas, parcelas em centavos.</p>
+   <p class="note">O agente de cobrança pode reaproveitar esse cálculo (ou chamar a rota <code>POST /api/termination/calculate</code>) para responder cancelamento (seção 10) e CONT-06 com os mesmos números que o time usa.</p>
+  </div>
+ </section>
+
+ <section>
+  <h2>Presente no protótipo e ainda não listado</h2>
+  <p class="note">Auditoria de 08/10/2026: tudo que o protótipo já mostra e não estava registrado aqui. São escolhas do protótipo, não decisões da Performa: ficam como CONFIRMAR até alguém responder.</p>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Funcionalidade</th><th>Detalhe</th><th>Origem</th><th>Situação</th></tr></thead><tbody>
+   <tr><td class="id">AG-70</td><td><b>Política editável pelo administrador</b></td><td>Tela com "Salvar política": isenção à vista, prazo à vista (5 dias), parcela mínima, alçada no cartão (7x), boleto até 6x, autonomia de prazo (5 dias), multa 2 %, juros 1 %, horário humano. "Transferir se houver histórico" fica sempre ligado (AG-40).</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">AG-71</td><td><b>Simulador da cascata</b></td><td>Pelo valor da dívida, mostra cada degrau: pulado, pede aprovação ou o agente oferece.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> 08/10/2026</td></tr>
+   <tr><td class="id">AG-72</td><td><b>Ciclo do acordo</b></td><td>Situações aguardando formalização, formalizado, quebrado e cumprido. Tarefas automáticas: lembrete 1 dia antes de cada parcela e tirar a negativação depois da 1ª parcela.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">AG-73</td><td><b>Regra da troca para e-mail</b></td><td>Só conta como troca se houve contato por WhatsApp nos últimos 30 dias; o e-mail chega num endereço próprio da cobrança.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">AG-74</td><td><b>Visão 360°: faturas e resumo</b></td><td>Tabela de faturas (competência, kWh, valor e valor hoje com encargos) e o último resumo do agente.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> 08/10/2026</td></tr>
+   <tr><td class="id">AG-75</td><td><b>Irritação: quando transferir</b></td><td>Transfere na 2ª ocorrência.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">AG-76</td><td><b>Fases de entrega</b></td><td>1: dados importados. 2: Digital Grid, gateway, Performalog e e-mail. 3: XML da CEMIG, termo pela IA e bureau.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-conf">CONFIRMAR</i></td></tr>
+   <tr><td class="id">AG-77</td><td><b>Contador no menu Cobrança</b></td><td>Aprovações pendentes + acordos aguardando formalização.</td><td><i class="o o-prot">PROTÓTIPO</i></td><td><i class="s s-def">DEFINIDO</i> 08/10/2026</td></tr>
+  </tbody></table></div>
+  <h3>Onde o protótipo está diferente do contexto</h3>
+  <p class="note">As outras diferenças foram corrigidas em 08/10/2026. Estas dependem de resposta da Performa ou ficaram fora do escopo; até lá vale o contexto.</p>
+  <div class="tbl"><table><thead><tr><th>Item</th><th>O que o contexto diz</th><th>O que o protótipo faz hoje</th></tr></thead><tbody>
+   <tr><td>AG-17 · Q-AG8</td><td>A Digital Grid não tem endpoint de acordo.</td><td>"Formalizar" envia acordos/importar para a Digital Grid.</td></tr>
+   <tr><td>Q-AG14</td><td>Gateway de cartão por definir.</td><td>Gera link de cartão próprio depois da formalização.</td></tr>
+</tbody></table></div>
+ </section>
+
+ <section>
+  <h2>Perguntas para a Performa</h2>
+  <div class="qs">
+   <div class="q"><b>Q-AG1</b>A nota inicial diz: "se for sinal de 50% mais parcelamento conseguimos liberar juros e multa. Caso ela consiga 20%" — a frase termina aí. O que acontece com 20%? E o sinal de 50% entra antes ou depois do cartão na ordem obrigatória?</div>
+   <div class="q"><b>Q-AG2</b>Isenção via "consultar outro setor": deve virar um pedido real de aprovação para uma pessoa decidir, ou o agente pode liberar sozinho depois de um tempo?</div>
+   <div class="q"><b>Q-AG3</b>A seção 7 fala em entrada mínima de 15% e parcelamento máximo de 6 vezes. A política de negociação não tem entrada e permite até 10x no cartão. Qual vale?</div>
+   <div class="q"><b>Q-AG4</b>"Até X dias: sem desconto. Dependendo da situação, no Pix retiramos os juros." Qual é o X? Isso muda o à vista com isenção?</div>
+   <div class="q p"><b>Q-AG5 · PARCIAL</b>Quais são os percentuais de multa e juros por atraso? O protótipo usa 2% de multa + 1% ao mês proporcional, só como exemplo.<div class="ans"><strong>O documento recebido trata da multa rescisória · ainda falta</strong>Multa e juros <b>por atraso de fatura</b> não aparecem nele. Falta: os percentuais por atraso, ou a confirmação de que a Digital Grid já calcula e embute esses encargos na fatura.</div></div>
+   <div class="q"><b>Q-AG6</b>Régua de prazos ("criar régua de prazos"): quantos dias o agente pode conceder sozinho? E acima disso, quem aprova?</div>
+   <div class="q"><b>Q-AG7</b>Promessa de pagamento vigente também obriga transferir para uma pessoa (tratativa 11), ou só impede novas cobranças?</div>
+   <div class="q p"><b>Q-AG8 · PARCIAL</b>Todo acordo vai para formalização humana, inclusive o pagamento à vista?<div class="ans"><strong>Resposta parcial · ainda falta</strong>Como a API da Digital Grid não tem recurso para criar parcelamento, a formalização do acordo continua dependendo de uma pessoa (ou da planilha) até a Digital Grid oferecer esse recurso. Falta: a regra para acordos à vista.</div></div>
+   <div class="q"><b>Q-AG9</b>Alteração de vencimento: o agente pode oferecer? Com que limite?</div>
+   <div class="q r"><b>Q-AG10 · RESPONDIDA</b>O horário humano de 08:30 às 17:30 vale também aos sábados?<div class="ans"><strong>Respondida pela Performa em 08/10/2026</strong>Não. Atendimento humano de segunda a sexta. Horário corrigido no mesmo dia para 08:00 às 18:00.</div></div>
+   <div class="q r"><b>Q-AG11 · RESPONDIDA</b>De qual sistema vêm cadastro, faturas e pagamentos em tempo real (ERP, Digital Grid, IVI Energia)? Tem API?<div class="ans"><strong>Respondida pela API da Digital Grid e pelo banco</strong>Cadastro no CRM Plog e na Digital Grid (<code>entities</code>, busca por documento). Faturas e pagamentos na API da Digital Grid (<code>bills</code>), com situação, data e valor pago por fatura e filtro por UC. Ver quadro acima.</div></div>
+   <div class="q r"><b>Q-AG12 · RESPONDIDA</b>O Termo de Adesão está em PDF assinado ou os dados (fidelidade, desconto, multa) já estão em campos de um sistema?<div class="ans"><strong>Respondida pelo documento da multa rescisória</strong>A fidelidade está em <code>form_sales.fidelity_type</code> (texto "N meses"), o kWh contratado e o desconto em <code>consortium_members</code>, e a data de assinatura vem da e-assinatura do cliente. A multa rescisória é calculada pela fórmula do quadro acima (padrão 50% × kWh × meses restantes × tarifa líquida).</div></div>
+   <div class="q r"><b>Q-AG13 · RESPONDIDA</b>O relatório XML de rateio da CEMIG chega como? Com que frequência? Quais campos traz?<div class="ans"><strong>Respondida pelo banco</strong>O relatório da CEMIG já é carregado no banco: <code>cemig_gd_report</code> por UC e mês (consumo, geração, compensação, saldos, transferência, recebido, saldo a expirar) e o balanço mensal em <code>energy_balance</code>/<code>energy_balance_item</code> (XML, planilha e previsão). O rateio enviado está em <code>allocation_sheet</code>.</div></div>
+   <div class="q p"><b>Q-AG14 · PARCIAL</b>Link de pagamento por cartão: qual gateway, e dá para gerar automaticamente?<div class="ans"><strong>Resposta parcial · ainda falta</strong>A Digital Grid registra pagamento por Boleto e PIX; não há link de cartão na API. Falta: qual gateway usar para o cartão.</div></div>
+   <div class="q"><b>Q-AG15</b>Qual é o prazo para transferir o saldo para outra instalação na troca de titularidade?</div>
+   <div class="q p"><b>Q-AG16 · PARCIAL</b>Cliente que tem saldo e some do XML (deixa de gerar fatura): como acompanhar e cobrar? (Pergunta aberta no próprio documento.)<div class="ans"><strong>Resposta parcial · ainda falta</strong>A tela de multa já detecta a UC "sem XML do mês anterior" (a CEMIG não devolveu saldo) e, nesse caso, não cobra o rateio pendente. Dá para usar a mesma regra para identificar quem sumiu do relatório. Falta: a regra de cobrança desses casos.</div></div>
+   <div class="q p"><b>Q-AG17 · PARCIAL</b>Qual bureau de crédito é usado para negativar (Serasa, SPC, Boa Vista)? A inclusão é manual ou por integração?<div class="ans"><strong>Resposta parcial · ainda falta</strong>A situação “Negativado” vem da Digital Grid (2.527 faturas) e a UC pode ficar com rateio “Inadimplente”. Não há data de negativação nem bureau na API. Falta: qual bureau é usado e quem faz a inclusão.</div></div>
+   <div class="q"><b>Q-AG18</b>CONT-05 (cobrança após cancelamento) tem 6 subcategorias. O agente pode esclarecer alguma sozinho, ou todas vão para uma pessoa?</div>
+   <div class="q p"><b>Q-AG19 · PARCIAL</b>CONT-12 (IVI Energia): qual a relação entre a Performa e a IVI Energia que o agente pode explicar ao cliente?<div class="ans"><strong>Resposta parcial pelo banco · ainda falta</strong>No CRM, a IVI Energia é uma operação própria (id 114), separada da Performa Energy (id 9). Falta: a frase que o agente pode usar para explicar a relação ao cliente.</div></div>
+   <div class="q"><b>Q-AG20</b>A faixa de valor da política (abaixo de R$ 300, até R$ 700…) usa o valor total com juros e multa ou só o valor original? E uma dívida de exatamente R$ 300 ou R$ 700 fica em qual faixa?</div>
+   <div class="q"><b>Q-AG21</b>Boleto acima de R$ 1.500: a "menor quantidade de parcelas aplicável" é 2x?</div>
+   <div class="q"><b>Q-AG22</b>Boleto abaixo de R$ 300 (1x no mês seguinte) mantém juros e multa ou tem isenção?</div>
+   <div class="q"><b>Q-AG23</b>Dívida abaixo de R$ 200: a menor opção de cartão (2x) deixa a parcela abaixo do mínimo de R$ 100 (AG-50), então o agente não oferece cartão. Está certo, ou o mínimo não vale para o cartão?</div>
+   <div class="q"><b>Q-AG24</b>O agente roda como um serviço separado, que conversa com o Performalog por API, ou dentro do backend do Performalog? A proposta técnica é o serviço separado, que pode ser publicado e desligado sem mexer no CRM.</div>
+   <div class="q"><b>Q-AG25</b>Depois que uma pessoa encerra o atendimento, o caso volta para o agente (que retoma a cascata) ou fica com a equipe até o pagamento?</div>
+  </div>
+ </section>
+ <footer>Atualizado em 08/10/2026 · fonte principal: <code>Agente cobrança.docx</code>.</footer>
+</div>
+</body>
+</html>
