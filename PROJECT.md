@@ -45,7 +45,8 @@ O agente de IA atua exclusivamente na camada conversacional humanizada. **A IA n
 - `DOCUMENTO_ENTREGA_SLIDES_APEX_V_PERFORMA_ENERGY.md`: Transcrição textual integral de todos os 20 slides em estrita correspondência com a apresentação.
 - `build_updated_apex_v.py`: Script Python oficial para geração determinística dos slides preenchidos e das versões modulares.
 - `convert_all_pptx_to_pdf.py`: Script para conversão de apresentações em PDF com limpeza de marcas d'água.
-- `ESPECIFICACAO_FIGMA_APEX_V_REVISTA.md`: Guia de arquitetura de interface e tokens de design para o Figma.
-- `GUIA_APRESENTACAO_APEX_V_REVISTO.md`: Roteiro de 90 minutos para a oficina presencial e protocolo das 3 fotos.
+- `ESPECIFICACAO_FIGMA_APEX_V.md`: Guia de arquitetura de interface e tokens de design para o Figma.
+- `GUIA_APRESENTACAO_PRESENCIAL_APEX_V.md`: Roteiro de 90 minutos para a oficina presencial e protocolo das 3 fotos.
 - `FICHA_DE_AVALIACAO_PRESENCIAL_PERFORMA_ENERGY.html`: Instrumento de avaliação em escala Likert pronto para impressão em 1 página A4.
 - `performalog_atendimento/`: Diretório com o protótipo funcional completo e especificações detalhadas de negócio e APIs.
+- `referencias_unyleya/`: Documentos institucionais da Unyleya (Roteiro oficial, ementa da disciplina e template original).

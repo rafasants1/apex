@@ -8,7 +8,7 @@ Repositório oficial dos materiais do projeto de extensão universitária da dis
 
 * **Título Oficial**: *Performalog Atendimento: Agente Inteligente de Cobrança e Arquitetura de Banco de Dados para Gestão de Energia Solar na Performa Energy*
 * **Instituição de Ensino**: Faculdade Unyleya (MEC Portaria nº 1.263/2012)
-* **Curso**: Tecnologia em Banco de Dados (100 Horas de Extensão)
+* **Curso**: Tecnologia em Banco de Dados (100 Horas de Extensão Curricular)
 * **Disciplina**: AMBIENTE PROFISSIONAL E DE EXTENSÃO EM BANCO DE DADOS V
 * **Empresa Parceira**: **Performa Energy** (Gestão de Créditos de Energia Solar por Assinatura / Geração Distribuída — Lei nº 14.300/2022)
 * **Alinhamento com os Objetivos de Desenvolvimento Sustentável (Agenda 2030)**:
@@ -22,14 +22,16 @@ Repositório oficial dos materiais do projeto de extensão universitária da dis
 
 | Arquivo | Descrição | Finalidade no AVA |
 |---|---|---|
-| [`TEMPLATE_PREENCHIDO_APEX_V_PERFORMA_ENERGY.pptx`](./TEMPLATE_PREENCHIDO_APEX_V_PERFORMA_ENERGY.pptx) | Arquivo oficial com os 20 slides preenchidos e estilizados | Envio nos Módulos 1, 2 e 3 |
-| [`APEX_V_Modulo_1_Etapa_1_Slides_1_a_6.pptx`](./APEX_V_Modulo_1_Etapa_1_Slides_1_a_6.pptx) | Slides 1 a 6 dedicados para a 1ª Etapa (Módulo 1) | Submissão no Módulo 1 (AVA) |
-| [`APEX_V_Modulo_2_Etapa_2_Slides_1_a_10.pptx`](./APEX_V_Modulo_2_Etapa_2_Slides_1_a_10.pptx) | Slides 1 a 10 dedicados para a 2ª Etapa (Módulo 2) | Submissão no Módulo 2 (AVA) |
-| [`DOCUMENTO_ENTREGA_SLIDES_APEX_V_PERFORMA_ENERGY.md`](./DOCUMENTO_ENTREGA_SLIDES_APEX_V_PERFORMA_ENERGY.md) | Transcrição textual integral lâmina por lâmina | Roteiro de apoio e consulta |
-| [`ESPECIFICACAO_FIGMA_APEX_V_REVISTA.md`](./ESPECIFICACAO_FIGMA_APEX_V_REVISTA.md) | Especificação das 37 telas, design system e fluxos no Figma | Guia para o Módulo 4 (Envio 1) |
-| [`GUIA_APRESENTACAO_APEX_V_REVISTO.md`](./GUIA_APRESENTACAO_APEX_V_REVISTO.md) | Roteiro de 90 min e protocolo das 3 fotos obrigatórias | Guia para o Módulo 4 (Envio 2) |
+| [`TEMPLATE_PREENCHIDO_APEX_V_PERFORMA_ENERGY.pptx`](./TEMPLATE_PREENCHIDO_APEX_V_PERFORMA_ENERGY.pptx) / [`.pdf`](./TEMPLATE_PREENCHIDO_APEX_V_PERFORMA_ENERGY.pdf) | Apresentação oficial completa com os 20 slides preenchidos | Envio no Módulo 3 |
+| [`APEX_V_Modulo_1_Etapa_1_Slides_1_a_6.pptx`](./APEX_V_Modulo_1_Etapa_1_Slides_1_a_6.pptx) / [`.pdf`](./APEX_V_Modulo_1_Etapa_1_Slides_1_a_6.pdf) | Pacote dedicado com Slides 1 a 6 | Submissão no Módulo 1 (1ª Etapa) |
+| [`APEX_V_Modulo_2_Etapa_2_Slides_1_a_10.pptx`](./APEX_V_Modulo_2_Etapa_2_Slides_1_a_10.pptx) / [`.pdf`](./APEX_V_Modulo_2_Etapa_2_Slides_1_a_10.pdf) | Pacote dedicado com Slides 1 a 10 | Submissão no Módulo 2 (2ª Etapa) |
+| [`DOCUMENTO_ENTREGA_SLIDES_APEX_V_PERFORMA_ENERGY.md`](./DOCUMENTO_ENTREGA_SLIDES_APEX_V_PERFORMA_ENERGY.md) | Transcrição textual integral lâmina por lâmina | Roteiro de apoio e conferência |
+| [`PLANO_CORRECOES_SLIDES_APEX_V.md`](./PLANO_CORRECOES_SLIDES_APEX_V.md) | Checklist de conformidade, auditoria e status de cada etapa | Acompanhamento do projeto |
+| [`ESPECIFICACAO_FIGMA_APEX_V.md`](./ESPECIFICACAO_FIGMA_APEX_V.md) | Especificação das 37 telas, design system e fluxos no Figma | Guia para o Módulo 4 (Envio 1) |
+| [`GUIA_APRESENTACAO_PRESENCIAL_APEX_V.md`](./GUIA_APRESENTACAO_PRESENCIAL_APEX_V.md) | Roteiro de 90 min e protocolo das 3 fotos obrigatórias | Guia para o Módulo 4 (Envio 2) |
 | [`FICHA_DE_AVALIACAO_PRESENCIAL_PERFORMA_ENERGY.html`](./FICHA_DE_AVALIACAO_PRESENCIAL_PERFORMA_ENERGY.html) | Formulário interativo e imprimível em 1 página A4 (escala Likert) | Aplicação pós-oficina na empresa |
-| [`performalog_atendimento/`](./performalog_atendimento/) | Protótipo interativo completo e especificações detalhadas | Demonstração técnica e de negócio |
+| [`performalog_atendimento/`](./performalog_atendimento/) | Protótipo interativo web completo com arquitetura de negócio e APIs | Demonstração técnica |
+| [`referencias_unyleya/`](./referencias_unyleya/) | Roteiro oficial, ementa da disciplina e template mestre da Unyleya | Documentos de referência |
 
 ---
 

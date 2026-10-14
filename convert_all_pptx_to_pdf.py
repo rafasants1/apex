@@ -18,7 +18,7 @@ files_to_convert = [
     ("APEX_V_Modulo_1_Etapa_1_Slides_1_a_6.pptx", "APEX_V_Modulo_1_Etapa_1_Slides_1_a_6.pdf"),
     ("APEX_V_Modulo_2_Etapa_2_Slides_1_a_10.pptx", "APEX_V_Modulo_2_Etapa_2_Slides_1_a_10.pdf"),
     ("TEMPLATE_PREENCHIDO_APEX_V_PERFORMA_ENERGY.pptx", "TEMPLATE_PREENCHIDO_APEX_V_PERFORMA_ENERGY.pdf"),
-    ("TEMPLATE PADRÃO PARA DESENVOLVIMENTO DOS TRABALHOS DE EXTENSÃO _ POR ETAPAS-1 (1).pptx", "TEMPLATE_PADRAO_ORIGINAL_UNYLEYA.pdf")
+    ("TEMPLATE PADRÃO PARA DESENVOLVIMENTO DOS TRABALHOS DE EXTENSÃO _ POR ETAPAS-1 (1).pptx", os.path.join("referencias_unyleya", "TEMPLATE_PADRAO_ORIGINAL_UNYLEYA.pdf"))
 ]
 
 def convert_and_clean(input_pptx, output_pdf):
