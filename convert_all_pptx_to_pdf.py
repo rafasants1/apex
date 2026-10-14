@@ -30,7 +30,9 @@ def convert_and_clean(input_pptx, output_pdf):
     print(f"Converting: {input_pptx} -> {output_pdf}")
     print(f"==========================================")
     
-    temp_pdf = f"temp_{output_pdf}"
+    out_dir = os.path.dirname(output_pdf) or "."
+    out_name = os.path.basename(output_pdf)
+    temp_pdf = os.path.join(out_dir, f"temp_{out_name}")
     
     # Step 1: Render presentation via Aspose
     pres = slides.Presentation(input_pptx)
